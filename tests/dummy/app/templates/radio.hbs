@@ -2,96 +2,96 @@
 <h3>Single selection among multiple options.</h3>
 <div>
 <h3>Basic usage</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="Radio should not have too many options. Otherwise, use the Select component instead."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-radio model=this.value item="gender" label="Male" action=( action "checkVal") }}Male{{/el-radio}}
-        {{#el-radio model=this.value item="gender" label="Female" action=( action "checkVal") }}Female{{/el-radio}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="Radio should not have too many options. Otherwise, use the Select component instead."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElRadio @model={{this.value}} @item="gender" @label="Male" @action={{action "checkVal"}}>Male</ElRadio>
+        <ElRadio @model={{this.value}} @item="gender" @label="Female" @action={{action "checkVal"}}>Female</ElRadio>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-radio model=this.value item="gender" label="Male" action=( action "checkVal") }}Male\{{/el-radio}}
 \{{#el-radio model=this.value item="gender" label="Female" action=( action "checkVal") }}Female\{{/el-radio}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Disabled</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="Disabled attribute is used to disable the radio."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-radio model=this.framework item="framework"  label="React" action=( action "checkVal") disabled=true}}React{{/el-radio}}
-        {{#el-radio model=this.framework item="framework" label="Ember" action=( action "checkVal") disabled=true }}Ember{{/el-radio}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="Disabled attribute is used to disable the radio."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElRadio @model={{this.framework}} @item="framework" @label="React" @action={{action "checkVal"}} @disabled={{true}}>React</ElRadio>
+        <ElRadio @model={{this.framework}} @item="framework" @label="Ember" @action={{action "checkVal"}} @disabled={{true}}>Ember</ElRadio>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-radio model=framework item="framework"  label="React" action=( action "checkVal") disabled=true }}React\{{/el-radio}}
 \{{#el-radio model=framework item="framework" label="Ember" action=( action "checkVal") disabled=true }}Ember\{{/el-radio}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 <h3>Radio button group</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="Suitable for choosing from some mutually exclusive options."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-radio-group model=this.subject as |grp|}}
-          {{#grp.option item="subject" label="Math" action=( action "checkVal") }}Math{{/grp.option}}
-          {{#grp.option item="subject" label="English" action=( action "checkVal") }}English{{/grp.option}}
-        {{/el-radio-group}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="Suitable for choosing from some mutually exclusive options."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElRadioGroup @model={{this.subject}} as |grp|>
+          <grp.option @item="subject" @label="Math" @action={{action "checkVal"}}>Math</grp.option>
+          <grp.option @item="subject" @label="English" @action={{action "checkVal"}}>English</grp.option>
+        </ElRadioGroup>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-radio-group model=this.subject}}
   \{{#grp.option  item="subject" label="Math" action=( action "checkVal") }}Math\{{/grp.option}}
   \{{#grp.option  item="subject" label="English" action=( action "checkVal") }}English\{{/grp.option}}
 \{{/el-radio-group}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
   <h3>Button style</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="Radio with button styles."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-radio-button model=this.sports item="sports" label="Cricket" action=( action "checkVal") }}Cricket{{/el-radio-button}}
-        {{#el-radio-button model=this.sports item="sports" label="Football" action=( action "checkVal") }}Football{{/el-radio-button}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="Radio with button styles."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElRadioButton @model={{this.sports}} @item="sports" @label="Cricket" @action={{action "checkVal"}}>Cricket</ElRadioButton>
+        <ElRadioButton @model={{this.sports}} @item="sports" @label="Football" @action={{action "checkVal"}}>Football</ElRadioButton>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-radio-button model=sports item="sports" label="Cricket" action=( action "checkVal") }}Cricket\{{/el-radio-button}}
 \{{#el-radio-button model=sports item="sports" label="Football" action=( action "checkVal") }}Football\{{/el-radio-button}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>With borders</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="The border attribute adds a border to Radios."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-      {{#el-radio model=this.IntSports item="IntSports" label="Hockey" action=( action "checkVal") border=true }}Hockey{{/el-radio}}
-      {{#el-radio model=this.IntSports item="IntSports" label="Tenis" action=( action "checkVal") border=true}}Tenis{{/el-radio}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="The border attribute adds a border to Radios."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+      <ElRadio @model={{this.IntSports}} @item="IntSports" @label="Hockey" @action={{action "checkVal"}} @border={{true}}>Hockey</ElRadio>
+      <ElRadio @model={{this.IntSports}} @item="IntSports" @label="Tenis" @action={{action "checkVal"}} @border={{true}}>Tenis</ElRadio>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-radio model=sports item="sports" label="Hockey" action=( action "checkVal") border=true}}Hockey\{{/el-radio}}
 \{{#el-radio model=sports item="sports" label="Tenis" action=( action "checkVal") border=true}}Tenis\{{/el-radio}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 </div>
 
 <h2>Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-  {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+  <ElTable @data={{this.tableAttributes}} as |t|>
     {{t.column prop="attribute" label="Attribute" width=150}}
     {{t.column prop="desc" label="Description"}}
     {{t.column prop="type" label="Type" width=100}}
     {{t.column prop="val" label="Accepted Values" width=250}}
     {{t.column prop="def" label="Default" width=75}}
-  {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+  </ElTable>
+</card.body>
+</ElCard>

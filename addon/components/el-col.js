@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import layout from './el-col';
-import {computed, get} from "@ember/object";
-import {htmlSafe} from '@ember/template';
+import { computed, get } from '@ember/object';
+import { htmlSafe } from '@ember/template';
 
 export default Component.extend({
   layout,
@@ -22,46 +22,52 @@ export default Component.extend({
   attributeBindings: ['style'],
 
   style: computed('gutter', function () {
-    if (get(this, 'gutter')) {
-      let gutter = (get(this, 'gutter') / 2) + 'px';
+    if (this.gutter) {
+      let gutter = this.gutter / 2 + 'px';
       return htmlSafe(`padding-left: ${gutter}; padding-right: ${gutter}`);
     }
-    return htmlSafe("");
+    return htmlSafe('');
   }),
 
-  getClassName: computed('span', 'offset', 'pull', 'push', 'xs', 'sm', 'md', 'lg', 'xl', function () {
-
-    let classList = [];
-    ['span', 'offset', 'pull', 'push'].forEach(prop => {
-      if (get(this, prop) || get(this, prop) === 0) {
-        classList.push(
-          prop !== 'span'
-            ? `el-col-${prop}-${get(this, prop)}`
-            : `el-col-${get(this, prop)}`
-        );
-      }
-    });
-
-
-    ['xs', 'sm', 'md', 'lg', 'xl'].forEach(size => {
-      if (typeof get(this, size) === 'number') {
-        classList.push(`el-col-${size}-${get(this, size)}`);
-      } else if (get(this, size) && typeof get(this, size) === 'object') {
-        let props = get(this, size);
-
-
-        Object.keys(props).forEach(prop => {
+  getClassName: computed(
+    'span',
+    'offset',
+    'pull',
+    'push',
+    'xs',
+    'sm',
+    'md',
+    'lg',
+    'xl',
+    function () {
+      let classList = [];
+      ['span', 'offset', 'pull', 'push'].forEach((prop) => {
+        if (get(this, prop) || get(this, prop) === 0) {
           classList.push(
             prop !== 'span'
-              ? `el-col-${size}-${prop}-${props[prop]}`
-              : `el-col-${size}-${props[prop]}`
+              ? `el-col-${prop}-${get(this, prop)}`
+              : `el-col-${get(this, prop)}`
           );
-        });
-      }
-    });
+        }
+      });
 
-    return classList.join(' ');
+      ['xs', 'sm', 'md', 'lg', 'xl'].forEach((size) => {
+        if (typeof get(this, size) === 'number') {
+          classList.push(`el-col-${size}-${get(this, size)}`);
+        } else if (get(this, size) && typeof get(this, size) === 'object') {
+          let props = get(this, size);
 
-  }),
+          Object.keys(props).forEach((prop) => {
+            classList.push(
+              prop !== 'span'
+                ? `el-col-${size}-${prop}-${props[prop]}`
+                : `el-col-${size}-${props[prop]}`
+            );
+          });
+        }
+      });
 
+      return classList.join(' ');
+    }
+  ),
 });

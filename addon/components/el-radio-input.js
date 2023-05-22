@@ -4,14 +4,11 @@ import { computed } from '@ember/object';
 import { isEqual } from '@ember/utils';
 import { once } from '@ember/runloop';
 
-
 export default Component.extend({
   // layout,
 
   tagName: 'input',
   type: 'radio',
-
-
 
   // value - required
   // model - required
@@ -39,26 +36,26 @@ export default Component.extend({
     'value',
     'ariaLabelledby:aria-labelledby',
     'ariaDescribedby:aria-describedby',
-    'checked:aria-checked'
+    'checked:aria-checked',
   ],
 
   checked: computed('model', 'value', function () {
-    return isEqual(this.get('model'), this.get('value'));
+    return isEqual(this.model, this.value);
   }).readOnly(),
 
   sendChangedAction() {
-    if (this.get('changed')) {
-      this.get('changed')(this.get('value'), this.get('item'));
+    if (this.changed) {
+      this.changed(this.value, this.item);
     }
   },
 
   change() {
-    let value = this.get('value');
-    let model = this.get('model');
+    let value = this.value;
+    let model = this.model;
 
     if (model !== value) {
       // this.set('model', value); // violates DDAU
       once(this, 'sendChangedAction');
     }
-  }
+  },
 });

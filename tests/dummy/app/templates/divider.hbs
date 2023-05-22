@@ -2,31 +2,31 @@
 <h3>The dividing line that separates the content.</h3>
 <div>
 <h3>Basic usage</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
         <span>I sit at my window this morning where the world like a passer-by stops for a moment, nods to me and goes.</span>
         {{el-divider}}
         <span>There little thoughts are the rustle of leaves; they have their whisper of joy in my mind.</span>
-      {{/card.body}}
-    {{/el-card}}
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-divider}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Custom content</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
         <span>What you are you do not see, what you see is your shadow.</span>
-        {{#el-divider contentPosition="left"}}Rabindranath Tagore{{/el-divider}}
+        <ElDivider @contentPosition="left">Rabindranath Tagore</ElDivider>
         <span>I cannot choose the best. The best chooses me.</span>
-        {{#el-divider}}<i class="el-icon-star-on"></i>{{/el-divider}}
+        <ElDivider><i class="el-icon-star-on"></i></ElDivider>
         <span>My wishes are fools, they shout across thy song, my Master. Let me but listen.</span>
-      {{/card.body}}
-    {{/el-card}}
+      </card.body>
+    </ElCard>
 <pre style="white-space: pre;"><code class="language-handlebars">&lt;div&gt;
     &lt;span&gt;What you are you do not see, what you see is your shadow.&lt;/span&gt;
     \{{#el-divider contentPosition="left"}}Rabindranath Tagore\{{/el-divider}}
@@ -35,15 +35,15 @@
     &lt;span&gt;My wishes are fools, they shout across thy song, my Master. Let me but listen.&lt;/span&gt;
     \{{#el-divider contentPosition="right"}}Rabindranath Tagore\{{/el-divider}}
 &lt;/div&gt;</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 <h3>Vertical divider</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
         <div>
           <span>Rain</span>
           {{el-divider direction="vertical"}}
@@ -51,8 +51,8 @@
           {{el-divider direction="vertical"}}
           <span>Grass</span>
         </div>
-      {{/card.body}}
-    {{/el-card}}
+      </card.body>
+    </ElCard>
 <pre style="white-space: pre;"><code class="language-handlebars">&lt;div&gt;
   &lt;span&gt;Rain&lt;/span&gt;
   \{{el-divider direction="vertical"}}
@@ -60,19 +60,19 @@
   \{{el-divider direction="vertical"}}
   &lt;span&gt;Grass&lt;/span&gt;
 &lt;/div&gt;</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 </div>
 
 <h2>Divider Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-  {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+  <ElTable @data={{this.tableAttributes}} as |t|>
     {{t.column prop="attribute" label="Attribute" width=150}}
     {{t.column prop="desc" label="Description" width=250}}
     {{t.column prop="type" label="Type" width=100}}
     {{t.column prop="val" label="Accepted Values" width=150}}
     {{t.column prop="def" label="Default" width=75}}
-  {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+  </ElTable>
+</card.body>
+</ElCard>

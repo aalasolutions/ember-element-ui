@@ -6,13 +6,9 @@ const fs = require('fs');
 const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
 
-
 module.exports = {
-
   description: 'Add required plugins',
-  normalizeEntityName: function () {
-  },
-
+  normalizeEntityName: function () {},
 
   beforeInstall() {
     // Add addons to package.json and run defaultBlueprint
@@ -20,11 +16,10 @@ module.exports = {
       // a packages array defines the addons to install
       packages: [
         // name is the addon name, and target (optional) is the version
-        {name: 'ember-cli-sass'},
-        {name: 'ember-moment'},
-      ]
+        { name: 'ember-cli-sass' },
+        { name: 'ember-moment' },
+      ],
     });
-
   },
   afterInstall() {
     var importStatement = '\n@import "ember-element-ui";\n';
@@ -44,15 +39,13 @@ module.exports = {
     }
 
     this.addAddonsToProject({
-      packages: [
-        {name: "ember-font-awesome", target: "^4.0.0-rc.4"},
-      ]
+      packages: [{ name: 'ember-font-awesome', target: '^4.0.0-rc.4' }],
     });
 
     return this.addPackagesToProject([
-      {name: 'element-theme-chalk', target: '^2.4.9'},
-      {name: 'popper.js'},
-      {name: 'normalize.css'},
+      { name: 'element-theme-chalk', target: '^2.4.9' },
+      { name: 'popper.js' },
+      { name: 'normalize.css' },
     ]);
   },
 
@@ -77,18 +70,29 @@ module.exports = {
     host.import(path.join('node_modules', 'normalize.css', 'normalize.css'));
     host.import(path.join('node_modules', 'animate.css', 'animate.css'));
 
-    host.import(path.join('node_modules', 'popper.js', 'dist', 'umd', 'popper.js'));
-    host.import(path.join('node_modules', 'popper.js', 'dist', 'umd', 'popper-utils.js'));
+    host.import(
+      path.join('node_modules', 'popper.js', 'dist', 'umd', 'popper.js')
+    );
+    host.import(
+      path.join('node_modules', 'popper.js', 'dist', 'umd', 'popper-utils.js')
+    );
 
-    host.import(path.join('node_modules', 'element-theme-chalk', 'lib', 'display.css'));
+    host.import(
+      path.join('node_modules', 'element-theme-chalk', 'lib', 'display.css')
+    );
   },
 
-  treeForPublic: function() {
-    let absoluteFontsPath = path.join('node_modules', 'element-theme-chalk', 'src', 'fonts');
+  treeForPublic: function () {
+    let absoluteFontsPath = path.join(
+      'node_modules',
+      'element-theme-chalk',
+      'src',
+      'fonts'
+    );
     let fontsFolderPath = '/assets/fonts';
 
     return new Funnel(absoluteFontsPath, {
-      destDir: fontsFolderPath
+      destDir: fontsFolderPath,
     });
   },
 
@@ -96,12 +100,14 @@ module.exports = {
     var host = this._findHost();
 
     if (host.project.findAddonByName('ember-cli-sass')) {
-      return new Funnel(path.join('node_modules', 'element-theme-chalk', 'src'), {
-        destDir: 'ember-element-ui'
-      });
+      return new Funnel(
+        path.join('node_modules', 'element-theme-chalk', 'src'),
+        {
+          destDir: 'ember-element-ui',
+        }
+      );
     }
   },
-
 
   treeForVendor: function (tree) {
     // Get configured fontFormats
@@ -117,10 +123,13 @@ module.exports = {
       fontFormatPattern = `*.${fontFormatsString}`;
     }
     // Funnel required font types
-    let fonts = new Funnel(path.join('node_modules', 'element-theme-chalk', 'src'), {
-      destDir: 'element-font',
-      include: [`fonts/${fontFormatPattern}`]
-    });
+    let fonts = new Funnel(
+      path.join('node_modules', 'element-theme-chalk', 'src'),
+      {
+        destDir: 'element-font',
+        include: [`fonts/${fontFormatPattern}`],
+      }
+    );
 
     fontsTree.push(fonts);
 
@@ -128,9 +137,7 @@ module.exports = {
       fontsTree.push(tree);
     }
 
-    return mergeTrees(fontsTree, {overwrite: true});
-
-
+    return mergeTrees(fontsTree, { overwrite: true });
   },
 
   _ensureFindHost() {
@@ -146,6 +153,5 @@ module.exports = {
         return app;
       };
     }
-  }
-
+  },
 };

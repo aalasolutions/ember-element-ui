@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | el-aside', function(hooks) {
+module('Integration | Component | el-aside', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -16,18 +16,16 @@ module('Integration | Component | el-aside', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      {{#el-aside}}
+      <ElAside>
         template block text
-      {{/el-aside}}
+      </ElAside>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
 
-
-    this.set("collapse", true);
+    this.set('collapse', true);
     await render(hbs`{{el-aside collapse=collapse}}`);
 
     assert.equal(this.element.textContent.trim(), '');
-
   });
 });

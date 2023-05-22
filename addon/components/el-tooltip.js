@@ -7,7 +7,6 @@ import Component from '@ember/component';
 // todo: WIP
 
 export default Component.extend({
-
   // layout,
 
   tagName: '',
@@ -31,20 +30,17 @@ export default Component.extend({
     // let parent = this.getParent(this);
     //
     // set(this, 'parent', parent);
-
   },
 
-  didRender(){
+  didRender() {
+    this._super(...arguments);
     // $(get(this, 'parent')).attr('data-original-title', get(this, 'title'))
     //   .tooltip({
     //     placement: get(this, 'placement'),
     //     html: true
     //   });
-
     // this._updatePopper();
   },
-
-
 
   //
   // _updatePopper() {
@@ -111,7 +107,6 @@ export default Component.extend({
   //   }
   // },
 
-
   // _getPopperTarget(){
   //   $(get(this, 'parent'));
   // },
@@ -128,6 +123,4 @@ export default Component.extend({
   //     return get(view, 'element').parentNode;
   //   }
   // }
-
 });
-

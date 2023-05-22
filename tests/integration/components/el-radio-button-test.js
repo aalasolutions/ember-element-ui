@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | el-radio-button', function(hooks) {
+module('Integration | Component | el-radio-button', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -16,16 +16,15 @@ module('Integration | Component | el-radio-button', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      {{#el-radio-button}}
+      <ElRadioButton>
         template block text
-      {{/el-radio-button}}
+      </ElRadioButton>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
 
-
     this.set('size', 'large');
-    this.set('changed', function(v,n){
+    this.set('changed', function (v, n) {
       assert.equal(v, 'test', 'fetch closure action called with search value');
       assert.equal(n, 'test', 'fetch closure action called with search value');
     });

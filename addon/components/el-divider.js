@@ -1,17 +1,16 @@
 import Component from '@ember/component';
 import layout from './el-divider';
-import { computed, get } from "@ember/object";
+import { computed, get } from '@ember/object';
 
 export default Component.extend({
   layout,
-  classNames       : ['el-divider'],
+  classNames: ['el-divider'],
   classNameBindings: ['getClassName'],
 
-
-  direction      : "horizontal",
-  contentPosition: "center",
+  direction: 'horizontal',
+  contentPosition: 'center',
 
   getClassName: computed('direction', function () {
-    return 'el-divider--' + get(this, 'direction') ;
+    return 'el-divider--' + this.direction;
   }),
 });

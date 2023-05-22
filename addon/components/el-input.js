@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import layout from './el-input';
-import {computed, get, set} from "@ember/object";
+import { computed, get, set } from '@ember/object';
 
 export default Component.extend({
   layout,
@@ -24,32 +24,45 @@ export default Component.extend({
   customClass: '',
 
   _isGroup: computed('prepend', 'append', function () {
-    return !!(get(this, 'prepend') || get(this, 'append'));
+    return !!(this.prepend || this.append);
   }),
 
   _isPrefix: computed('prefix', 'prefixIcon', function () {
-    return !!(get(this, 'prefix') || get(this, 'prefixIcon'));
+    return !!(this.prefix || this.prefixIcon);
   }),
 
   _isSuffix: computed('suffix', 'suffixIcon', function () {
-    return !!(get(this, 'suffix') || get(this, 'suffixIcon'));
+    return !!(this.suffix || this.suffixIcon);
   }),
 
+  showClear: computed(
+    'clearable',
+    'disabled',
+    'readonly',
+    'value',
+    function () {
+      return (
+        this.clearable && !this.disabled && !this.readonly && this.value !== ''
+      );
+    }
+  ),
 
-  showClear: computed('clearable', 'disabled', 'readonly', 'value', function () {
-    return this.get('clearable') &&
-      !this.get('disabled') &&
-      !this.get('readonly') &&
-      this.get('value') !== ''
-  }),
+  _isShowSuffixIcon: computed(
+    'suffixIcon',
+    'showClear',
+    'validateState',
+    'needStatusIcon',
+    function () {
+      return !!(
+        this.suffixIcon ||
+        this.showClear ||
+        (this.validateState && this.needStatusIcon)
+      );
+    }
+  ),
 
-
-  _isShowSuffixIcon: computed('suffixIcon', 'showClear', 'validateState', 'needStatusIcon', function () {
-    return !!(get(this, 'suffixIcon') || get(this, 'showClear') || (get(this, 'validateState') && get(this, 'needStatusIcon')));
-  }),
-
-
-  classNameBindings: ['getClassName',
+  classNameBindings: [
+    'getClassName',
     'disabled:is-disabled',
     '_isGroup:el-input-group',
     '_isPrefix:el-input--prefix',
@@ -58,15 +71,13 @@ export default Component.extend({
     'prepend:el-input-group--prepend',
   ],
 
-
   getClassName: computed('type', 'size', function () {
-
     let classNames = '';
 
-    classNames += get(this, 'type') === 'textarea' ? 'el-textarea' : 'el-input';
+    classNames += this.type === 'textarea' ? 'el-textarea' : 'el-input';
 
-    if (get(this, 'size')) {
-      classNames += ` el-input--${get(this, 'size')}`;
+    if (this.size) {
+      classNames += ` el-input--${this.size}`;
     }
 
     return classNames;
@@ -75,8 +86,6 @@ export default Component.extend({
   actions: {
     clear() {
       set(this, 'value', '');
-    }
-  }
-
-
+    },
+  },
 });

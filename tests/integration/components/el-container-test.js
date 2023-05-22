@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | el-container', function(hooks) {
+module('Integration | Component | el-container', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -16,29 +16,26 @@ module('Integration | Component | el-container', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      {{#el-container}}
+      <ElContainer>
         template block text
-      {{/el-container}}
+      </ElContainer>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
-
 
     this.set('direction', 'vertical');
     await render(hbs`{{el-container direction=direction}}`);
 
     assert.equal(this.element.textContent.trim(), '');
-
   });
 
-  test("child", async function (assert){
+  test('child', async function (assert) {
     await render(hbs`
-      {{#el-container}}
-        {{#el-header}}Header{{/el-header}}{{#el-footer}}Footer{{/el-footer}}
-      {{/el-container}}
+      <ElContainer>
+        <ElHeader>Header</ElHeader><ElFooter>Footer</ElFooter>
+      </ElContainer>
     `);
 
     assert.equal(this.element.textContent.trim(), 'HeaderFooter');
-
-  })
+  });
 });

@@ -8,7 +8,6 @@ export default Component.extend({
   size: '',
   fill: '#409EFF',
 
-
   attributeBindings: ['role'],
   role: 'radiogroup',
 });

@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import layout from './el-table-header';
-import {computed, get, set} from "@ember/object";
-import {bool, alias} from "@ember/object/computed";
+import { computed, get, set } from '@ember/object';
+import { bool, alias, reads } from '@ember/object/computed';
 
 /*
 
@@ -74,14 +74,10 @@ export default Component.extend({
   // classNames: ['el-table_1_column_1',  'is-leaf'],
   classNames: ['is-leaf'],
 
-
-  table: computed('parent', function () {
-    return get(this, 'parent');
-  }),
+  table: reads('parent'),
 
   isAllSelected: bool('store.states.isAllSelected'),
   columnsCount: alias('store.states.columns.length'),
-
 
   leftFixedCount: alias('store.states.fixedColumns.length'),
   rightFixedCount: alias('store.states.rightFixedColumns.length'),
@@ -89,16 +85,14 @@ export default Component.extend({
   rightFixedLeafCount: alias('store.states.rightFixedLeafColumnsLength'),
   columns: alias('store.states.columns'),
   hasGutter: computed('fixed', 'tableLayout.gutterWidth', function () {
-    return !get(this, 'fixed') && get(this, 'tableLayout.gutterWidth');
+    return !this.fixed && get(this, 'tableLayout.gutterWidth');
   }),
-
 
   init() {
     this._super();
 
     set(this, 'defaultSort', {});
     set(this, 'filterPanels', {});
-
 
     // from data();
     set(this, 'draggingColumn', null);
@@ -111,12 +105,11 @@ export default Component.extend({
 
     // const {prop, order} = get(this, 'defaultSort');
     // get(this, 'store').commit('sort', { prop, order });
-
   },
 
   willDestroyElement() {
     this._super();
-    const panels = get(this, 'filterPanels');
+    const panels = this.filterPanels;
     for (let prop in panels) {
       if (panels.hasOwnProperty(prop) && panels[prop]) {
         // panels[prop].$destroy(true); todo: test it
@@ -124,9 +117,7 @@ export default Component.extend({
         delete panels[prop];
       }
     }
-
   },
-
 
   actions: {
     isCellHidden(index, columns) {
@@ -135,19 +126,22 @@ export default Component.extend({
         start += columns[i].colSpan;
       }
       const after = start + columns[index].colSpan - 1;
-      if (get(this, 'fixed') === true || get(this, 'fixed') === 'left') {
-        return after >= get(this, 'leftFixedLeafCount');
-      } else if (get(this, 'fixed') === 'right') {
-        return start < get(this, 'columnsCount') - get(this, 'rightFixedLeafCount');
+      if (this.fixed === true || this.fixed === 'left') {
+        return after >= this.leftFixedLeafCount;
+      } else if (this.fixed === 'right') {
+        return start < this.columnsCount - this.rightFixedLeafCount;
       } else {
-        return (after < get(this, 'leftFixedLeafCount')) || (start >= get(this, 'columnsCount') - get(this, 'rightFixedLeafCount'));
+        return (
+          after < this.leftFixedLeafCount ||
+          start >= this.columnsCount - this.rightFixedLeafCount
+        );
       }
     },
 
     getHeaderRowStyle(rowIndex) {
       const headerRowStyle = get(this, 'table.headerRowStyle');
       if (typeof headerRowStyle === 'function') {
-        return headerRowStyle.call(null, {rowIndex});
+        return headerRowStyle.call(null, { rowIndex });
       }
       return headerRowStyle;
     },
@@ -159,7 +153,7 @@ export default Component.extend({
       if (typeof headerRowClassName === 'string') {
         classes.push(headerRowClassName);
       } else if (typeof headerRowClassName === 'function') {
-        classes.push(headerRowClassName.call(null, {rowIndex}));
+        classes.push(headerRowClassName.call(null, { rowIndex }));
       }
 
       return classes.join(' ');
@@ -172,14 +166,20 @@ export default Component.extend({
           rowIndex,
           columnIndex,
           row,
-          column
+          column,
         });
       }
       return headerCellStyle;
     },
 
     getHeaderCellClass(rowIndex, columnIndex, row, column) {
-      const classes = [column.id, column.order, column.headerAlign, column.className, column.labelClassName];
+      const classes = [
+        column.id,
+        column.order,
+        column.headerAlign,
+        column.className,
+        column.labelClassName,
+      ];
 
       if (rowIndex === 0 && this.isCellHidden(columnIndex, row)) {
         classes.push('is-hidden');
@@ -197,12 +197,14 @@ export default Component.extend({
       if (typeof headerCellClassName === 'string') {
         classes.push(headerCellClassName);
       } else if (typeof headerCellClassName === 'function') {
-        classes.push(headerCellClassName.call(null, {
-          rowIndex,
-          columnIndex,
-          row,
-          column
-        }));
+        classes.push(
+          headerCellClassName.call(null, {
+            rowIndex,
+            columnIndex,
+            row,
+            column,
+          })
+        );
       }
 
       return classes.join(' ');
@@ -210,7 +212,7 @@ export default Component.extend({
 
     toggleAllSelection() {
       // get(this, 'store').commit('toggleAllSelection');
-      get(this, 'store').toggleAllSelection();
+      this.store.toggleAllSelection();
     },
 
     handleFilterClick(event, column) {
@@ -220,7 +222,7 @@ export default Component.extend({
       // cell = cell.querySelector('.el-table__column-filter-trigger') || cell;
       // const table = get(this, 'table');
 
-      let filterPanel = get(this, 'filterPanels')[column.id];
+      let filterPanel = this.filterPanels[column.id];
 
       if (filterPanel && column.filterOpened) {
         filterPanel.showPopper = false;
@@ -280,7 +282,7 @@ export default Component.extend({
           startMouseLeft: event.clientX,
           startLeft: columnRect.right - tableLeft,
           startColumnLeft: columnRect.left - tableLeft,
-          tableLeft
+          tableLeft,
         };
 
         const resizeProxy = table.$refs.resizeProxy;
@@ -302,14 +304,17 @@ export default Component.extend({
 
         const handleMouseUp = () => {
           if (this.dragging) {
-            const {
-              startColumnLeft,
-              startLeft
-            } = this.dragState;
+            const { startColumnLeft, startLeft } = this.dragState;
             const finalLeft = parseInt(resizeProxy.style.left, 10);
             const columnWidth = finalLeft - startColumnLeft;
             column.width = column.realWidth = columnWidth;
-            table.$emit('header-dragend', column.width, startLeft - startColumnLeft, column, event);
+            table.$emit(
+              'header-dragend',
+              column.width,
+              startLeft - startColumnLeft,
+              column,
+              event
+            );
 
             this.store.scheduleLayout();
 
@@ -370,7 +375,7 @@ export default Component.extend({
       document.body.style.cursor = '';
     },
 
-    toggleOrder({order, sortOrders}) {
+    toggleOrder({ order, sortOrders }) {
       if (order === '') return sortOrders[0];
       const index = sortOrders.indexOf(order || null);
       return sortOrders[index > sortOrders.length - 2 ? 0 : index + 1];
@@ -399,7 +404,10 @@ export default Component.extend({
       let sortOrder;
       const sortingColumn = states.sortingColumn;
 
-      if (sortingColumn !== column || (sortingColumn === column && sortingColumn.order === null)) {
+      if (
+        sortingColumn !== column ||
+        (sortingColumn === column && sortingColumn.order === null)
+      ) {
         if (sortingColumn) {
           sortingColumn.order = null;
         }
@@ -419,6 +427,6 @@ export default Component.extend({
       states.sortOrder = sortOrder;
 
       this.store.commit('changeSortCondition');
-    }
+    },
   },
 });

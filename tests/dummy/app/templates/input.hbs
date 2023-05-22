@@ -2,78 +2,78 @@
 <h3>Input data using mouse or keyboard.</h3>
 <div>
 <h3>Basic usage</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-input placeholder="Please input" type="" value=this.value customClass="input-width"}}{{/el-input}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElInput @placeholder="Please input" @type="" @value={{this.value}} @customClass="input-width"></ElInput>
         {{#if this.value.length}}
           <br><br>&nbsp;&nbsp;{{this.value}}
         {{/if}}
-      {{/card.body}}
-    {{/el-card}}
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-input placeholder="Please input"}}\{{/el-input}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Disabled</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-input placeholder="Please input" disabled="true" customClass="input-width"}}{{/el-input}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElInput @placeholder="Please input" @disabled="true" @customClass="input-width"></ElInput>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-input placeholder="Please input" disabled="true"}}\{{/el-input}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Clearable</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-{{#el-card class="box-card" shadow="naver" as |card|}}
-  {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+<ElCard @class="box-card" @shadow="naver" as |card|>
+  <card.body>
     <div class="input-width">
-      {{#el-input placeholder="Please input" clearable="true" }}{{/el-input}}
+      <ElInput @placeholder="Please input" @clearable="true"></ElInput>
     </div>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 <pre><code class="language-handlebars">\{{#el-input placeholder="Please input" clearable="true"}}\{{/el-input}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Input with icon</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="You can simply use prefixIcon and suffixIcon attributes."}}{{/card.header}}
-  {{#card.body}}
-{{#el-card class="box-card" shadow="naver" as |card|}}
-  {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="You can simply use prefixIcon and suffixIcon attributes."></card.header>
+  <card.body>
+<ElCard @class="box-card" @shadow="naver" as |card|>
+  <card.body>
     <div class="input-width">
-    {{#el-input placeholder="Please input" prefixIcon="el-icon-search" }}{{/el-input}}
+    <ElInput @placeholder="Please input" @prefixIcon="el-icon-search"></ElInput>
     <br>
     <br>
-    {{#el-input placeholder="Please input" suffixIcon="el-icon-date" }}{{/el-input}}
+    <ElInput @placeholder="Please input" @suffixIcon="el-icon-date"></ElInput>
    </div>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 <pre><code class="language-handlebars">\{{#el-input placeholder="Please input" prefixIcon="el-icon-search"}}\{{/el-input}}
 \{{#el-input placeholder="Please input" suffixIcon="el-icon-date"}}\{{/el-input}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 </div>
 
 <h2>Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-    {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+    <ElTable @data={{this.tableAttributes}} as |t|>
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=100}}
       {{t.column prop="val" label="Accepted Values" width=250}}
       {{t.column prop="def" label="Default" width=75}}
-    {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+    </ElTable>
+</card.body>
+</ElCard>
 
 
 

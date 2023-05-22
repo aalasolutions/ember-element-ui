@@ -3,15 +3,12 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | el-progress', function(hooks) {
+module('Integration | Component | el-progress', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-
+  test('it renders', async function (assert) {
     await render(hbs`{{el-progress}}`);
     assert.equal(this.element.textContent.trim(), '0%');
-
-
 
     this.set('type', 'line');
     this.set('status', true);
@@ -28,13 +25,14 @@ module('Integration | Component | el-progress', function(hooks) {
     this.set('showText', false);
     this.set('textInside', true);
 
-    await render(hbs`{{el-progress showText=showText textInside=textInside color=color}}`);
+    await render(
+      hbs`{{el-progress showText=showText textInside=textInside color=color}}`
+    );
 
     this.set('color', 'red');
     this.set('status', 'exception');
 
     await render(hbs`{{el-progress type=type status=status color=color}}`);
     await render(hbs`{{el-progress type=type status=status }}`);
-
   });
 });

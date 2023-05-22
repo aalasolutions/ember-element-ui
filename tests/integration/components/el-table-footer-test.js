@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | el-table-footer', function(hooks) {
+module('Integration | Component | el-table-footer', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -16,9 +16,9 @@ module('Integration | Component | el-table-footer', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      {{#el-table-footer}}
+      <ElTableFooter>
         template block text
-      {{/el-table-footer}}
+      </ElTableFooter>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

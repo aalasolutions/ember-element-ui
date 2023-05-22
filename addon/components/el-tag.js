@@ -1,28 +1,23 @@
 import Component from '@ember/component';
 import layout from './el-tag';
-import {computed, get, set} from "@ember/object";
-import transition from "../utils/transition";
+import { computed, get, set } from '@ember/object';
+import transition from '../utils/transition';
 
 export default Component.extend({
   layout,
   tagName: 'span',
   classNames: ['el-tag'],
 
-  classNameBindings: ['getClassName',
-    'hit:is-hit',
-    'isClosed:el-hidden',
-  ],
-
+  classNameBindings: ['getClassName', 'hit:is-hit', 'isClosed:el-hidden'],
 
   getClassName: computed('type', 'size', function () {
-
     let classNames = '';
 
-    if (get(this, 'type')) {
-      classNames += ` el-tag--${get(this, 'type')}`;
+    if (this.type) {
+      classNames += ` el-tag--${this.type}`;
     }
-    if (get(this, 'size')) {
-      classNames += ` el-tag--${get(this, 'size')}`;
+    if (this.size) {
+      classNames += ` el-tag--${this.size}`;
     }
 
     return classNames;
@@ -38,7 +33,6 @@ export default Component.extend({
 
   handleClose: null,
 
-
   actions: {
     handleClose() {
       // this.$().addClass('animated flipOutY');
@@ -47,17 +41,13 @@ export default Component.extend({
       let transitionEvent = transition('animation');
       e.addEventListener(transitionEvent, () => {
         set(this, 'isClosed', true);
-        if (this.get('close')) {
-          this.get('close')();
+        if (this.close) {
+          this.close();
         }
       });
 
-      e.classList.add('animated');
-      e.classList.add('flipOutY');
-
-    }
+      e.classList.add('animate__animated');
+      e.classList.add('animate__flipOutY');
+    },
   },
-
-
-
 });

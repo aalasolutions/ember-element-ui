@@ -2,187 +2,192 @@
 <p>Displays important alert messages.</p>
 
 <h3>Basic usage</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header bodyStyle="padding:4px 0px 4px 20PX;"}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @bodyStyle="padding:4px 0px 4px 20PX;">
   <p>Alert components are non-overlay elements in the page that does not disappear automatically.</p>
   <p>Alert provides 4 types of themes defined by <code class="code">type</code> , whose default value is <code class="code">info</code> .</p>
-{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{el-alert title="success alert" type="success"}}<br>
-        {{el-alert title="info alert"    type="info"}}<br>
-        {{el-alert title="warning alert" type="warning"}}<br>
-        {{el-alert title="error alert"   type="error"}}<br>
-      {{/card.body}}
-    {{/el-card}}
-<pre><code class="language-handlebars">\{{el-alert title="success alert"    type="success"}}
-\{{el-alert title="info alert"       type="info"}}
-\{{el-alert title="warning alert"    type="warning"}}
-\{{el-alert title="error alert"      type="error"}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+</card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElAlert > Yield Test </ElAlert><br>
+        <ElAlert @title="info alert" /><br>
+        <ElAlert @title="success alert" @type="success"/><br>
+        <ElAlert @title="warning alert" @type="warning"/><br>
+        <ElAlert @title="error alert" @type="error"/><br>
+      </card.body>
+    </ElCard>
+<pre><code class="language-html">&lt;ElAlert&gt; Yield Test &lt;/ElAlert&gt;
+
+  or
+
+&lt;ElAlert @title="info alert"  /&gt;
+&lt;ElAlert @title="success alert" @type="success" /&gt;
+&lt;ElAlert @title="warning alert" @type="warning" /&gt;
+&lt;ElAlert @title="error alert" @type="error" /&gt;</code></pre>
+  </card.body>
+</ElCard>
 
 <h3>Theme</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header bodyStyle="padding:4px 0px 4px 20PX;"}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @bodyStyle="padding:4px 0px 4px 20PX;">
 <p>Alert provide two different themes, <code class="code">light</code> and <code class="code">dark</code>.</p>
-{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{el-alert title="success alert"  type="success" effect="dark" }}<br>
-        {{el-alert title="info alert"     type="info" effect="dark"}}<br>
-        {{el-alert title="warning alert"  type="warning" effect="dark" }}<br>
-        {{el-alert title="error alert"    type="error" effect="dark" }}<br>
-      {{/card.body}}
-    {{/el-card}}
+</card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+       <ElAlert @title="success alert"  @type="success" @effect="dark" /><br>
+       <ElAlert @title="info alert"     @type="info" @effect="dark"/><br>
+       <ElAlert @title="warning alert"  @type="warning" @effect="dark" /><br>
+       <ElAlert @title="error alert"    @type="error" @effect="dark" /><br>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-alert title="success alert" type="success" effect="dark" }}
 \{{el-alert title="info alert"    type="info" effect="dark"}}
 \{{el-alert title="warning alert" type="warning" effect="dark"  }}
 \{{el-alert title="error alert"   type="error" effect="dark" }}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Customizable close button</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header bodyStyle="padding:4px 0px 4px 20PX;"}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @bodyStyle="padding:4px 0px 4px 20PX;">
 <p>Customize the close button as texts or other symbols.</p>
 <p>Alert allows you to configure if it's closable. The close button text and closing callbacks are also customizable. <code class="code">closable</code> attribute decides if the component can be closed or not. It accepts <code class="code">boolean</code>, and the default is <code class="code">true</code>. You can set <code class="code">close-text</code> attribute to replace the default cross symbol as the close button. Be careful that <code class="code">close-text</code> must be a string. <code class="code">close</code> event fires when the component is closed.</p>
-{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{el-alert title="unclosable alert"    type="success" closable=false}}<br>
-        {{el-alert title="customized close-text"    type="info" closeText="Aala"}}<br>
-        {{el-alert title="alert with callback"    type="warning" action=(action "hello")}}<br>
-      {{/card.body}}
-    {{/el-card}}
+</card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+       <ElAlert @title="unclosable alert"    @type="success" @closable={{false}}/><br>
+       <ElAlert @title="customized close-text"    @type="info" @closeText="Aala"/><br>
+       <ElAlert @title="alert with callback"    @type="warning" @action={{action "hello"}}/><br>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-alert title="unclosable alert"    type="success" closable=false}}
 \{{el-alert title="customized close-text"    type="info" closeText="Aala"}}
 \{{el-alert title="alert with callback"    type="warning" action=(action "hello")}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>With icon</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="Displaying an icon improves readability."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{el-alert title="success alert"    type="success" showIcon=true}}<br>
-        {{el-alert title="info alert"    type="info" showIcon=true}}<br>
-        {{el-alert title="warning alert"    type="warning" showIcon=true}}<br>
-        {{el-alert title="error alert"    type="error" showIcon=true}}<br>
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="Displaying an icon improves readability."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+       <ElAlert @title="success alert"    @type="success" @showIcon={{true}} /><br>
+       <ElAlert @title="info alert"    @type="info" @showIcon={{true}} /><br>
+       <ElAlert @title="warning alert"    @type="warning" @showIcon={{true}} /><br>
+       <ElAlert @title="error alert"    @type="error" @showIcon={{true}} /><br>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-alert title="success alert"    type="success" showIcon=true}}
 \{{el-alert title="info alert"    type="info" showIcon=true}}
 \{{el-alert title="warning alert"    type="warning" showIcon=true}}
 \{{el-alert title="error alert"    type="error" showIcon=true}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Centered text</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="Use the center attribute to center the text."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{el-alert title="success alert"    type="success" center=true showIcon=true}}<br>
-        {{el-alert title="info alert"    type="info" center=true showIcon=true}}<br>
-        {{el-alert title="warning alert"    type="warning" center=true showIcon=true}}<br>
-        {{el-alert title="error alert"    type="error" center=true showIcon=true}}<br>
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="Use the center attribute to center the text."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+       <ElAlert @title="success alert"    @type="success" @center={{true}} @showIcon={{true}}/><br>
+       <ElAlert @title="info alert"    @type="info" @center={{true}} @showIcon={{true}}/><br>
+       <ElAlert @title="warning alert"    @type="warning" @center={{true}} @showIcon={{true}}/><br>
+       <ElAlert @title="error alert"    @type="error" @center={{true}} @showIcon={{true}}/><br>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-alert title="success alert"    type="success" center=true showIcon=true}}
 \{{el-alert title="info alert"    type="info" center=true showIcon=true}}
 \{{el-alert title="warning alert"    type="warning" center=true showIcon=true}}
 \{{el-alert title="error alert"    type="error" center=true showIcon=true}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 <h3>With description</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="Description includes a message with more detailed information."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{el-alert
-          title="with description"
-             type="success"
-          description="This is a description."}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="Description includes a message with more detailed information."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+       <ElAlert
+          @title="with description"
+          @type="success"
+          @description="This is a description." />
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-alert
   title="with description"
      type="success"
   description="This is a description."}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 <h3>With icon and description</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="At last, this is an example with both icon and description."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{el-alert title="success alert"    type="success" description="more text description" showIcon=true}}<br>
-        {{el-alert title="info alert"    type="info" description="more text description" showIcon=true}}<br>
-        {{el-alert title="warning alert"    type="warning" description="more text description" showIcon=true}}<br>
-        {{el-alert title="error alert"    type="error" description="more text description" showIcon=true}}<br>
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="At last, this is an example with both icon and description."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+       <ElAlert @title="success alert" @type="success" @description="more text description" @showIcon={{true}} /><br>
+       <ElAlert @title="info alert" @type="info" @description="more text description" @showIcon={{true}} /><br>
+       <ElAlert @title="warning alert" @type="warning" @description="more text description" @showIcon={{true}} /><br>
+       <ElAlert @title="error alert" @type="error" @description="more text description" @showIcon={{true}} /><br>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-alert title="success alert"    type="success" description="more text description" showIcon=true}}
 \{{el-alert title="info alert"    type="info" description="more text description" showIcon=true}}
 \{{el-alert title="warning alert"    type="warning" description="more text description" showIcon=true}}
 \{{el-alert title="error alert"    type="error" description="more text description" showIcon=true}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 <h3>Block Component</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="You can use this as a block component"}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-alert title="success alert"    type="success" description="more text description" showIcon=true}}Content{{/el-alert}}<br>
-        {{#el-alert title="info alert"    type="info" description="more text description" showIcon=true}}Content{{/el-alert}}<br>
-        {{#el-alert title="warning alert"    type="warning" description="more text description" showIcon=true}}Content{{/el-alert}}<br>
-        {{#el-alert title="error alert"    type="error" description="more text description" showIcon=true}}Content{{/el-alert}}<br>
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="You can use this as a block component"></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElAlert @title="success alert" @type="success" @description="more text description" @showIcon={{true}}>Content</ElAlert><br>
+        <ElAlert @title="info alert" @type="info" @description="more text description" @showIcon={{true}}>Content</ElAlert><br>
+        <ElAlert @title="warning alert" @type="warning" @description="more text description" @showIcon={{true}}>Content</ElAlert><br>
+        <ElAlert @title="error alert" @type="error" @description="more text description" @showIcon={{true}}>Content</ElAlert><br>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-alert title="success alert"    type="success" description="more text description" showIcon=true}}Content\{{/el-alert}}
 \{{#el-alert title="info alert"    type="info" description="more text description" showIcon=true}}Content\{{/el-alert}}
 \{{#el-alert title="warning alert"    type="warning" description="more text description" showIcon=true}}Content\{{/el-alert}}
 \{{#el-alert title="error alert"    type="error" description="more text description" showIcon=true}}Content\{{/el-alert}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h2>Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-  {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+  <ElTable @data={{this.tableAttributes}} as |t|>
     {{t.column prop="attribute" label="Attribute" width=150}}
     {{t.column prop="desc" label="Description"}}
     {{t.column prop="type" label="Type" width=100}}
     {{t.column prop="val" label="Accepted Values" width=250}}
     {{t.column prop="def" label="Default" width=75}}
-  {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+  </ElTable>
+</card.body>
+</ElCard>
 
 
 <h3>Events</h3>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-  {{#el-table data=this.tableEvents as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+  <ElTable @data={{this.tableEvents}} as |t|>
     {{t.column prop="event" label="Event Name" width=150}}
     {{t.column prop="desc" label="Description"}}
     {{t.column prop="param" label="Parameters" width=155}}
-  {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+  </ElTable>
+</card.body>
+</ElCard>

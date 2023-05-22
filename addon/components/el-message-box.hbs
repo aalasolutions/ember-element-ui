@@ -33,15 +33,9 @@
     {{/if}}
     {{#if this.messageObj.showInput}}
       <div class="el-message-box__input">
-        {{#el-input
-          value=this.messageObj.inputValue
-          type=this.messageObj.inputType
-          placeholder=this.messageObj.inputPlaceholder
-          customClass=this.inputErrorClass
-          ref="input"
-        }}
+        <ElInput @value={{this.messageObj.inputValue}} @type={{this.messageObj.inputType}} @placeholder={{this.messageObj.inputPlaceholder}} @customClass={{this.inputErrorClass}} @ref="input">
 
-        {{/el-input}}
+        </ElInput>
         {{!-- todo: @keydown.enter.native="handleInputEnter"--}}
 
         <div class="el-message-box__errormsg">
@@ -53,32 +47,19 @@
   </div>
   <div class="el-message-box__btns">
     {{#if this.messageObj.showCancelButton}}
-      {{#el-button
-        loading=this.messageObj.cancelButtonLoading
-        class=this.cancelButtonClasses
-        round=this.messageObj.roundButton
-        size="small"
-        action=(action "handleAction" "cancel")
-      }}
+      <ElButton @loading={{this.messageObj.cancelButtonLoading}} @class={{this.cancelButtonClasses}} @round={{this.messageObj.roundButton}} @size="small" @action={{action "handleAction" "cancel"}}>
 
         {{ this.messageObj.cancelButtonText  }}
         {{!--@click.native="handleAction('cancel')"--}}
         {{!--@keydown.enter="handleAction('cancel')"--}}
-      {{/el-button}}
+      </ElButton>
     {{/if}}
     {{#if this.messageObj.showConfirmButton}}
-      {{#el-button
-        loading=this.messageObj.confirmButtonLoading
-        ref="confirm"
-        class=this.confirmButtonClasses
-        round=this.messageObj.roundButton
-        action=(action "handleAction" "confirm")
-        size="small"
-      }}
+      <ElButton @loading={{this.messageObj.confirmButtonLoading}} @ref="confirm" @class={{this.confirmButtonClasses}} @round={{this.messageObj.roundButton}} @action={{action "handleAction" "confirm"}} @size="small">
         {{!--@click.native="handleAction('confirm')"--}}
         {{!--@keydown.enter="handleAction('confirm')"--}}
         {{ this.messageObj.confirmButtonText }}
-      {{/el-button}}
+      </ElButton>
     {{/if}}
   </div>
 </div>

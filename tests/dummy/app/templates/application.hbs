@@ -1,47 +1,47 @@
 {{el-notification-container}}
-{{#el-header class="header"}}
-  <!--<div class="hamburger-container" {{action "toggleMenu"}}>-->
-  <!--<svg t="1492500959545" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1691"-->
-  <!--xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64"-->
-  <!--class="hamburger {{if collapseStatus "" "is-active"}}">-->
-  <!--<path data-v-2fe8a492=""-->
-  <!--d="M966.8023 568.849776 57.196677 568.849776c-31.397081 0-56.850799-25.452695-56.850799-56.850799l0 0c0-31.397081 25.452695-56.849776 56.850799-56.849776l909.605623 0c31.397081 0 56.849776 25.452695 56.849776 56.849776l0 0C1023.653099 543.397081 998.200404 568.849776 966.8023 568.849776z"-->
-  <!--p-id="1692"></path>-->
-  <!--<path data-v-2fe8a492=""-->
-  <!--d="M966.8023 881.527125 57.196677 881.527125c-31.397081 0-56.850799-25.452695-56.850799-56.849776l0 0c0-31.397081 25.452695-56.849776 56.850799-56.849776l909.605623 0c31.397081 0 56.849776 25.452695 56.849776 56.849776l0 0C1023.653099 856.07443 998.200404 881.527125 966.8023 881.527125z"-->
-  <!--p-id="1693"></path>-->
-  <!--<path data-v-2fe8a492=""-->
-  <!--d="M966.8023 256.17345 57.196677 256.17345c-31.397081 0-56.850799-25.452695-56.850799-56.849776l0 0c0-31.397081 25.452695-56.850799 56.850799-56.850799l909.605623 0c31.397081 0 56.849776 25.452695 56.849776 56.850799l0 0C1023.653099 230.720755 998.200404 256.17345 966.8023 256.17345z"-->
-  <!--p-id="1694"></path>-->
-  <!--</svg>-->
-  <!--</div>-->
+<ElHeader @class="header">
+  {{!--<div class="hamburger-container" {{action "toggleMenu"}}>--}}
+  {{!--<svg t="1492500959545" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1691"--}}
+  {{!--xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64"--}}
+  {{!--class="hamburger {{if collapseStatus "" "is-active"}}">--}}
+  {{!--<path data-v-2fe8a492=""--}}
+  {{!--d="M966.8023 568.849776 57.196677 568.849776c-31.397081 0-56.850799-25.452695-56.850799-56.850799l0 0c0-31.397081 25.452695-56.849776 56.850799-56.849776l909.605623 0c31.397081 0 56.849776 25.452695 56.849776 56.849776l0 0C1023.653099 543.397081 998.200404 568.849776 966.8023 568.849776z"--}}
+  {{!--p-id="1692"></path>--}}
+  {{!--<path data-v-2fe8a492=""--}}
+  {{!--d="M966.8023 881.527125 57.196677 881.527125c-31.397081 0-56.850799-25.452695-56.850799-56.849776l0 0c0-31.397081 25.452695-56.849776 56.850799-56.849776l909.605623 0c31.397081 0 56.849776 25.452695 56.849776 56.849776l0 0C1023.653099 856.07443 998.200404 881.527125 966.8023 881.527125z"--}}
+  {{!--p-id="1693"></path>--}}
+  {{!--<path data-v-2fe8a492=""--}}
+  {{!--d="M966.8023 256.17345 57.196677 256.17345c-31.397081 0-56.850799-25.452695-56.850799-56.849776l0 0c0-31.397081 25.452695-56.850799 56.850799-56.850799l909.605623 0c31.397081 0 56.849776 25.452695 56.849776 56.850799l0 0C1023.653099 230.720755 998.200404 256.17345 966.8023 256.17345z"--}}
+  {{!--p-id="1694"></path>--}}
+  {{!--</svg>--}}
+  {{!--</div>--}}
 
 
   <h1 id="title">Ember-Element-UI
 
 
-    <!-- Place this tag where you want the button to render. -->
+    {{!-- Place this tag where you want the button to render. --}}
     <div style="float: right;">
       <a class="github-button" href="https://github.com/aalasolutions/ember-element-ui" data-icon="octicon-star"
          data-size="large" data-show-count="true"
          aria-label="Star aalasolutions/ember-element-ui on GitHub">Star</a>
 
-      <!-- Place this tag where you want the button to render. -->
+      {{!-- Place this tag where you want the button to render. --}}
       <a class="github-button" href="https://github.com/aalasolutions/ember-element-ui/issues"
          data-icon="octicon-issue-opened" data-size="large" data-show-count="true"
          aria-label="Issue aalasolutions/ember-element-ui on GitHub">Issue</a>
 
-      <!-- Place this tag where you want the button to render. -->
+      {{!-- Place this tag where you want the button to render. --}}
       <a class="github-button" href="https://github.com/aalasolutions/ember-element-ui/fork"
          data-icon="octicon-repo-forked" data-size="large" data-show-count="true"
          aria-label="Fork aalasolutions/ember-element-ui on GitHub">Fork</a>
     </div>
   </h1>
 
-{{/el-header}}
+</ElHeader>
 
-{{#el-container}}
-  {{#el-aside collapse=this.collapseStatus}}
+<ElContainer>
+  <ElAside @collapse={{this.collapseStatus}}>
     <div style="height: 92vh; overflow: auto;">
     <ul class="side-nav">
       <li class="nav-item"><a class="not-done">Development</a>
@@ -254,23 +254,23 @@
       </li>
     </ul>
     </div>
-  {{/el-aside}}
+  </ElAside>
 
-  {{#el-container direction="vertical"}}
+  <ElContainer @direction="vertical">
     <div style="height: 92vh; overflow: auto;">
-    {{#el-main class="container"}}
+    <ElMain @class="container">
       {{outlet}}
-    {{/el-main}}
+    </ElMain>
 
-    {{#el-footer}}
+    <ElFooter>
       <div class="container-fluid clearfix text">
             <span>
               Copyright © 2023
-              <a href="https://www.aalasolutions.com/" rel="noopener" target="_blank">AA'LA Solutions</a>. All rights reserved.
+              <a href="https://www.aalasolutions.com/" rel="noopener noreferrer" target="_blank">AA'LA Solutions</a>. All rights reserved.
             </span>
       </div>
-    {{/el-footer}}
+    </ElFooter>
 
     </div>
-  {{/el-container}}
-{{/el-container}}
+  </ElContainer>
+</ElContainer>

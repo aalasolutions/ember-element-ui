@@ -4,23 +4,23 @@
 <h3>Basic usage</h3>
 <p>Card includes title, content and operations.</p>
 
-{{#el-card class="box-card" as |card|}}
-  {{#card.header title="Card Name"}}
-    {{#el-button color="text" style="float: right; padding: 3px 0"}}Operation button{{/el-button}}
-  {{/card.header}}
-  {{#card.body}}
+<ElCard @class="box-card" as |card|>
+  <card.header @title="Card Name">
+    <ElButton @color="text" @style="float: right; padding: 3px 0">Operation button</ElButton>
+  </card.header>
+  <card.body>
     <div  class="text item">List item 1</div>
     <div  class="text item">List item 2</div>
     <div  class="text item">List item 3</div>
     <div  class="text item">List item 4</div>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 <br><br>
 
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
 <pre><code class="language-handlebars">\{{#el-card class="box-card" as |card|}}
   \{{#card.header title="Card Name"}}
     \{{#el-button  color="text"}}Operation button\{{/el-button}}
@@ -29,62 +29,62 @@
     Some content for the card
   \{{/card.body}}
 \{{/el-card}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <br><br>
 
 
 
-{{#el-row}}
-  {{#el-col span="8" }}
-    {{#el-card bodyStyle="padding: 0px"}}
+<ElRow>
+  <ElCol @span="8">
+    <ElCard @bodyStyle="padding: 0px">
       <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image" style="width: 100%; display: block;">
       <div style="padding: 14px;">
         <span>Yummy hamburger</span>
         <div class="bottom clearfix">
           <time class="time">2023-10-31T14:25:05.095Z</time>
-          {{#el-button color="text" style="padding: 0; float: right;"}}Operating{{/el-button}}
+          <ElButton @color="text" @style="padding: 0; float: right;">Operating</ElButton>
         </div>
       </div>
-    {{/el-card}}
-  {{/el-col}}
-{{/el-row}}
+    </ElCard>
+  </ElCol>
+</ElRow>
 
 
 
 <br><br>
 
-{{#el-row gutter=12 as |row|}}
-  {{#row.col span=8}}
-    {{#el-card shadow="always" as |card|}}
-      {{#card.body}}Always{{/card.body}}
-    {{/el-card}}
-  {{/row.col}}
-  {{#row.col span=8}}
-    {{#el-card shadow="hover" as |card|}}
-      {{#card.body}}Hover{{/card.body}}
-    {{/el-card}}
-  {{/row.col}}
-  {{#row.col span=8}}
-    {{#el-card shadow="never" as |card|}}
-      {{#card.body}}Never{{/card.body}}
-    {{/el-card}}
-  {{/row.col}}
-{{/el-row}}
+<ElRow @gutter={{12}} as |row|>
+  <row.col @span={{8}}>
+    <ElCard @shadow="always" as |card|>
+      <card.body>Always</card.body>
+    </ElCard>
+  </row.col>
+  <row.col @span={{8}}>
+    <ElCard @shadow="hover" as |card|>
+      <card.body>Hover</card.body>
+    </ElCard>
+  </row.col>
+  <row.col @span={{8}}>
+    <ElCard @shadow="never" as |card|>
+      <card.body>Never</card.body>
+    </ElCard>
+  </row.col>
+</ElRow>
 
 
 
 
 <h2>Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-  {{#card.body}}
-    {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+  <card.body>
+    <ElTable @data={{this.tableAttributes}} as |t|>
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=100}}
       {{t.column prop="val" label="Accepted Values" width=250}}
       {{t.column prop="def" label="Default" width=75}}
-    {{/el-table}}
-  {{/card.body}}
-{{/el-card}}
+    </ElTable>
+  </card.body>
+</ElCard>

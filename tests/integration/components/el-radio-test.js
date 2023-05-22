@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | el-radio', function(hooks) {
+module('Integration | Component | el-radio', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -16,14 +16,12 @@ module('Integration | Component | el-radio', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      {{#el-radio}}
+      <ElRadio>
         template block text
-      {{/el-radio}}
+      </ElRadio>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
-
-
 
     this.set('size', 'small');
     await render(hbs`{{el-radio size=size}}`);

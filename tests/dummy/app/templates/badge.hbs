@@ -5,27 +5,27 @@
 
 <div class="page-badges">
 <h3>Basic usage</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header bodyStyle="padding:4px 0px 4px 20PX;"}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @bodyStyle="padding:4px 0px 4px 20PX;">
     <p>Displays the amount of new messages.</p>
-  {{/card.header}}
-  {{#card.body}}
-{{#el-card class="box-card" shadow="naver" as |card|}}
-  {{#card.body}}
-    {{#el-badge value=12 class="item"}}
-      {{#el-button size="small"}}comments{{/el-button}}
-    {{/el-badge}}
-    {{#el-badge value=3 class="item"}}
-      {{#el-button size="small"}}replies{{/el-button}}
-    {{/el-badge}}
-    {{#el-badge value=1 class="item" type="primary"}}
-      {{#el-button size="small"}}comments{{/el-button}}
-    {{/el-badge}}
-    {{#el-badge value=2 class="item" type="warning"}}
-      {{#el-button size="small"}}replies{{/el-button}}
-    {{/el-badge}}
-  {{/card.body}}
-{{/el-card}}
+  </card.header>
+  <card.body>
+<ElCard @class="box-card" @shadow="naver" as |card|>
+  <card.body>
+    <ElBadge @value={{12}} @class="item">
+      <ElButton @size="small">comments</ElButton>
+    </ElBadge>
+    <ElBadge @value={{3}} @class="item">
+      <ElButton @size="small">replies</ElButton>
+    </ElBadge>
+    <ElBadge @value={{1}} @class="item" @type="primary">
+      <ElButton @size="small">comments</ElButton>
+    </ElBadge>
+    <ElBadge @value={{2}} @class="item" @type="warning">
+      <ElButton @size="small">replies</ElButton>
+    </ElBadge>
+  </card.body>
+</ElCard>
 <pre><code class="language-handlebars">\{{#el-badge value=12 class="item"}}
       \{{#el-button size="small"}}comments\{{/el-button}}
     \{{/el-badge}}
@@ -38,95 +38,95 @@
     \{{#el-badge value=2 class="item" type="warning"}}
       \{{#el-button size="small"}}replies\{{/el-button}}
     \{{/el-badge}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Max value</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header bodyStyle="padding:4px 0px 4px 20PX;"}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @bodyStyle="padding:4px 0px 4px 20PX;">
     <p>You can customize the max value.</p>
     <p>The max value is defined by property <code class="code">max</code> which is a <code class="code">Number</code> .
       Note that it only works when <code class="code">value</code> is also a <code class="code">Number</code> .</p>
-  {{/card.header}}
-  {{#card.body}}
-{{#el-card class="box-card" shadow="naver" as |card|}}
-  {{#card.body}}
-    {{#el-badge value=200 max=99 class="item"}}
-      {{#el-button size="small"}}comments{{/el-button}}
-    {{/el-badge}}
-    {{#el-badge value=100 max=10 class="item"}}
-      {{#el-button size="small"}}replies{{/el-button}}
-    {{/el-badge}}
-  {{/card.body}}
-{{/el-card}}
+  </card.header>
+  <card.body>
+<ElCard @class="box-card" @shadow="naver" as |card|>
+  <card.body>
+    <ElBadge @value={{200}} @max={{99}} @class="item">
+      <ElButton @size="small">comments</ElButton>
+    </ElBadge>
+    <ElBadge @value={{100}} @max={{10}} @class="item">
+      <ElButton @size="small">replies</ElButton>
+    </ElBadge>
+  </card.body>
+</ElCard>
 <pre><code class="language-handlebars">\{{#el-badge value=200 max=99 class="item"}}
     \{{#el-button size="small"}}comments\{{/el-button}}
   \{{/el-badge}}
   \{{#el-badge value=100 max=10 class="item"}}
     \{{#el-button size="small"}}replies\{{/el-button}}
   \{{/el-badge}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Customizations</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header bodyStyle="padding:4px 0px 4px 20PX;"}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @bodyStyle="padding:4px 0px 4px 20PX;">
     <p>Displays text content other than numbers.</p>
     <p>When <code class="code">value</code> is a <code class="code">String</code> , it can display customized text.</p>
-  {{/card.header}}
-  {{#card.body}}
-{{#el-card class="box-card" shadow="naver" as |card|}}
-  {{#card.body}}
-    {{#el-badge value="new" class="item"}}
-      {{#el-button size="small"}}comments{{/el-button}}
-    {{/el-badge}}
-    {{#el-badge value="hot" class="item"}}
-      {{#el-button size="small"}}replies{{/el-button}}
-    {{/el-badge}}
-  {{/card.body}}
-{{/el-card}}
+  </card.header>
+  <card.body>
+<ElCard @class="box-card" @shadow="naver" as |card|>
+  <card.body>
+    <ElBadge @value="new" @class="item">
+      <ElButton @size="small">comments</ElButton>
+    </ElBadge>
+    <ElBadge @value="hot" @class="item">
+      <ElButton @size="small">replies</ElButton>
+    </ElBadge>
+  </card.body>
+</ElCard>
 <pre><code class="language-handlebars">\{{#el-badge value="new" class="item"}}
   \{{#el-button size="small"}}comments\{{/el-button}}
 \{{/el-badge}}
 \{{#el-badge value="hot" class="item"}}
   \{{#el-button size="small"}}replies\{{/el-button}}
 \{{/el-badge}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Little red dot</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header bodyStyle="padding:4px 0px 4px 20PX;"}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @bodyStyle="padding:4px 0px 4px 20PX;">
     <p>Use a red dot to mark content that needs to be noticed.</p>
     <p>Use the attribute <code class="code">isDot</code> . It is a <code class="code">Boolean</code> .</p>
-  {{/card.header}}
-  {{#card.body}}
-{{#el-card class="box-card" shadow="naver" as |card|}}
-  {{#card.body}}
-  {{#el-badge isDot=true class="item"}}query{{/el-badge}}
-  {{#el-badge isDot=true class="item"}}
-    {{#el-button class="share-button" icon="el-icon-share" type="primary"}}{{/el-button}}
-  {{/el-badge}}
-  {{/card.body}}
-{{/el-card}}
+  </card.header>
+  <card.body>
+<ElCard @class="box-card" @shadow="naver" as |card|>
+  <card.body>
+  <ElBadge @isDot={{true}} @class="item">query</ElBadge>
+  <ElBadge @isDot={{true}} @class="item">
+    <ElButton @class="share-button" @icon="el-icon-share" @type="primary"></ElButton>
+  </ElBadge>
+  </card.body>
+</ElCard>
 <pre><code class="language-handlebars">\{{#el-badge isDot=true class="item"}}query\{{/el-badge}}
 \{{#el-badge isDot=true class="item"}}
   \{{#el-button class="share-button" icon="el-icon-share" type="primary"}}\{{/el-button}}
 \{{/el-badge}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h2>Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-    {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+    <ElTable @data={{this.tableAttributes}} as |t|>
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=100}}
       {{t.column prop="val" label="Accepted Values" width=250}}
       {{t.column prop="def" label="Default" width=75}}
-    {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+    </ElTable>
+</card.body>
+</ElCard>
 
 </div>

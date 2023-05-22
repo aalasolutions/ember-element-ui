@@ -2,26 +2,26 @@
 <p>Used to show feedback after an activity. The difference with Notification is that the latter is often used to show a system level passive notification.</p>
 
 
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header title="To Manage Messages, add Notification Container to your main template"}}{{/card.header}}
-  {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @title="To Manage Messages, add Notification Container to your main template"></card.header>
+  <card.body>
 <pre><code class="language-handlebars">\{{el-notification-container}}
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 
 
 <h3>Basic usage</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header title="Displays at the top, and disappears after 3 seconds."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-button plain="true" click=(action 'open')}}Show message{{/el-button}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @title="Displays at the top, and disappears after 3 seconds."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElButton @plain="true" @click={{action 'open'}}>Show message</ElButton>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-button plain="true" click=(action 'open')}}Show message\{{/el-button}}
 </code></pre>
 <pre><code class="language-javascript">import { inject as service } from '@ember/service';
@@ -33,22 +33,22 @@ actions:{
   }
 }
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 <h3>Types</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header title="Used to show the feedback of Success, Warning, Message and Error activities."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-      {{#el-button plain="true" click=(action "open2")}}success{{/el-button}}
-      {{#el-button plain="true" click=(action "open3")}}warning{{/el-button}}
-      {{#el-button plain="true" click=(action "open")}}message{{/el-button}}
-      {{#el-button plain="true" click=(action "open4")}}error{{/el-button}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @title="Used to show the feedback of Success, Warning, Message and Error activities."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+      <ElButton @plain="true" @click={{action "open2"}}>success</ElButton>
+      <ElButton @plain="true" @click={{action "open3"}}>warning</ElButton>
+      <ElButton @plain="true" @click={{action "open"}}>message</ElButton>
+      <ElButton @plain="true" @click={{action "open4"}}>error</ElButton>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">
 \{{#el-button plain="true" click=(action "open2")}}success\{{/el-button}}
 \{{#el-button plain="true" click=(action "open3")}}warning\{{/el-button}}
@@ -71,21 +71,21 @@ actions:{
   },
 }
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Closable</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header title="A close button can be added."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-button plain="true" click=(action "open5")}}message{{/el-button}}
-        {{#el-button plain="true" click=(action "open6")}}success{{/el-button}}
-        {{#el-button plain="true" click=(action "open7")}}warning{{/el-button}}
-        {{#el-button plain="true" click=(action "open8")}}error{{/el-button}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @title="A close button can be added."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElButton @plain="true" @click={{action "open5"}}>message</ElButton>
+        <ElButton @plain="true" @click={{action "open6"}}>success</ElButton>
+        <ElButton @plain="true" @click={{action "open7"}}>warning</ElButton>
+        <ElButton @plain="true" @click={{action "open8"}}>error</ElButton>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">
 \{{#el-button plain="true" click=(action "open5")}}message\{{/el-button}}
 \{{#el-button plain="true" click=(action "open6")}}success\{{/el-button}}
@@ -120,21 +120,21 @@ actions:{
   },
 }
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 <h3>Centered text</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header bodyStyle="padding:4px 0px 4px 20PX;"}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @bodyStyle="padding:4px 0px 4px 20PX;">
     <p>Use the <code class="code">center</code> attribute to center the text.</p>
-  {{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-button plain="true" click=(action "openCenter")}}Centered Text{{/el-button}}
-      {{/card.body}}
-    {{/el-card}}
+  </card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElButton @plain="true" @click={{action "openCenter"}}>Centered Text</ElButton>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">
 \{{#el-button plain="true" click=(action "openCenter")}}Centered Text\{{/el-button}}
 </code></pre>
@@ -147,18 +147,18 @@ actions:{
   },
 }
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h2>Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-  {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+  <ElTable @data={{this.tableAttributes}} as |t|>
     {{t.column prop="attribute" label="Attribute" width=150}}
     {{t.column prop="desc" label="Description"}}
     {{t.column prop="type" label="Type" width=100}}
     {{t.column prop="val" label="Accepted Values" width=250}}
     {{t.column prop="def" label="Default" width=75}}
-  {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+  </ElTable>
+</card.body>
+</ElCard>

@@ -3,10 +3,10 @@
   <p>
     Installing element-ui is quite easy
   </p>
-  {{#el-card class="box-card" shadow="hover" as |card|}}
-    {{#card.body}}
+  <ElCard @class="box-card" @shadow="hover" as |card|>
+    <card.body>
       <pre><code class="language-bash">$ ember install ember-element-ui
 </code></pre>
-    {{/card.body}}
-  {{/el-card}}
+    </card.body>
+  </ElCard>
 </div>

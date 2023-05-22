@@ -2,85 +2,85 @@
 <p>Used for marking and selection.</p>
 <div>
 <h3>Basic Usage</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-{{#el-card class="box-card" shadow="naver" as |card|}}
-  {{#card.body}}
-    {{#el-tag}}Tag One{{/el-tag}}
-    {{#el-tag type="success"}}Tag Two{{/el-tag}}
-    {{#el-tag type="info"}}Tag Three{{/el-tag}}
-    {{#el-tag type="warning"}}Tag Four{{/el-tag}}
-    {{#el-tag type="danger"}}Tag Five{{/el-tag}}
-  {{/card.body}}
-{{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+<ElCard @class="box-card" @shadow="naver" as |card|>
+  <card.body>
+    <ElTag>Tag One</ElTag>
+    <ElTag @type="success">Tag Two</ElTag>
+    <ElTag @type="info">Tag Three</ElTag>
+    <ElTag @type="warning">Tag Four</ElTag>
+    <ElTag @type="danger">Tag Five</ElTag>
+  </card.body>
+</ElCard>
 <pre><code class="language-handlebars">\{{#el-tag}}Tag One\{{/el-tag}}
 \{{#el-tag type="success"}}Tag Two\{{/el-tag}}
 \{{#el-tag type="info"}}Tag Three\{{/el-tag}}
 \{{#el-tag type="warning"}}Tag Four\{{/el-tag}}
 \{{#el-tag type="danger"}}Tag Five\{{/el-tag}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Removable Tag</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-{{#el-card class="box-card" shadow="naver" as |card|}}
-  {{#card.body}}
-    {{#el-tag closable=true type="" close=(action 'handleTag')}}Tag 1{{/el-tag}}
-    {{#el-tag closable=true type="success"}}Tag 2{{/el-tag}}
-    {{#el-tag closable=true type="info"}}Tag 3{{/el-tag}}
-    {{#el-tag closable=true type="warning"}}Tag 4{{/el-tag}}
-    {{#el-tag closable=true type="danger"}}Tag 5{{/el-tag}}
-  {{/card.body}}
-{{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+<ElCard @class="box-card" @shadow="naver" as |card|>
+  <card.body>
+    <ElTag @closable={{true}} @type="" @close={{action 'handleTag'}}>Tag 1</ElTag>
+    <ElTag @closable={{true}} @type="success">Tag 2</ElTag>
+    <ElTag @closable={{true}} @type="info">Tag 3</ElTag>
+    <ElTag @closable={{true}} @type="warning">Tag 4</ElTag>
+    <ElTag @closable={{true}} @type="danger">Tag 5</ElTag>
+  </card.body>
+</ElCard>
 <pre><code class="language-handlebars">\{{#el-tag closable=true type="" close=(action 'handleTag')}}Tag 1\{{/el-tag}}
 \{{#el-tag closable=true type="success"}}Tag 2\{{/el-tag}}
 \{{#el-tag closable=true type="info"}}Tag 3\{{/el-tag}}
 \{{#el-tag closable=true type="warning"}}Tag 4\{{/el-tag}}
 \{{#el-tag closable=true type="danger"}}Tag 5\{{/el-tag}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Sizes</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-{{#el-card class="box-card" shadow="naver" as |card|}}
-  {{#card.body}}
-    {{#el-tag}}Default{{/el-tag}}
-    {{#el-tag size="medium"}}Medium{{/el-tag}}
-    {{#el-tag size="small"}}Small{{/el-tag}}
-    {{#el-tag size="mini"}}Mini{{/el-tag}}
-  {{/card.body}}
-{{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+<ElCard @class="box-card" @shadow="naver" as |card|>
+  <card.body>
+    <ElTag>Default</ElTag>
+    <ElTag @size="medium">Medium</ElTag>
+    <ElTag @size="small">Small</ElTag>
+    <ElTag @size="mini">Mini</ElTag>
+  </card.body>
+</ElCard>
 <pre><code class="language-handlebars">\{{#el-tag}}Default\{{/el-tag}}
 \{{#el-tag size="medium"}}Medium\{{/el-tag}}
 \{{#el-tag size="small"}}Small\{{/el-tag}}
 \{{#el-tag size="mini"}}Mini\{{/el-tag}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 </div>
 
 <h2>Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-    {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+    <ElTable @data={{this.tableAttributes}} as |t|>
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=100}}
       {{t.column prop="val" label="Accepted Values" width=250}}
       {{t.column prop="def" label="Default" width=75}}
-    {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+    </ElTable>
+</card.body>
+</ElCard>
 
 
 <h3>Events</h3>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-  {{#el-table data=this.tableEvents as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+  <ElTable @data={{this.tableEvents}} as |t|>
     {{t.column prop="event" label="Event Name" width=150}}
     {{t.column prop="desc" label="Description"}}
     {{t.column prop="param" label="Parameters" width=155}}
-  {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+  </ElTable>
+</card.body>
+</ElCard>

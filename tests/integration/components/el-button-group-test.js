@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | el-button-group', function(hooks) {
+module('Integration | Component | el-button-group', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -16,9 +16,9 @@ module('Integration | Component | el-button-group', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      {{#el-button-group}}
+      <ElButtonGroup>
         template block text
-      {{/el-button-group}}
+      </ElButtonGroup>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

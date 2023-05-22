@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import layout from './el-badge';
-import {computed, get} from "@ember/object";
+import { computed, get } from '@ember/object';
 
 export default Component.extend({
   layout,
@@ -12,28 +12,30 @@ export default Component.extend({
   hidden: false,
   type: 'primary',
 
-  isShow: computed('hidden', 'content', 'isDot', function(){
-    return !get(this, 'hidden') && (get(this, 'content') || get(this, 'content') === 0 || get(this, 'isDot'));
+  isShow: computed('hidden', 'content', 'isDot', function () {
+    return !this.hidden && (this.content || this.content === 0 || this.isDot);
   }),
 
-  init(){
+  init() {
     this._super();
 
-    let type = get(this,'type');
+    let type = this.type;
 
-    if(['primary', 'success', 'warning', 'info', 'danger'].indexOf(type) === -1){
+    if (
+      ['primary', 'success', 'warning', 'info', 'danger'].indexOf(type) === -1
+    ) {
       // console.error('Provided type for el-badge is not valid. Please select one from [\'primary\', \'success\', \'warning\', \'info\', \'danger\']');
     }
 
     // set(this, 'value')
   },
 
-  content: computed('isDot', 'value', 'max', function(){
-    if(get(this, 'isDot')) return;
-    const value = get(this, 'value');
-    const max = get(this, 'max');
+  content: computed('isDot', 'value', 'max', function () {
+    if (this.isDot) return;
+    const value = this.value;
+    const max = this.max;
 
-    if(typeof value === 'number' && typeof max === 'number'){
+    if (typeof value === 'number' && typeof max === 'number') {
       return max < value ? `${max}+` : value;
     }
 

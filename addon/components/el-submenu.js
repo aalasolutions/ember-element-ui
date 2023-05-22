@@ -9,11 +9,9 @@ export default Component.extend({
 
   isOpen: false,
 
-
-
-  actions:{
-    collapse(){
+  actions: {
+    collapse() {
       this.toggleProperty('isOpen');
-    }
-  }
+    },
+  },
 });

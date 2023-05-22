@@ -1,29 +1,29 @@
-{{#if this.showIcon}}
-  <i class="el-alert__icon {{this.iconClass}} {{this.isBigIcon}}"></i>
-{{/if}}
-<div class="el-alert__content">
-  {{#if this.hasBlock}}
-    {{yield}}
-  {{else}}
-    {{#if this.title}}
-      <span class="el-alert__title  {{this.isBoldTitle}} ">
-        {{ this.title }}
-      </span>
+<div class="el-alert animate__animated animate__fadeIn {{this.classes}}"
+     role="alert"
+     ...attributes
+>
+  {{#if @showIcon}}
+    <i class="el-alert__icon {{this.iconClass}} {{this.isBigIcon}}"></i>
+  {{/if}}
+  <div class="el-alert__content">
+     <span class="el-alert__title  {{this.isBoldTitle}} ">
+    {{#if (has-block)}}
+      {{yield}}
+    {{else if @title}}
+      {{ @title }}
     {{/if}}
-  {{/if}}
-
-  {{#if this.description}}
-    <p class="el-alert__description">{{ this.description }}</p>
-  {{/if}}
-
-  {{#if this.closable}}
-    <i
-      class="el-alert__closebtn {{if this.closeText "is-customed" "el-icon-close"}} "
-      role="button"
-      {{action "close"}}
-    >
-      {{this.closeText}}
-    </i>
-
-  {{/if}}
+   </span>
+    {{#if @description}}
+      <p class="el-alert__description">{{ @description }}</p>
+    {{/if}}
+    {{#if this.closable}}
+      <i
+        class="el-alert__closebtn {{if @closeText "is-customed" "el-icon-close"}} "
+        role="button"
+        {{on 'click' this.close}}
+      >
+        {{@closeText}}
+      </i>
+    {{/if}}
+  </div>
 </div>

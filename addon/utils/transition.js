@@ -2,17 +2,17 @@ export default function transition(type) {
   let t;
   let el = document.createElement('fakeelement');
   let transitions = {
-    'transition': 'transitionend',
-    'OTransition': 'oTransitionEnd',
-    'MozTransition': 'transitionend',
-    'WebkitTransition': 'webkitTransitionEnd'
+    transition: 'transitionend',
+    OTransition: 'oTransitionEnd',
+    MozTransition: 'transitionend',
+    WebkitTransition: 'webkitTransitionEnd',
   };
 
   let animations = {
-    'animation': 'animationend',
-    'OAnimation': 'oanimationend',
-    'MozAnimation': 'mozAnimationEnd',
-    'WebkitAnimation': 'webkitAnimationEnd'
+    animation: 'animationend',
+    OAnimation: 'oanimationend',
+    MozAnimation: 'mozAnimationEnd',
+    WebkitAnimation: 'webkitAnimationEnd',
   };
   // this.$().one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend'
 

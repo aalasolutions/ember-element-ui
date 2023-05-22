@@ -3,67 +3,67 @@
 
 <div>
 <h3>Linear progress bar (external percentage)</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-  {{#el-card class="box-card" shadow="naver" as |card|}}
-    {{#card.body}}
-      {{#el-progress percentage="0"}}{{/el-progress}}
-      {{#el-progress percentage="70"}}{{/el-progress}}
-      {{#el-progress percentage="80" color="#8e71c7"}}{{/el-progress}}
-      {{#el-progress percentage="100" status="success"}}{{/el-progress}}
-      {{#el-progress percentage="50" status="exception"}}{{/el-progress}}
-    {{/card.body}}
-  {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+  <ElCard @class="box-card" @shadow="naver" as |card|>
+    <card.body>
+      <ElProgress @percentage="0"></ElProgress>
+      <ElProgress @percentage="70"></ElProgress>
+      <ElProgress @percentage="80" @color="#8e71c7"></ElProgress>
+      <ElProgress @percentage="100" @status="success"></ElProgress>
+      <ElProgress @percentage="50" @status="exception"></ElProgress>
+    </card.body>
+  </ElCard>
 <pre><code class="language-handlebars">\{{#el-progress percentage="0"}}\{{/el-progress}}
 \{{#el-progress percentage="70"}}\{{/el-progress}}
 \{{#el-progress percentage="80" color="#8e71c7"}}\{{/el-progress}}
 \{{#el-progress percentage="100" status="success"}}\{{/el-progress}}
 \{{#el-progress percentage="50" status="exception"}}\{{/el-progress}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Linear progress bar (internal percentage)</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="In this case the percentage takes no additional space."}}{{/card.header}}
-  {{#card.body}}
-  {{#el-card class="box-card" shadow="naver" as |card|}}
-    {{#card.body}}
-      {{#el-progress textInside="true" strokeWidth="18" percentage="0"}}{{/el-progress}}
-      {{#el-progress textInside="true" strokeWidth="18" percentage="70"}}{{/el-progress}}
-      {{#el-progress textInside="true" strokeWidth="18" percentage="80" color="rgba(142, 113, 199, 0.7)"}}{{/el-progress}}
-      {{#el-progress textInside="true" strokeWidth="18" percentage="100" status="success"}}{{/el-progress}}
-      {{#el-progress textInside="true" strokeWidth="18" percentage="50" status="exception"}}{{/el-progress}}
-    {{/card.body}}
-  {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="In this case the percentage takes no additional space."></card.header>
+  <card.body>
+  <ElCard @class="box-card" @shadow="naver" as |card|>
+    <card.body>
+      <ElProgress @textInside="true" @strokeWidth="18" @percentage="0"></ElProgress>
+      <ElProgress @textInside="true" @strokeWidth="18" @percentage="70"></ElProgress>
+      <ElProgress @textInside="true" @strokeWidth="18" @percentage="80" @color="rgba(142, 113, 199, 0.7)"></ElProgress>
+      <ElProgress @textInside="true" @strokeWidth="18" @percentage="100" @status="success"></ElProgress>
+      <ElProgress @textInside="true" @strokeWidth="18" @percentage="50" @status="exception"></ElProgress>
+    </card.body>
+  </ElCard>
 <pre><code class="language-handlebars">\{{#el-progress textInside="true" strokeWidth="18" percentage="0"}}\{{/el-progress}}
 \{{#el-progress textInside="true" strokeWidth="18" percentage="70"}}\{{/el-progress}}
 \{{#el-progress textInside="true" strokeWidth="18" percentage="80" color="rgba(142, 113, 199, 0.7)"}}\{{/el-progress}}
 \{{#el-progress textInside="true" strokeWidth="18" percentage="100" status="success"}}\{{/el-progress}}
 \{{#el-progress textInside="true" strokeWidth="18" percentage="50" status="exception"}}\{{/el-progress}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Circular progress bar</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header bodyStyle="padding:4px 0px 4px 20PX;"}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @bodyStyle="padding:4px 0px 4px 20PX;">
   <p>
     You can specify <code class="code">type</code> attribute to <code class="code">circle</code> to use circular progress
     bar, and use <code class="code">width</code> attribute to change the size of circle.
   </p>
-{{/card.header}}
-  {{#card.body}}
-  {{#el-card class="box-card" shadow="naver" as |card|}}
-  {{#card.body}}
-    {{#el-progress type="circle" percentage="0"}}{{/el-progress}}
-    {{#el-progress type="circle" percentage="25"}}{{/el-progress}}
-    {{#el-progress type="circle" percentage="80" color="#8e71c7"}}{{/el-progress}}
-    {{#el-progress type="circle" percentage="100" status="success"}}{{/el-progress}}
-    {{#el-progress type="circle" percentage="50" status="exception"}}{{/el-progress}}
-    {{#el-progress type="circle" percentage="100" status="text"}}Done{{/el-progress}}
+</card.header>
+  <card.body>
+  <ElCard @class="box-card" @shadow="naver" as |card|>
+  <card.body>
+    <ElProgress @type="circle" @percentage="0"></ElProgress>
+    <ElProgress @type="circle" @percentage="25"></ElProgress>
+    <ElProgress @type="circle" @percentage="80" @color="#8e71c7"></ElProgress>
+    <ElProgress @type="circle" @percentage="100" @status="success"></ElProgress>
+    <ElProgress @type="circle" @percentage="50" @status="exception"></ElProgress>
+    <ElProgress @type="circle" @percentage="100" @status="text">Done</ElProgress>
     <br>
-    {{#el-progress type="circle" percentage="90" status="text" width=250}}ALMOST THERE{{/el-progress}}
-  {{/card.body}}
-{{/el-card}}
+    <ElProgress @type="circle" @percentage="90" @status="text" @width={{250}}>ALMOST THERE</ElProgress>
+  </card.body>
+</ElCard>
 <pre><code class="language-handlebars">\{{#el-progress type="circle" percentage="0"}}\{{/el-progress}}
 \{{#el-progress type="circle" percentage="25"}}\{{/el-progress}}
 \{{#el-progress type="circle" percentage="80" color="#8e71c7"}}\{{/el-progress}}
@@ -72,19 +72,19 @@
 \{{#el-progress type="circle" percentage="100" status="text"}}Done\{{/el-progress}}
 
 \{{#el-progress type="circle" percentage="90" status="text" width=250}}ALMOST THERE\{{/el-progress}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 </div>
 
 <h2>Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-    {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+    <ElTable @data={{this.tableAttributes}} as |t|>
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=100}}
       {{t.column prop="val" label="Accepted Values" width=250}}
       {{t.column prop="def" label="Default" width=75}}
-    {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+    </ElTable>
+</card.body>
+</ElCard>

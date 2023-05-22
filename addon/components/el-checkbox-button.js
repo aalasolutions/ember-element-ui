@@ -1,12 +1,12 @@
 import Component from '@ember/component';
 import layout from './el-checkbox-button';
-import {computed, set} from "@ember/object";
+import { computed, set } from '@ember/object';
 import { or } from '@ember/object/computed';
-import {htmlSafe} from '@ember/template';
+import { htmlSafe } from '@ember/template';
 
 export default Component.extend({
   layout,
-// todo: focus
+  // todo: focus
   tagName: 'label',
   classNames: ['el-checkbox-button'],
 
@@ -17,10 +17,7 @@ export default Component.extend({
     'checkboxSize',
   ],
 
-  attributeBindings: [
-    'role',
-    'isChecked:aria-checked',
-  ],
+  attributeBindings: ['role', 'isChecked:aria-checked'],
   role: 'checkbox',
 
   name: null,
@@ -42,9 +39,7 @@ export default Component.extend({
     set(this, 'value', this.modelGet());
   },
 
-
-  style: computed('isChecked', 'parent', function () {
-
+  style: computed('isChecked', 'parent.{fill,textColor}', function () {
     let style = '';
     if (this.parent) {
       style += this.parent.fill ? `background-color: ${this.parent.fill};` : '';
@@ -54,15 +49,14 @@ export default Component.extend({
     }
 
     return htmlSafe(this.isChecked && style ? style : '');
-
   }),
 
   isChecked: computed('model', 'label', 'trueLabel', 'checked', function () {
-    if (typeof this.checked === "boolean") {
+    if (typeof this.checked === 'boolean') {
       return this.checked;
     }
 
-    if (typeof this.model === "boolean") {
+    if (typeof this.model === 'boolean') {
       return this.model;
     } else if (Array.isArray(this.model)) {
       return this.model.indexOf(this.label) > -1;
@@ -73,40 +67,53 @@ export default Component.extend({
     return !!this.model;
   }),
 
-  checkboxSize: computed('size', 'parent', function () {
-    let size = this.parent
-      ? this.parent.size || this.size
-      : this.size;
+  checkboxSize: computed('parent.size', 'size', function () {
+    let size = this.parent ? this.parent.size || this.size : this.size;
 
     return size ? 'el-checkbox-button--' + size : '';
   }),
 
-  isLimitDisabled: computed('min', 'max', 'parent', 'isChecked', function () {
-    if (this.parent) {
-      return !!(this.parent.max || this.parent.min) &&
-        (this.model.length >= this.parent.max && !this.isChecked) ||
-        (this.model.length <= this.parent.min && this.isChecked);
+  isLimitDisabled: computed(
+    'isChecked',
+    'max',
+    'min',
+    'model.length',
+    'parent.{max,min}',
+    function () {
+      if (this.parent) {
+        return (
+          (!!(this.parent.max || this.parent.min) &&
+            this.model.length >= this.parent.max &&
+            !this.isChecked) ||
+          (this.model.length <= this.parent.min && this.isChecked)
+        );
+      }
+
+      return false;
     }
-
-    return false
-
-  }),
-  isDisabled: computed('parent', 'disabled', 'parent.disabled', 'isLimitDisabled', function () {
-    return this.parent
-      ? this.parent.disabled || this.disabled || this.isLimitDisabled
-      : this.disabled;
-  }),
+  ),
+  isDisabled: computed(
+    'parent',
+    'disabled',
+    'parent.disabled',
+    'isLimitDisabled',
+    function () {
+      return this.parent
+        ? this.parent.disabled || this.disabled || this.isLimitDisabled
+        : this.disabled;
+    }
+  ),
 
   actions: {
     changed(value, name) {
-      if (this.get('action')) {
-        this.get('action')(value, name);
+      if (this.action) {
+        this.action(value, name);
       }
     },
     handleChange(ev) {
       if (this.isLimitExceeded) return;
       let value;
-      if (typeof this.checked === "boolean") {
+      if (typeof this.checked === 'boolean') {
         value = !this.checked;
       } else {
         if (ev.target.checked) {
@@ -121,36 +128,38 @@ export default Component.extend({
       if (this.action) {
         this.action(this.value);
       }
-    }
+    },
   },
 
-
   modelGet() {
-
     if (this.parent) {
       const model = this.model;
-      if (typeof model === "boolean") {
+      if (typeof model === 'boolean') {
         return model;
       } else if (Array.isArray(model)) {
         return model.indexOf(this.label) > -1;
       } else if (model !== null && model !== undefined) {
         return model === this.trueLabel;
       }
-
-
     }
 
     return this.model;
-
   },
   modelSet(val) {
-
     if (this.parent) {
       set(this, 'isLimitExceeded', false);
 
-      (this.parent.min !== undefined && val.length < this.parent.min && (set(this, 'isLimitExceeded', true)));
-      (this.parent.max !== undefined && val.length > this.parent.max && (set(this, 'isLimitExceeded', true)));
-      if (Array.isArray(this.model) && this.isLimitExceeded === false && !this.model.includes(this.label)) {
+      this.parent.min !== undefined &&
+        val.length < this.parent.min &&
+        set(this, 'isLimitExceeded', true);
+      this.parent.max !== undefined &&
+        val.length > this.parent.max &&
+        set(this, 'isLimitExceeded', true);
+      if (
+        Array.isArray(this.model) &&
+        this.isLimitExceeded === false &&
+        !this.model.includes(this.label)
+      ) {
         set(this, 'model', [...this.model, this.label]);
       } else {
         const index = this.model.indexOf(this.label);
@@ -162,5 +171,4 @@ export default Component.extend({
       set(this, 'model', val);
     }
   },
-
 });

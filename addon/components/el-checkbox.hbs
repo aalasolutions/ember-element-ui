@@ -13,11 +13,11 @@
   <Input
     @type="checkbox"
     @checked={{this.value}}
-    @name={{this.name}}
+    name={{this.name}}
     disabled={{this.isDisabled}}
-    @tabindex={{this.tabindex}}
-    @autofocus={{this.autofocus}}
-    @form={{this.form}}
+    tabindex={{this.tabindex}}
+    autofocus={{this.autofocus}}
+    form={{this.form}}
     class="el-checkbox__original"
     {{on 'click' (action "handleChange") value="target.checked"}}
   />

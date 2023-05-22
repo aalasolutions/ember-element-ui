@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import layout from './el-table-column';
 // import objectAssign from '../utils/merge';
 // import { getPropByPath } from '../utils/util';
-import {set} from "@ember/object";
+import { set } from '@ember/object';
 // import {computed, get, set} from "@ember/object";
 
 /*
@@ -148,7 +148,6 @@ export default Component.extend({
   layout,
   tagName: 'td',
 
-
   type: 'default',
   label: '',
   thisClassName: '', // todo: it was className but due to ember conflict changed it to thisClassName
@@ -180,30 +179,26 @@ export default Component.extend({
   index: null, // todo: number or function
   sortOrders: null,
 
-
-  init(){
+  init() {
     this._super();
-    set(this, 'width',  {});
-    set(this, 'minWidth',  {});
-    set(this, 'context',  {});
-    set(this, 'filteredValue',  []);
-    set(this, 'filters',  []);
-    set(this, 'sortOrders',  ['ascending', 'descending', null]);
+    set(this, 'width', {});
+    set(this, 'minWidth', {});
+    set(this, 'context', {});
+    set(this, 'filteredValue', []);
+    set(this, 'filters', []);
+    set(this, 'sortOrders', ['ascending', 'descending', null]);
   },
 
-  data(){
+  data() {
     return {
       isSubColumn: false,
       columns: [],
-    }
+    };
   },
 
-  beforecreate(){
+  beforecreate() {
     this.row = {};
     this.column = {};
     this.$index = 0;
-  }
-
-
-
+  },
 });

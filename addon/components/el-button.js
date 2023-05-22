@@ -1,14 +1,14 @@
 import Component from '@ember/component';
 import layout from './el-button';
-import {computed, get} from "@ember/object";
+import { computed, get } from '@ember/object';
 
 export default Component.extend({
   layout,
   tagName: 'button',
 
-
   classNames: ['el-button'],
-  classNameBindings: ['getClassName',
+  classNameBindings: [
+    'getClassName',
     'loading:is-loading',
     'plain:is-plain',
     'round:is-round',
@@ -17,43 +17,47 @@ export default Component.extend({
 
   attributeBindings: ['disabled', 'autofocus', 'type', 'style'],
 
-
   disabled: false,
   autofocus: false,
 
   color: 'default',
   size: false, // false, medium, small, mini
-  icon:  false,
+  icon: false,
   loading: false,
   plain: false,
   round: false,
   circle: false,
 
+  getClassName: computed(
+    'autofocus',
+    'color',
+    'disabled',
+    'loading',
+    'size',
+    function () {
+      let classNames = '';
 
-  getClassName: computed('color', 'size', 'disabled', 'autofocus', function () {
+      classNames += 'el-button--' + this.color;
 
-    let classNames = '';
+      if (this.size) {
+        classNames += ` el-button--${this.size}`;
+      }
 
-    classNames += 'el-button--' + get(this, 'color');
+      if (this.loading || this.disabled) {
+        classNames += ` is-disabled`;
+      }
 
-    if(get(this, 'size')){classNames += ` el-button--${get(this, 'size')}`;}
-
-    if(get(this, 'loading') || get(this, 'disabled') ){classNames += ` is-disabled`;}
-
-    return classNames;
-  }),
-
-
-  showIcon: computed('icon', 'loading', function(){
-    return !!(get(this, 'icon') && !get(this, 'loading'));
-  }),
-
-
-  click(){
-    if(this.get('action')){
-      this.get('action')();
+      return classNames;
     }
-  }
+  ),
 
+  showIcon: computed('icon', 'loading', function () {
+    return !!(this.icon && !this.loading);
+  }),
 
+  click() {
+    if (this.action) {
+      this.action();
+    }
+  },
 });

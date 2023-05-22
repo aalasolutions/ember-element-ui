@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import layout from './el-table';
-import {computed, get, set} from "@ember/object";
+import { computed, get, set } from '@ember/object';
 import { or } from '@ember/object/computed';
 
 // import tableStore from "../utils/table-store";
@@ -36,7 +36,6 @@ export default Component.extend({
   spanMethod: null, // function
   selectOnIndeterminate: true,
 
-
   classNames: ['el-table'],
   classNameBindings: [
     'fit:el-table--fit',
@@ -51,12 +50,13 @@ export default Component.extend({
     'rowTransition:el-table--enable-row-transition', // todo
   ],
 
-
   // isGroup: or('border', 'isGroup'),
   isBorder: or('border', 'isGroup'),
 
-  layoutBodyWidth: computed('layout.bodyWidth', function(){
-    return 'width: '+ get(this,'layout.bodyWidth') ? get(this,'layout.bodyWidth') + 'px' : '';
+  layoutBodyWidth: computed('layout.bodyWidth', function () {
+    return 'width: ' + get(this, 'layout.bodyWidth')
+      ? get(this, 'layout.bodyWidth') + 'px'
+      : '';
   }),
   init() {
     this._super();
@@ -72,8 +72,6 @@ export default Component.extend({
     //
     // }
 
-
-
     // const layout = new TableLayout({ // todo: https://github.com/ElemeFE/element/blob/9c32f55892bf15a7287a57b9ec78fe1f138ef64a/packages/table/src/table-layout.js
     //   store,
     //   table: this,
@@ -82,8 +80,6 @@ export default Component.extend({
     // });
     //
 
-
-
     // copied from table.vue
     // set(this, 'store', store);
     set(this, 'isHidden', false);
@@ -91,7 +87,7 @@ export default Component.extend({
     set(this, 'resizeProxyVisible', false);
     set(this, 'resizeState', {
       width: null,
-      height: null
+      height: null,
     });
 
     set(this, 'isGroup', false);
@@ -101,7 +97,6 @@ export default Component.extend({
     set(this, 'context', {});
     set(this, 'expandRowKeys', []);
     set(this, 'defaultSort', {});
-
 
     set(this, 'parent', this);
   },

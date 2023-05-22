@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | el-button', function(hooks) {
+module('Integration | Component | el-button', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -16,92 +16,73 @@ module('Integration | Component | el-button', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      {{#el-button}}
+      <ElButton>
         template block text
-      {{/el-button}}
+      </ElButton>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
   });
 
-
-  test('it checks size', async function(assert) {
-
-    this.set('size', "small");
+  test('it checks size', async function (assert) {
+    this.set('size', 'small');
     this.set('disabled', false);
 
     await render(hbs`
-    {{#el-button size=size disabled=disabled}}
+    <ElButton @size={{size}} @disabled={{disabled}}>
        Master
-    {{/el-button}}
-    `
-    );
+    </ElButton>
+    `);
 
     assert.equal(this.element.textContent.trim(), 'Master');
-
 
     this.set('loading', true);
 
     await render(hbs`
-    {{#el-button size=size loading=loading disabled=disabled}}
+    <ElButton @size={{size}} @loading={{loading}} @disabled={{disabled}}>
        Master
-    {{/el-button}}
-    `
-    );
+    </ElButton>
+    `);
 
     assert.equal(this.element.textContent.trim(), 'Master');
 
-
-    this.set('icon', "arrow");
+    this.set('icon', 'arrow');
 
     await render(hbs`
-    {{#el-button size=size disabled=disabled icon=icon}}
+    <ElButton @size={{size}} @disabled={{disabled}} @icon={{icon}}>
        Master
-    {{/el-button}}
-    `
-    );
+    </ElButton>
+    `);
 
     assert.equal(this.element.textContent.trim(), 'Master');
-
-
-
   });
-  test('click event', async function(assert) {
-
-    this.set('size', "small");
+  test('click event', async function (assert) {
+    this.set('size', 'small');
     this.set('disabled', false);
-    this.set('icon', "arrow");
+    this.set('icon', 'arrow');
 
     this.set('externalAction', (actual) => {
       assert.equal(actual, undefined);
     });
 
-
     await render(hbs`
-    {{#el-button size=size disabled=disabled icon=icon action=externalAction}}
+    <ElButton @size={{size}} @disabled={{disabled}} @icon={{icon}} @action={{externalAction}}>
        Master
-    {{/el-button}}
-    `
-    );
+    </ElButton>
+    `);
 
     assert.equal(this.element.textContent.trim(), 'Master');
 
     await click('.el-button');
 
-
     await render(hbs`
-    {{#el-button size=size disabled=disabled icon=icon }}
+    <ElButton @size={{size}} @disabled={{disabled}} @icon={{icon}}>
        Master
-    {{/el-button}}
-    `
-    );
+    </ElButton>
+    `);
 
     assert.equal(this.element.textContent.trim(), 'Master');
 
     await click('.el-button');
-
-
-
   });
-
 });

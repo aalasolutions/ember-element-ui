@@ -1,8 +1,8 @@
 import Component from '@ember/component';
 import layout from './el-rate';
-import {computed, get, set} from "@ember/object";
-import {htmlSafe} from '@ember/template';
-import {typeOf} from '@ember/utils';
+import { computed, get, set } from '@ember/object';
+import { htmlSafe } from '@ember/template';
+import { typeOf } from '@ember/utils';
 import { or } from '@ember/object/computed';
 
 export default Component.extend({
@@ -29,67 +29,83 @@ export default Component.extend({
   pointerAtLeftHalf: true,
   hoverIndex: -1,
 
-
   _defaultColor: 'rgb(247, 186, 42)',
 
   didReceiveAttrs() {
-    if (!get(this, 'colors')) {
-      set(this, 'colors', [get(this, '_defaultColor')]);
+    this._super();
+    if (!this.colors) {
+      set(this, 'colors', [this._defaultColor]);
     }
-    if (!get(this, 'iconClasses')) {
-      set(this, 'iconClasses', ['el-icon-star-on', 'el-icon-star-on', 'el-icon-star-on']);
+    if (!this.iconClasses) {
+      set(this, 'iconClasses', [
+        'el-icon-star-on',
+        'el-icon-star-on',
+        'el-icon-star-on',
+      ]);
     }
-    if (!get(this, 'texts')) {
+    if (!this.texts) {
       set(this, 'texts', []);
     }
-    if (get(this, "disabledVoidIconClass") === null) {
-      set(this, "disabledVoidIconClass", 'el-icon-star-on');
+    if (this.disabledVoidIconClass === null) {
+      set(this, 'disabledVoidIconClass', 'el-icon-star-on');
     }
   },
 
-  currentValue: computed('value', function () {
-    return get(this, "value");
+  currentValue: computed.reads('value'),
+
+  rateDisabled: computed('disabled', 'value', function () {
+    return !!this.disabled;
   }),
 
-  rateDisabled: computed("value", function () {
-    return !!get(this, "disabled");
+  valueDecimal: computed('value', function () {
+    return this.value * 100 - Math.floor(this.value) * 100;
   }),
 
-
-  valueDecimal: computed("value", function () {
-    return get(this, "value") * 100 - Math.floor(get(this, "value")) * 100;
-  }),
-
-  text: computed('value', "currentValue", function () {
-    let result = '';
-    if (get(this, "showScore")) {
-      result = get(this, "scoreTemplate").replace(/\{\s*value\s*\}/, get(this, "rateDisabled")
-        ? get(this, "value")
-        : get(this, "currentValue"));
-    } else if (get(this, "showText")) {
-      result = get(this, "texts")[Math.ceil(get(this, "currentValue")) - 1];
+  text: computed(
+    'currentValue',
+    'rateDisabled',
+    'scoreTemplate',
+    'showScore',
+    'showText',
+    'texts',
+    'value',
+    function () {
+      let result = '';
+      if (this.showScore) {
+        result = this.scoreTemplate.replace(
+          /\{\s*value\s*\}/,
+          this.rateDisabled ? this.value : this.currentValue
+        );
+      } else if (this.showText) {
+        result = this.texts[Math.ceil(this.currentValue) - 1];
+      }
+      return result;
     }
-    return result;
-  }),
+  ),
 
-  decimalStyle: computed("rateDisabled", function () {
-    let width = '';
-    if (get(this, "rateDisabled")) {
-      width = `${get(this, "valueDecimal")}%`;
-    } else if (get(this, "allowHalf")) {
-      width = '50%';
+  decimalStyle: computed(
+    'allowHalf',
+    'colorMap',
+    'rateDisabled',
+    'valueDecimal',
+    function () {
+      let width = '';
+      if (this.rateDisabled) {
+        width = `${this.valueDecimal}%`;
+      } else if (this.allowHalf) {
+        width = '50%';
+      }
+      let color = this.colorMap;
+      return htmlSafe(`color: ${color}; width: ${width};`);
     }
-    let color = get(this, "colorMap");
-    return htmlSafe(`color: ${color}; width: ${width};`);
+  ),
 
-  }),
-
-  activeColor: computed("currentValue", function () {
-    return this.getValueFromMap(get(this, "currentValue"), get(this, "colorMap"));
+  activeColor: computed('colorMap', 'currentValue', function () {
+    return this.getValueFromMap(this.currentValue, this.colorMap);
   }),
 
   maxNumberOfTimes: computed('max', function () {
-    let max = get(this, "max");
+    let max = this.max;
     let maxObj = [];
 
     for (let i = 0; i < max; i++) {
@@ -98,79 +114,115 @@ export default Component.extend({
     return maxObj;
   }),
 
-  classMap: computed("iconClasses", "value", function () {
-    let iconClasses = get(this, "iconClasses");
-    return Array.isArray(iconClasses) ? {
-      [get(this, "lowThreshold")]: iconClasses[0],
-      [get(this, "highThreshold")]: {value: iconClasses[1], excluded: true},
-      [get(this, "max")]: iconClasses[2]
-    } : get(this, "iconClasses");
-  }),
-
-  decimalIconClass: computed("classMap", function () {
-    return this.getValueFromMap(get(this, "value"), get(this, "classMap"));
-  }),
-
-  activeClass: computed("classMap", "currentValue", function () {
-    return this.getValueFromMap(get(this, "currentValue"), get(this, "classMap"));
-  }),
-
-  colorMap: computed('colors', 'lowThreshold', 'currentValue', 'highThreshold', function () {
-    let colors = get(this, "colors");
-    let color = null;
-
-    if (colors.length === 3) {
-      if (get(this, "currentValue") <= get(this, "lowThreshold")) {
-        color = colors[0];
-      } else if (get(this, "currentValue") <= get(this, "highThreshold")) {
-        color = colors[1];
-      } else {
-        color = colors[2];
-      }
-    } else {
-      color = colors[0];
+  classMap: computed(
+    'highThreshold',
+    'iconClasses',
+    'lowThreshold',
+    'max',
+    'value',
+    function () {
+      let iconClasses = this.iconClasses;
+      return Array.isArray(iconClasses)
+        ? {
+            [this.lowThreshold]: iconClasses[0],
+            [this.highThreshold]: {
+              value: iconClasses[1],
+              excluded: true,
+            },
+            [this.max]: iconClasses[2],
+          }
+        : this.iconClasses;
     }
-    return color;
+  ),
+
+  decimalIconClass: computed('classMap', 'value', function () {
+    return this.getValueFromMap(this.value, this.classMap);
   }),
 
-  voidClass: computed("classMap", "currentValue", "disabledVoidIconClass", "voidIconClass", function () {
-    return get(this, "rateDisabled") ? get(this, "disabledVoidIconClass") : get(this, "voidIconClass");
+  activeClass: computed('classMap', 'currentValue', function () {
+    return this.getValueFromMap(this.currentValue, this.classMap);
   }),
 
-  classes: computed('currentValue', "voidClass", 'disabled', function () {
+  colorMap: computed(
+    'colors',
+    'lowThreshold',
+    'currentValue',
+    'highThreshold',
+    function () {
+      let colors = this.colors;
+      let color = null;
 
+      if (colors.length === 3) {
+        if (this.currentValue <= this.lowThreshold) {
+          color = colors[0];
+        } else if (this.currentValue <= this.highThreshold) {
+          color = colors[1];
+        } else {
+          color = colors[2];
+        }
+      } else {
+        color = colors[0];
+      }
+      return color;
+    }
+  ),
+
+  voidClass: computed(
+    'classMap',
+    'currentValue',
+    'disabledVoidIconClass',
+    'rateDisabled',
+    'voidIconClass',
+    function () {
+      return this.rateDisabled
+        ? this.disabledVoidIconClass
+        : this.voidIconClass;
+    }
+  ),
+
+  classes: computed(
+    'activeClass',
+    'allowHalf',
+    'currentValue',
+    'disabled',
+    'max',
+    'rateDisabled',
+    'voidClass',
+    function () {
       let result = [];
       let i = 0;
 
-      if (get(this, 'rateDisabled')) {
+      if (this.rateDisabled) {
         for (; i < this.max; i++) {
-          result.push(get(this, "voidClass"));
+          result.push(this.voidClass);
         }
         return result;
       }
 
-      let threshold = get(this, "currentValue");
+      let threshold = this.currentValue;
 
-      if (get(this, "allowHalf") && get(this, "currentValue") !== Math.floor(get(this, "currentValue"))) {
+      if (
+        this.allowHalf &&
+        this.currentValue !== Math.floor(this.currentValue)
+      ) {
         threshold--;
       }
 
       for (; i < threshold; i++) {
-        result.push(get(this, "activeClass"));
+        result.push(this.activeClass);
       }
       for (; i < this.max; i++) {
-        result.push(get(this, "voidClass"));
+        result.push(this.voidClass);
       }
       return result;
     }
   ),
 
-  showTextScore: or("showText", "showScore"),
+  showTextScore: or('showText', 'showScore'),
 
-  textSpanStyle: computed("textColor", "text", function () {
-    let color = get(this, "textColor");
-    return htmlSafe(`color: ${color};`)
-
+  textSpanStyle: computed('textColor', 'text', function () {
+    let color = this.textColor;
+    return htmlSafe(`color: ${color};`);
   }),
   //
   // iconStyle: computed("value", function () {
@@ -179,52 +231,51 @@ export default Component.extend({
 
   getValueFromMap(value, map) {
     const matchedKeys = Object.keys(map)
-      .filter(key => value <= key)
+      .filter((key) => value <= key)
       .sort((a, b) => a - b);
     const matchedValue = map[matchedKeys[0]];
-    if (typeOf(matchedValue) === "object") {
+    if (typeOf(matchedValue) === 'object') {
       return matchedValue.value;
     } else {
-      return (matchedValue || '');
+      return matchedValue || '';
     }
   },
 
-  spanCursor: computed("rateDisabled", function () {
-    let rateDisabled = get(this, "rateDisabled");
+  spanCursor: computed('rateDisabled', function () {
+    let rateDisabled = this.rateDisabled;
     if (rateDisabled) {
-      return htmlSafe(`cursor:auto;`)
+      return htmlSafe(`cursor:auto;`);
     } else {
-      return htmlSafe(`cursor:pointer;`)
+      return htmlSafe(`cursor:pointer;`);
     }
-
   }),
 
   actions: {
-
     setCurrentValue(item) {
-      if (!get(this, "rateDisabled")) {
-        set(this, "currentValue", item);
+      if (!this.rateDisabled) {
+        set(this, 'currentValue', item);
       }
     },
 
     resetCurrentValue() {
-      set(this, "currentValue", get(this, "value"));
+      set(this, 'currentValue', this.value);
     },
 
     selectValue(item) {
-      if (!get(this, "rateDisabled")) {
-        set(this, "value", item);
+      if (!this.rateDisabled) {
+        set(this, 'value', item);
       }
     },
 
     handleKey(e) {
-      if (get(this,"rateDisabled")) {
+      if (this.rateDisabled) {
         return;
       }
-      let currentValue = get(this,"currentValue");
+      let currentValue = this.currentValue;
       const keyCode = e.keyCode;
-      if (keyCode === 38 || keyCode === 39) { // left / down
-        if (get(this,"allowHalf")) {
+      if (keyCode === 38 || keyCode === 39) {
+        // left / down
+        if (this.allowHalf) {
           currentValue += 0.5;
         } else {
           currentValue += 1;
@@ -232,7 +283,7 @@ export default Component.extend({
         e.stopPropagation();
         e.preventDefault();
       } else if (keyCode === 37 || keyCode === 40) {
-        if (get(this, "allowHalf")) {
+        if (this.allowHalf) {
           currentValue -= 0.5;
         } else {
           currentValue -= 1;
@@ -241,9 +292,9 @@ export default Component.extend({
         e.preventDefault();
       }
       currentValue = currentValue < 0 ? 0 : currentValue;
-      currentValue = currentValue > get(this, "max") ? get(this, "max") : currentValue;
-      set(this, "value", currentValue);
-      set(this, "currentValue", currentValue);
+      currentValue = currentValue > this.max ? this.max : currentValue;
+      set(this, 'value', currentValue);
+      set(this, 'currentValue', currentValue);
     },
-  }
+  },
 });

@@ -2,24 +2,24 @@
 <p>Element provides a set of common icons.</p>
 
 <h3>Basic usage</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header bodyStyle="padding:4px 0px 4px 20PX;" title=""}}<p>Just assign the class name to <code class="code">el-icon-iconName</code></p>{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @bodyStyle="padding:4px 0px 4px 20PX;" @title=""><p>Just assign the class name to <code class="code">el-icon-iconName</code></p></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
       <i class="el-icon-edit"></i>
       <i class="el-icon-share"></i>
       <i class="el-icon-delete"></i>
-      {{#el-button color="primary" icon="el-icon-search"}}Search{{/el-button}}
-      {{/card.body}}
-    {{/el-card}}
+      <ElButton @color="primary" @icon="el-icon-search">Search</ElButton>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">&lt;i class="el-icon-edit">&lt;/i>
 &lt;i class="el-icon-share">&lt;/i>
 &lt;i class="el-icon-delete">&lt;/i>
 \{{#el-button type="primary" icon="el-icon-search"}}Search\{{/el-button}}
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Icons</h3>
 <ul class="icon-list">

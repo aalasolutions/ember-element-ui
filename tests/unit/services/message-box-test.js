@@ -1,33 +1,28 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Service | message-box', function(hooks) {
+module('Unit | Service | message-box', function (hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
-  test('it exists', function(assert) {
+  test('it exists', function (assert) {
     let service = this.owner.lookup('service:message-box');
     assert.ok(service);
-
-
   });
 
-  test('All Notification Types', function(assert) {
+  test('All Notification Types', function (assert) {
     let service = this.owner.lookup('service:message-box');
 
-
-    service.alert("Welcome Man Welcome");
-    service.confirm("Welcome Man Welcome");
-    service.prompt("Welcome Man Welcome");
+    service.alert('Welcome Man Welcome');
+    service.confirm('Welcome Man Welcome');
+    service.prompt('Welcome Man Welcome');
 
     assert.ok(service);
-
   });
-  test('Props and Objects', function(assert) {
+  test('Props and Objects', function (assert) {
     let service = this.owner.lookup('service:message-box');
 
-
-    service.alert("Welcome Man Welcome",{
+    service.alert('Welcome Man Welcome', {
       iconClass: 'el-loading',
       showClose: true,
       autoClear: false,
@@ -35,8 +30,7 @@ module('Unit | Service | message-box', function(hooks) {
 
     service.clearAll();
 
-
-    service.alert("Welcome Man Welcome",{
+    service.alert('Welcome Man Welcome', {
       showConfirmButton: true,
       closeOnClickModal: true,
     });
@@ -44,8 +38,6 @@ module('Unit | Service | message-box', function(hooks) {
     service.removeMessage();
     service.removeMessage(messages[0]);
 
-
     assert.ok(service);
-
   });
 });

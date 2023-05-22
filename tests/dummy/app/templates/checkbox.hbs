@@ -3,57 +3,57 @@
 
 <h3>Basic usage</h3>
 <p>Checkbox can be used alone to switch between two states.</p>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header title="
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @title="
     The default value is a Boolean for single checkbox, and it becomes true when selected.
-    Content inside the el-checkbox tag will become the description following the button of the checkbox."}}{{/card.header}}
-  {{#card.body}}
+    Content inside the el-checkbox tag will become the description following the button of the checkbox."></card.header>
+  <card.body>
     <p>Current value of checkbox: {{this.checked}}</p>
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-checkbox model=this.checked}}Option{{/el-checkbox}}
-      {{/card.body}}
-    {{/el-card}}
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElCheckbox @model={{this.checked}}>Option</ElCheckbox>
+      </card.body>
+    </ElCard>
     <pre><code class="language-handlebars">\{{#el-checkbox model=checked}}Option\{{/el-checkbox}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Disabled</h3>
 <p>Disabled state for checkbox.</p>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header title="Disabled attribute is used to disable the checkbox."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-checkbox model=true disabled=true}}React{{/el-checkbox}}
-        {{#el-checkbox model=false disabled=true }}Ember{{/el-checkbox}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @title="Disabled attribute is used to disable the checkbox."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElCheckbox @model={{true}} @disabled={{true}}>React</ElCheckbox>
+        <ElCheckbox @model={{false}} @disabled={{true}}>Ember</ElCheckbox>
+      </card.body>
+    </ElCard>
     <pre><code class="language-handlebars">\{{#el-checkbox model=true disabled=true}}React\{{/el-checkbox}}
 \{{#el-checkbox model=false disabled=true }}Ember\{{/el-checkbox}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 <h3>Checkbox Group</h3>
 <p>It is used for multiple checkboxes which are bound in one group, and indicates whether one option is selected by
   checking if it is checked.</p>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.header title="Suitable for choosing from some mutually exclusive options."}}{{/card.header}}
-  {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.header @title="Suitable for choosing from some mutually exclusive options."></card.header>
+  <card.body>
 
     {{this.checkList}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-checkbox-group model=this.checkList as |grp|}}
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElCheckboxGroup @model={{this.checkList}} as |grp|>
           {{grp.checkbox label="Option A" }}
           {{grp.checkbox label="Option B" }}
           {{grp.checkbox label="Option C" }}
           {{grp.checkbox label="disabled" disabled=true }}
           {{grp.checkbox label="selected and disabled" disabled=true }}
-        {{/el-checkbox-group}}
-      {{/card.body}}
-    {{/el-card}}
+        </ElCheckboxGroup>
+      </card.body>
+    </ElCard>
     <pre><code class="language-handlebars">\{{#el-checkbox-group model=this.checkList as |grp|}}
   \{{grp.checkbox label="Option A" }}
   \{{grp.checkbox label="Option B" }}
@@ -61,27 +61,27 @@
   \{{grp.checkbox label="disabled" disabled=true }}
   \{{grp.checkbox label="selected and disabled" disabled=true }}
 \{{/el-checkbox-group}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 
 
 <h3>Indeterminate</h3>
 <p>The <code class="code">indeterminate</code> property can help you to achieve a 'check all' effect.</p>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-checkbox indeterminate=this.isIndeterminate checked=this.checkAll action=(action "handleCheckAllChange")}}Check all{{/el-checkbox}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElCheckbox @indeterminate={{this.isIndeterminate}} @checked={{this.checkAll}} @action={{action "handleCheckAllChange"}}>Check all</ElCheckbox>
         <div><br></div>
-        {{#el-checkbox-group model=this.checkedCitiesInt as |grp|}}
+        <ElCheckboxGroup @model={{this.checkedCitiesInt}} as |grp|>
           {{#each this.cityOptionsInt as |city|}}
             {{grp.checkbox label=city }}
           {{/each}}
-        {{/el-checkbox-group}}
-      {{/card.body}}
-    {{/el-card}}
+        </ElCheckboxGroup>
+      </card.body>
+    </ElCard>
     <pre><code class="language-handlebars">\{{#el-checkbox indeterminate=isIndeterminate checked=checkAll action=(action "handleCheckAllChange")}}Check all\{{/el-checkbox}}
 \{{#el-checkbox-group model=checkedCitiesInt as |grp|}}
   \{{#each cityOptionsInt as |city|}}
@@ -105,28 +105,28 @@ actions: {
 }
 ...
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 
 <h3>Minimum / Maximum items checked</h3>
 <p>The <code class="code">min</code> and <code class="code">max</code> properties can help you to limit the number of
   checked items.</p>
-{{#el-card class="box-card" shadow="hover" as |card|}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
 
-  {{#card.body}}
+  <card.body>
 
     {{this.checkedCities}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-checkbox-group model=this.checkedCities min=1 max=2 as |grp|}}
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElCheckboxGroup @model={{this.checkedCities}} @min={{1}} @max={{2}} as |grp|>
           {{#each this.cityOptions as |city|}}
             {{grp.checkbox label=city }}
           {{/each}}
-        {{/el-checkbox-group}}
-      {{/card.body}}
-    {{/el-card}}
+        </ElCheckboxGroup>
+      </card.body>
+    </ElCard>
     <pre><code class="language-handlebars">\{{#el-checkbox-group model=this.checkedCities min=1 max=2 as |grp|}}
   \{{#each this.cityOptions as |city|}}
     \{{grp.checkbox label=city }}
@@ -135,45 +135,45 @@ actions: {
 
     <pre><code class="language-javascript">cityOptions: ['Shanghai', 'Beijing', 'Guangzhou', 'Shenzhen'],
 checkedCities: ['Shanghai', 'Beijing'],</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Button style</h3>
 <p>Checkbox with button styles.</p>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
         <div>
-          {{#el-checkbox-group model=this.checkedCitiesButton1 as |grp|}}
+          <ElCheckboxGroup @model={{this.checkedCitiesButton1}} as |grp|>
             {{#each this.cityOptionsInt as |city|}}
               {{grp.button label=city }}
             {{/each}}
-          {{/el-checkbox-group}}
+          </ElCheckboxGroup>
         </div>
         <div style="margin-top: 20px">
-          {{#el-checkbox-group  model=this.checkedCitiesButton2 size="medium" as |grp|}}
+          <ElCheckboxGroup @model={{this.checkedCitiesButton2}} @size="medium" as |grp|>
             {{#each this.cityOptionsInt as |city|}}
               {{grp.button label=city }}
             {{/each}}
-          {{/el-checkbox-group}}
+          </ElCheckboxGroup>
         </div>
         <div style="margin-top: 20px">
-          {{#el-checkbox-group  model=this.checkedCitiesButton3 size="small" as |grp|}}
+          <ElCheckboxGroup @model={{this.checkedCitiesButton3}} @size="small" as |grp|>
             {{#each this.cityOptionsInt as |city|}}
               {{grp.button label=city disabled=(eq city 'Beijing') }}
             {{/each}}
-          {{/el-checkbox-group}}
+          </ElCheckboxGroup>
         </div>
         <div style="margin-top: 20px">
-          {{#el-checkbox-group  model=this.checkedCitiesButton4 size="mini" disabled=true as |grp|}}
+          <ElCheckboxGroup @model={{this.checkedCitiesButton4}} @size="mini" @disabled={{true}} as |grp|>
             {{#each this.cityOptionsInt as |city|}}
               {{grp.button label=city }}
             {{/each}}
-          {{/el-checkbox-group}}
+          </ElCheckboxGroup>
         </div>
-      {{/card.body}}
-    {{/el-card}}
+      </card.body>
+    </ElCard>
     <pre><code class="language-handlebars">&lt;div>
   \{{#el-checkbox-group  model=checkedCitiesButton1 as |grp|}}
     \{{#each cityOptionsInt as |city|}}
@@ -206,18 +206,18 @@ checkedCities: ['Shanghai', 'Beijing'],</code></pre>
 checkedCitiesButton2: ['Shanghai',],
 checkedCitiesButton3: ['Shanghai',],
 checkedCitiesButton4: [],</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 
 
 <h3>With borders</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
 
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
         <div>
           {{el-checkbox model=this.checked1 label="Option1" border=true }}
           {{el-checkbox model=this.checked2 label="Option2" border=true }}
@@ -227,19 +227,19 @@ checkedCitiesButton4: [],</code></pre>
           {{el-checkbox model=this.checked4 label="Option2" border=true  size="medium"}}
         </div>
         <div style="margin-top: 20px">
-          {{#el-checkbox-group model=this.checkboxGroup1 size="small" as |grp|}}
+          <ElCheckboxGroup @model={{this.checkboxGroup1}} @size="small" as |grp|>
             {{grp.checkbox label="Option1" border=true}}
             {{grp.checkbox label="Option2" border=true}}
-          {{/el-checkbox-group}}
+          </ElCheckboxGroup>
         </div>
         <div style="margin-top: 20px">
-          {{#el-checkbox-group model=this.checkboxGroup2 size="mini" disabled=true as |grp|}}
+          <ElCheckboxGroup @model={{this.checkboxGroup2}} @size="mini" @disabled={{true}} as |grp|>
             {{grp.checkbox label="Option1" border=true}}
             {{grp.checkbox label="Option2" border=true}}
-          {{/el-checkbox-group}}
+          </ElCheckboxGroup>
         </div>
-      {{/card.body}}
-    {{/el-card}}
+      </card.body>
+    </ElCard>
     <pre><code class="language-handlebars">&lt;div>
   \{{el-checkbox model=checked1 label="Option1" border=true }}
   \{{el-checkbox model=checked2 label="Option2" border=true }}
@@ -267,74 +267,74 @@ checked4: false,
 
 checkboxGroup1: [],
 checkboxGroup2: [],</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 
 
 <br><br><br><br>
 
 <h2>Checkbox Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-  {{#card.body}}
-    {{#el-table data=this.cbAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+  <card.body>
+    <ElTable @data={{this.cbAttributes}} as |t|>
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=250}}
       {{t.column prop="val" label="Accepted Values" width=250}}
       {{t.column prop="def" label="Default" width=75}}
-    {{/el-table}}
-  {{/card.body}}
-{{/el-card}}
+    </ElTable>
+  </card.body>
+</ElCard>
 
 <br><br><br><br>
 <h2>Checkbox Events</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-  {{#card.body}}
-    {{#el-table data=this.cbEvents  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+  <card.body>
+    <ElTable @data={{this.cbEvents}} as |t|>
       {{t.column prop="attribute" label="Event Name" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Parameters" width=250}}
-    {{/el-table}}
-  {{/card.body}}
-{{/el-card}}
+    </ElTable>
+  </card.body>
+</ElCard>
 
 <br><br><br><br>
 <h2>Checkbox-group Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-  {{#card.body}}
-    {{#el-table data=this.cbgAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+  <card.body>
+    <ElTable @data={{this.cbgAttributes}} as |t|>
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=250}}
       {{t.column prop="val" label="Accepted Values" width=250}}
       {{t.column prop="def" label="Default" width=75}}
-    {{/el-table}}
-  {{/card.body}}
-{{/el-card}}
+    </ElTable>
+  </card.body>
+</ElCard>
 
 
 <br><br><br><br>
 <h2>Checkbox-group Events</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-  {{#card.body}}
-    {{#el-table data=this.cbgEvents  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+  <card.body>
+    <ElTable @data={{this.cbgEvents}} as |t|>
       {{t.column prop="attribute" label="Event Name" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Parameters" width=250}}
-    {{/el-table}}
-  {{/card.body}}
-{{/el-card}}
+    </ElTable>
+  </card.body>
+</ElCard>
 <br><br><br><br>
 <h2>Checkbox-button Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-  {{#card.body}}
-    {{#el-table data=this.cbbAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+  <card.body>
+    <ElTable @data={{this.cbbAttributes}} as |t|>
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=250}}
       {{t.column prop="val" label="Accepted Values" width=250}}
       {{t.column prop="def" label="Default" width=75}}
-    {{/el-table}}
-  {{/card.body}}
-{{/el-card}}
+    </ElTable>
+  </card.body>
+</ElCard>

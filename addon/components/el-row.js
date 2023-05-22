@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import layout from './el-row';
-import {computed, get} from "@ember/object";
-import {htmlSafe} from '@ember/template';
+import { computed, get } from '@ember/object';
+import { htmlSafe } from '@ember/template';
 
 export default Component.extend({
   layout,
@@ -15,26 +15,25 @@ export default Component.extend({
   attributeBindings: ['style'],
 
   style: computed('gutter', function () {
-    if (get(this, 'gutter')) {
-      let gutter = (get(this, 'gutter') / 2) + 'px';
+    if (this.gutter) {
+      let gutter = this.gutter / 2 + 'px';
       return htmlSafe(`margin-left: -${gutter}; margin-right: -${gutter}`);
     }
-    return htmlSafe("");
+    return htmlSafe('');
   }),
 
-  getClassName: computed('justify', 'align', function () {
-
+  getClassName: computed('align', 'justify', 'type', function () {
     let classNames = '';
 
-    if (get(this, 'justify') !== 'start') {
-      classNames += ` is-justify-${get(this, 'justify')}`;
+    if (this.justify !== 'start') {
+      classNames += ` is-justify-${this.justify}`;
     }
 
-    if (get(this, 'align') !== 'top') {
-      classNames += ` is-align-${get(this, 'align')}`;
+    if (this.align !== 'top') {
+      classNames += ` is-align-${this.align}`;
     }
 
-    if (get(this, 'type') === 'flex') {
+    if (this.type === 'flex') {
       classNames += ` el-row--flex`;
     }
 

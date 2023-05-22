@@ -2,60 +2,60 @@
 <p>Switch is used for switching between two opposing states.</p>
 <div>
 <h3>Basic usage</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header bodyStyle="padding:4px 0px 4px 20PX;"}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @bodyStyle="padding:4px 0px 4px 20PX;">
 <p>Bind model to a <code class="code">Boolean</code> typed variable. The <code class="code">activeColor</code> and <code class="code">inactiveColor</code> attribute decides the background color in two states</p>
-{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+</card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
         {{el-switch }}
-        {{#el-switch  activeColor="#13ce66" inactiveColor="#ff4949" model=true}}{{/el-switch}}
-      {{/card.body}}
-    {{/el-card}}
+        <ElSwitch @activeColor="#13ce66" @inactiveColor="#ff4949" @model={{true}}></ElSwitch>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-switch }}
 \{{#el-switch  activeColor="#13ce66" inactiveColor="#ff4949" model=true}}\{{/el-switch}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Text description</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-      {{#el-switch  activeText="Pay by month" inactiveText="Pay by year"}}{{/el-switch}}<br><br><br>
-      {{#el-switch  model=true activeColor="#13ce66" inactiveColor="#ff4949" activeText="Pay by month" inactiveText="Pay by year"}}{{/el-switch}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+      <ElSwitch @activeText="Pay by month" @inactiveText="Pay by year"></ElSwitch><br><br><br>
+      <ElSwitch @model={{true}} @activeColor="#13ce66" @inactiveColor="#ff4949" @activeText="Pay by month" @inactiveText="Pay by year"></ElSwitch>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-switch  activeText="Pay by month" inactiveText="Pay by year"}}\{{/el-switch}}
 \{{#el-switch  model=true activeColor="#13ce66" inactiveColor="#ff4949" activeText="Pay by month" inactiveText="Pay by year"}}\{{/el-switch}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Disabled</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
-        {{#el-switch model=true disabled=true}}{{/el-switch}}&nbsp;&nbsp;
-        {{#el-switch model=false disabled=true}}{{/el-switch}}
-      {{/card.body}}
-    {{/el-card}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
+        <ElSwitch @model={{true}} @disabled={{true}}></ElSwitch>&nbsp;&nbsp;
+        <ElSwitch @model={{false}} @disabled={{true}}></ElSwitch>
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{#el-switch model=true disabled=true}}\{{/el-switch}}
 \{{#el-switch model=false disabled=true}}\{{/el-switch}}</code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 </div>
 
 <h2>Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-    {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+    <ElTable @data={{this.tableAttributes}} as |t|>
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description" width=300}}
       {{t.column prop="type" label="Type" width=120}}
       {{t.column prop="val" label="Accepted Values" width=130}}
       {{t.column prop="def" label="Default" width=75}}
-    {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+    </ElTable>
+</card.body>
+</ElCard>

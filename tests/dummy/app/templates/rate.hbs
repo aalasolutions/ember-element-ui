@@ -5,74 +5,74 @@
 <h3>Used for rating</h3>
 <div>
 <h3>Basic usage</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="Default and Color for different levels"}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="Default and Color for different levels"></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
        {{el-rate value=this.value1}}
        {{el-rate value=this.value2 colors=this.colors}}
 
-      {{/card.body}}
-    {{/el-card}}
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-rate value=value1}}
 \{{el-rate value=this.value2 colors=this.colors}}
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>With text</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="Using text to indicate rating score"}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="Using text to indicate rating score"></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
        {{el-rate texts=this.texts showText=true textColor="green"}}
-      {{/card.body}}
-    {{/el-card}}
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-rate texts=texts showText=true}}
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>More icons</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="You can use different icons to distinguish different rate components."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="You can use different icons to distinguish different rate components."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
        {{el-rate colors=this.colors2 iconClasses=this.iconClasses  voidIconClass="el-icon-circle-check" }}
-      {{/card.body}}
-    {{/el-card}}
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-rate colors=colors iconClasses=iconClasses  voidIconClass="el-icon-circle-check" }}
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 <h3>Read-only</h3>
-{{#el-card class="box-card" shadow="hover" as |card|}}
-{{#card.header title="Read-only Rate is for displaying rating score. Half star is supported."}}{{/card.header}}
-  {{#card.body}}
-    {{#el-card class="box-card" shadow="naver" as |card|}}
-      {{#card.body}}
+<ElCard @class="box-card" @shadow="hover" as |card|>
+<card.header @title="Read-only Rate is for displaying rating score. Half star is supported."></card.header>
+  <card.body>
+    <ElCard @class="box-card" @shadow="naver" as |card|>
+      <card.body>
        {{el-rate disabled=true value=2.5 showScore=true allowHalf=true }}
-      {{/card.body}}
-    {{/el-card}}
+      </card.body>
+    </ElCard>
 <pre><code class="language-handlebars">\{{el-rate disabled=true value=2.5 showScore=true allowHalf=true}}
 </code></pre>
-  {{/card.body}}
-{{/el-card}}
+  </card.body>
+</ElCard>
 
 </div>
 <h2>Attributes</h2>
-{{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
-{{#card.body}}
-  {{#el-table data=this.tableAttributes  as |t|}}
+<ElCard @class="box-card" @shadow="hover" @bodyStyle="padding:0px;" as |card|>
+<card.body>
+  <ElTable @data={{this.tableAttributes}} as |t|>
     {{t.column prop="attribute" label="Attribute" width=165}}
     {{t.column prop="desc" label="Description"}}
     {{t.column prop="type" label="Type" width=100}}
     {{t.column prop="val" label="Accepted Values" width=90}}
     {{t.column prop="def" label="Default" width=350}}
-  {{/el-table}}
-{{/card.body}}
-{{/el-card}}
+  </ElTable>
+</card.body>
+</ElCard>

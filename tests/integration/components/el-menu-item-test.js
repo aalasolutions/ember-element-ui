@@ -1,12 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {click, render} from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | el-menu-item', function(hooks) {
+module('Integration | Component | el-menu-item', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
@@ -16,20 +16,15 @@ module('Integration | Component | el-menu-item', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      {{#el-menu-item}}
+      <ElMenuItem>
         template block text
-      {{/el-menu-item}}
+      </ElMenuItem>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
-
-
-
   });
 
-
-  test('click event', async function(assert) {
-
+  test('click event', async function (assert) {
     this.set('submenu', true);
 
     this.set('externalAction', (actual) => {
@@ -39,9 +34,7 @@ module('Integration | Component | el-menu-item', function(hooks) {
     await render(hbs`{{el-menu-item submenu=submenu action=externalAction}}`);
     await click('.el-submenu');
 
-
     await render(hbs`{{el-menu-item submenu=submenu}}`);
     await click('.el-submenu');
-
   });
 });
