@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-notification-container';
+import layout from './el-notification-container';
 import {inject as service} from '@ember/service';
 import {get, set} from '@ember/object';
 

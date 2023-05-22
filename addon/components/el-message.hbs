@@ -1,0 +1,12 @@
+{{#if this.messageObj.iconClass}}
+  <i class="el-message__icon {{this.messageObj.iconClass}} "></i>
+{{else}}
+  <i class={{this.typeClass}}></i>
+{{/if}}
+
+<p class="el-message__content">{{ this.messageHTML }}</p>
+
+{{#if this.messageObj.showClose}}
+  <i class="el-message__closeBtn el-icon-close" {{action "close"}} role="button">
+  </i>
+{{/if}}

@@ -1,8 +1,8 @@
 import Component from '@ember/component';
-// import layout from '../templates/components/el-radio-input';
+// import layout from './el-radio-input';
 import { computed } from '@ember/object';
 import { isEqual } from '@ember/utils';
-import { run } from '@ember/runloop';
+import { once } from '@ember/runloop';
 
 
 export default Component.extend({
@@ -58,7 +58,7 @@ export default Component.extend({
 
     if (model !== value) {
       // this.set('model', value); // violates DDAU
-      run.once(this, 'sendChangedAction');
+      once(this, 'sendChangedAction');
     }
   }
 });

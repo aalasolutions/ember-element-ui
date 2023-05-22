@@ -1,0 +1,11 @@
+{{#if icon}}<i class={{icon}}></i>{{/if}}
+
+{{#if (has-block)}}
+  <span>
+    {{yield}}
+  </span>
+{{else}}
+  <span> {{title}} </span>
+{{/if}}
+
+

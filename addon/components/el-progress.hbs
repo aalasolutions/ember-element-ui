@@ -1,0 +1,52 @@
+{{! template-lint-disable }}
+{{#if this.isTypeLine}}
+  <div class="el-progress-bar">
+    <div class="el-progress-bar__outer" style={{this.strokeWidthStyle}}>
+      <div class="el-progress-bar__inner" style={{this.barStyle}}>
+        <div class="el-progress-bar__innerText">
+          {{#if this.showTextInside}}
+            {{this.percentage}}%
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+
+  <div class="el-progress-circle" style={{this.circleStyle}}>
+    <svg viewBox="0 0 100 100">
+      <path
+        class="el-progress-circle__track"
+        d={{this.trackPath}}
+        stroke="#e5e9f2"
+        stroke-width={{this.relativeStrokeWidth}}
+        fill="none"
+      >
+      </path>
+      <path
+        class="el-progress-circle__path"
+        d={{this.trackPath}}
+        stroke-linecap="round"
+        stroke={{this.stroke}}
+        stroke-width={{this.relativeStrokeWidth}}
+        fill="none"
+        style={{this.circlePathStyle}}
+      >
+      </path>
+    </svg>
+  </div>
+{{/if}}
+
+{{#if this.progressText}}
+  <div class="el-progress__text" style={{this.progressTextStyle}}>
+    {{#if this.showStatus}}
+      {{this.percentage}}%
+    {{else}}
+      {{#if this.statusIsText}}
+        {{yield}}
+      {{else}}
+        <i class={{this.iconClass}}></i>
+      {{/if}}
+    {{/if}}
+  </div>
+{{/if}}

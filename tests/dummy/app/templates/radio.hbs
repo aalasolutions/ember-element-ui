@@ -7,12 +7,12 @@
   {{#card.body}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-        {{#el-radio model=value item="gender" label="Male" action=( action "checkVal") }}Male{{/el-radio}}
-        {{#el-radio model=value item="gender" label="Female" action=( action "checkVal") }}Female{{/el-radio}}
+        {{#el-radio model=this.value item="gender" label="Male" action=( action "checkVal") }}Male{{/el-radio}}
+        {{#el-radio model=this.value item="gender" label="Female" action=( action "checkVal") }}Female{{/el-radio}}
       {{/card.body}}
     {{/el-card}}
-<pre><code class="language-handlebars">\{{#el-radio model=value item="gender" label="Male" action=( action "checkVal") }}Male\{{/el-radio}}
-\{{#el-radio model=value item="gender" label="Female" action=( action "checkVal") }}Female\{{/el-radio}}</code></pre>
+<pre><code class="language-handlebars">\{{#el-radio model=this.value item="gender" label="Male" action=( action "checkVal") }}Male\{{/el-radio}}
+\{{#el-radio model=this.value item="gender" label="Female" action=( action "checkVal") }}Female\{{/el-radio}}</code></pre>
   {{/card.body}}
 {{/el-card}}
 
@@ -22,8 +22,8 @@
   {{#card.body}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-        {{#el-radio model=framework item="framework"  label="React" action=( action "checkVal") disabled=true}}React{{/el-radio}}
-        {{#el-radio model=framework item="framework" label="Ember" action=( action "checkVal") disabled=true }}Ember{{/el-radio}}
+        {{#el-radio model=this.framework item="framework"  label="React" action=( action "checkVal") disabled=true}}React{{/el-radio}}
+        {{#el-radio model=this.framework item="framework" label="Ember" action=( action "checkVal") disabled=true }}Ember{{/el-radio}}
       {{/card.body}}
     {{/el-card}}
 <pre><code class="language-handlebars">\{{#el-radio model=framework item="framework"  label="React" action=( action "checkVal") disabled=true }}React\{{/el-radio}}
@@ -38,13 +38,13 @@
   {{#card.body}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-        {{#el-radio-group model=subject as |grp|}}
-          {{#grp.option  item="subject" label="Math" action=( action "checkVal") }}Math{{/grp.option}}
-          {{#grp.option  item="subject" label="English" action=( action "checkVal") }}English{{/grp.option}}
+        {{#el-radio-group model=this.subject as |grp|}}
+          {{#grp.option item="subject" label="Math" action=( action "checkVal") }}Math{{/grp.option}}
+          {{#grp.option item="subject" label="English" action=( action "checkVal") }}English{{/grp.option}}
         {{/el-radio-group}}
       {{/card.body}}
     {{/el-card}}
-<pre><code class="language-handlebars">\{{#el-radio-group model=subject}}
+<pre><code class="language-handlebars">\{{#el-radio-group model=this.subject}}
   \{{#grp.option  item="subject" label="Math" action=( action "checkVal") }}Math\{{/grp.option}}
   \{{#grp.option  item="subject" label="English" action=( action "checkVal") }}English\{{/grp.option}}
 \{{/el-radio-group}}</code></pre>
@@ -58,8 +58,8 @@
   {{#card.body}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-        {{#el-radio-button model=sports item="sports" label="Cricket" action=( action "checkVal") }}Cricket{{/el-radio-button}}
-        {{#el-radio-button model=sports item="sports" label="Football" action=( action "checkVal") }}Football{{/el-radio-button}}
+        {{#el-radio-button model=this.sports item="sports" label="Cricket" action=( action "checkVal") }}Cricket{{/el-radio-button}}
+        {{#el-radio-button model=this.sports item="sports" label="Football" action=( action "checkVal") }}Football{{/el-radio-button}}
       {{/card.body}}
     {{/el-card}}
 <pre><code class="language-handlebars">\{{#el-radio-button model=sports item="sports" label="Cricket" action=( action "checkVal") }}Cricket\{{/el-radio-button}}
@@ -73,8 +73,8 @@
   {{#card.body}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-      {{#el-radio model=IntSports item="IntSports" label="Hockey" action=( action "checkVal") border=true }}Hockey{{/el-radio}}
-      {{#el-radio model=IntSports item="IntSports" label="Tenis" action=( action "checkVal") border=true}}Tenis{{/el-radio}}
+      {{#el-radio model=this.IntSports item="IntSports" label="Hockey" action=( action "checkVal") border=true }}Hockey{{/el-radio}}
+      {{#el-radio model=this.IntSports item="IntSports" label="Tenis" action=( action "checkVal") border=true}}Tenis{{/el-radio}}
       {{/card.body}}
     {{/el-card}}
 <pre><code class="language-handlebars">\{{#el-radio model=sports item="sports" label="Hockey" action=( action "checkVal") border=true}}Hockey\{{/el-radio}}
@@ -86,7 +86,7 @@
 <h2>Attributes</h2>
 {{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
 {{#card.body}}
-  {{#el-table data=tableAttributes  as |t|}}
+  {{#el-table data=this.tableAttributes  as |t|}}
     {{t.column prop="attribute" label="Attribute" width=150}}
     {{t.column prop="desc" label="Description"}}
     {{t.column prop="type" label="Type" width=100}}

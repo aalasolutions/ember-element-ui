@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-checkbox-group';
+import layout from './el-checkbox-group';
 
 export default Component.extend({
   layout,

@@ -1,0 +1,84 @@
+<div class="el-message-box {{this.getClassNameForBox}}">
+
+  {{#if this.messageObj.title}}
+    <div class="el-message-box__header">
+      <div class="el-message-box__title">
+        {{#if this.isIconCenter}}
+          <div class="el-message-box__status {{this.icon}}"></div>
+        {{/if}}
+        <span>{{ this.messageObj.title }}</span>
+      </div>
+      {{#if this.messageObj.showClose}}
+        <button
+          type="button"
+          class="el-message-box__headerbtn"
+          aria-label="Close"
+          {{action "close"}}
+        >
+          <i class="el-message-box__close el-icon-close"></i>
+        </button>
+      {{/if}}
+    </div>
+  {{/if}}
+
+
+  <div class="el-message-box__content">
+    {{#if this.isIconCenter2}}
+      <div class="el-message-box__status {{this.icon}}"></div>
+    {{/if}}
+    {{#if this.messageObj.message}}
+      <div class="el-message-box__message">
+        {{ this.messageObj.message }}
+      </div>
+    {{/if}}
+    {{#if this.messageObj.showInput}}
+      <div class="el-message-box__input">
+        {{#el-input
+          value=this.messageObj.inputValue
+          type=this.messageObj.inputType
+          placeholder=this.messageObj.inputPlaceholder
+          customClass=this.inputErrorClass
+          ref="input"
+        }}
+
+        {{/el-input}}
+        {{!-- todo: @keydown.enter.native="handleInputEnter"--}}
+
+        <div class="el-message-box__errormsg">
+          {{ this.messageObj.editorErrorMessage }}
+        </div>
+
+      </div>
+    {{/if}}
+  </div>
+  <div class="el-message-box__btns">
+    {{#if this.messageObj.showCancelButton}}
+      {{#el-button
+        loading=this.messageObj.cancelButtonLoading
+        class=this.cancelButtonClasses
+        round=this.messageObj.roundButton
+        size="small"
+        action=(action "handleAction" "cancel")
+      }}
+
+        {{ this.messageObj.cancelButtonText  }}
+        {{!--@click.native="handleAction('cancel')"--}}
+        {{!--@keydown.enter="handleAction('cancel')"--}}
+      {{/el-button}}
+    {{/if}}
+    {{#if this.messageObj.showConfirmButton}}
+      {{#el-button
+        loading=this.messageObj.confirmButtonLoading
+        ref="confirm"
+        class=this.confirmButtonClasses
+        round=this.messageObj.roundButton
+        action=(action "handleAction" "confirm")
+        size="small"
+      }}
+        {{!--@click.native="handleAction('confirm')"--}}
+        {{!--@keydown.enter="handleAction('confirm')"--}}
+        {{ this.messageObj.confirmButtonText }}
+      {{/el-button}}
+    {{/if}}
+  </div>
+</div>

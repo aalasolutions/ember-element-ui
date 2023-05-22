@@ -1,11 +1,11 @@
 import Service from '@ember/service';
-import {assign, merge} from '@ember/polyfills';
+// import {assign, merge} from '@ember/polyfills';
 import {A} from '@ember/array';
 import {isEmpty} from '@ember/utils';
 import EmberObject, {set, get} from '@ember/object';
 import {later, cancel} from '@ember/runloop';
 
-const messageAssign = assign || merge;
+// const messageAssign = assign || merge;
 export default Service.extend({
 
   messages: A(),
@@ -44,28 +44,28 @@ export default Service.extend({
 
   // Helper methods for each type of message
   error(message, options) {
-    return this.addMessage(messageAssign({
+    return this.addMessage(Object.assign({
       message: message,
       type: 'error'
     }, options));
   },
 
   success(message, options) {
-    return this.addMessage(messageAssign({
+    return this.addMessage(Object.assign({
       message: message,
       type: 'success'
     }, options));
   },
 
   info(message, options) {
-    return this.addMessage(messageAssign({
+    return this.addMessage(Object.assign({
       message: message,
       type: 'info'
     }, options));
   },
 
   warning(message, options) {
-    return this.addMessage(messageAssign({
+    return this.addMessage(Object.assign({
       message: message,
       type: 'warning'
     }, options));

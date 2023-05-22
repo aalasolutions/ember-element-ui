@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-badge';
+import layout from './el-badge';
 import {computed, get} from "@ember/object";
 
 export default Component.extend({

@@ -1,6 +1,7 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-checkbox';
+import layout from './el-checkbox';
 import {computed, set} from "@ember/object";
+import { or } from '@ember/object/computed';
 
 export default Component.extend({
   layout,
@@ -34,7 +35,7 @@ export default Component.extend({
   value: null,
   model: null,
 
-  isLabelProvided: computed.or('falseLabel', 'trueLabel'),
+  isLabelProvided: or('falseLabel', 'trueLabel'),
 
   init() {
     this._super(...arguments);

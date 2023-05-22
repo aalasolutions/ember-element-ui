@@ -1,7 +1,8 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-message-box';
+import layout from './el-message-box';
 import { computed, get, set } from "@ember/object";
 import {inject as service} from '@ember/service';
+import {and} from "@ember/object/computed";
 
 export default Component.extend({
   layout,
@@ -51,7 +52,7 @@ export default Component.extend({
     return get(this, 'messageObj.iconClass') || (type && typeMap[type] ? `el-icon-${ typeMap[type] }` : '');
   }),
 
-  isIconCenter: computed.and('messageObj.center', 'icon'),
+  isIconCenter: and('messageObj.center', 'icon'),
   isIconCenter2: computed('messageObj.{center,message}', 'icon', function(){
     let icon = get(this, 'icon');
     let center = get(this, 'messageObj.center');

@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-input-append';
+import layout from './el-input-append';
 
 export default Component.extend({
   layout,

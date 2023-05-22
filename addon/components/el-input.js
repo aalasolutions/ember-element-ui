@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-input';
+import layout from './el-input';
 import {computed, get, set} from "@ember/object";
 
 export default Component.extend({

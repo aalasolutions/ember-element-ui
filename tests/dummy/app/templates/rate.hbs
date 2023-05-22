@@ -10,13 +10,13 @@
   {{#card.body}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-       {{el-rate value=value1}}
-       {{el-rate value=value2 colors=colors}}
+       {{el-rate value=this.value1}}
+       {{el-rate value=this.value2 colors=this.colors}}
 
       {{/card.body}}
     {{/el-card}}
 <pre><code class="language-handlebars">\{{el-rate value=value1}}
-\{{el-rate value=value2 colors=colors}}
+\{{el-rate value=this.value2 colors=this.colors}}
 </code></pre>
   {{/card.body}}
 {{/el-card}}
@@ -27,7 +27,7 @@
   {{#card.body}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-       {{el-rate texts=texts showText=true textColor="green"}}
+       {{el-rate texts=this.texts showText=true textColor="green"}}
       {{/card.body}}
     {{/el-card}}
 <pre><code class="language-handlebars">\{{el-rate texts=texts showText=true}}
@@ -41,7 +41,7 @@
   {{#card.body}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-       {{el-rate colors=colors2 iconClasses=iconClasses  voidIconClass="el-icon-circle-check" }}
+       {{el-rate colors=this.colors2 iconClasses=this.iconClasses  voidIconClass="el-icon-circle-check" }}
       {{/card.body}}
     {{/el-card}}
 <pre><code class="language-handlebars">\{{el-rate colors=colors iconClasses=iconClasses  voidIconClass="el-icon-circle-check" }}
@@ -67,7 +67,7 @@
 <h2>Attributes</h2>
 {{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
 {{#card.body}}
-  {{#el-table data=tableAttributes  as |t|}}
+  {{#el-table data=this.tableAttributes  as |t|}}
     {{t.column prop="attribute" label="Attribute" width=165}}
     {{t.column prop="desc" label="Description"}}
     {{t.column prop="type" label="Type" width=100}}

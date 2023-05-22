@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-table-column';
+import layout from './el-table-column';
 // import objectAssign from '../utils/merge';
 // import { getPropByPath } from '../utils/util';
 import {set} from "@ember/object";

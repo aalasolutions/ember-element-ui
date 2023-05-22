@@ -1,7 +1,9 @@
 import Component  from '@ember/component';
-import layout     from '../templates/components/el-switch';
+import layout     from './el-switch';
 import {computed} from "@ember/object";
 import {htmlSafe} from '@ember/template';
+import { or } from '@ember/object/computed';
+import {and} from "@ember/object/computed";
 
 export default Component.extend({
   layout,
@@ -31,22 +33,22 @@ export default Component.extend({
     return !this.get('model');
   }),
 
-  isInactive: computed.or('inactiveIconClass', 'inactiveText'),
+  isInactive: or('inactiveIconClass', 'inactiveText'),
 
   notInactiveIconClass: computed('inactiveIconClass', function () {
     return !this.get('inactiveIconClass');
   }),
 
-  isInactiveText: computed.and('notInactiveIconClass', 'inactiveText'),
+  isInactiveText: and('notInactiveIconClass', 'inactiveText'),
 
 
-  isActive: computed.or('activeIconClass', 'activeText'),
+  isActive: or('activeIconClass', 'activeText'),
 
   notActiveIconClass: computed('isActive', function () {
     return !this.get('activeIconClass');
   }),
 
-  isActiveText: computed.and('notActiveIconClass', 'activeText'),
+  isActiveText: and('notActiveIconClass', 'activeText'),
 
 
   spanStyle: computed("isChecked", "inactiveColor", "activeColor", 'width', function () {

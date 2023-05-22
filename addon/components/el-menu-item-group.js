@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-menu-item-group';
+import layout from './el-menu-item-group';
 
 export default Component.extend({
   layout

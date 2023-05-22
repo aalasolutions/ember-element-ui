@@ -1,7 +1,8 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-progress';
+import layout from './el-progress';
 import {computed, get} from "@ember/object";
 import {htmlSafe} from '@ember/template';
+import {and, not, equal} from "@ember/object/computed";
 
 export default Component.extend({
   layout,
@@ -89,13 +90,13 @@ export default Component.extend({
     return classNames;
   }),
 
-  showTextInside: computed.and('showText', 'textInside'),
-  showStatus: computed.not('status'),
-  statusIsText: computed.equal('status', 'text'),
+  showTextInside: and('showText', 'textInside'),
+  showStatus: not('status'),
+  statusIsText: equal('status', 'text'),
 
 
-  isTypeLine: computed.equal('type', 'line'),
-  isTypeCircle: computed.equal('type', 'line'),
+  isTypeLine: equal('type', 'line'),
+  isTypeCircle: equal('type', 'line'),
 
   progressText: computed('textInside', 'showText', function () {
     return !get(this, 'textInside') && get(this, 'showText');

@@ -1,0 +1,10 @@
+{{#each this.messages as |message|}}
+  {{el-message messageObj=message}}
+{{/each}}
+
+
+{{#if this.messagesBox}}
+  {{#each this.messagesBox as |message|}}
+    {{el-message-box messageObj = message }}
+  {{/each}}
+{{/if}}

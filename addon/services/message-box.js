@@ -1,12 +1,12 @@
 import Service from '@ember/service';
-import {assign, merge} from '@ember/polyfills';
+// import {assign, merge} from '@ember/polyfills';
 import {A} from '@ember/array';
 import {isEmpty} from '@ember/utils';
 import EmberObject, {set, get} from '@ember/object';
 import {later} from '@ember/runloop';
 import {htmlSafe} from '@ember/template';
 
-const messageAssign = assign || merge;
+// const messageAssign = assign || merge;
 export default Service.extend({
 
   messages: A(),
@@ -72,13 +72,13 @@ export default Service.extend({
 
   alert(message, title, options) {
     // return new Promise((resolve, reject) => {
-      this.addMessage(messageAssign({message, title, type: 'alert',}, options));
+      this.addMessage(Object.assign({message, title, type: 'alert',}, options));
     // });
   },
 
   confirm(message, title, options) {
     return new Promise((resolve, reject) => {
-      this.addMessage(messageAssign({
+      this.addMessage(Object.assign({
         message,
         title,
         showCancelButton: true,

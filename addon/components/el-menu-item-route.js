@@ -1,5 +1,5 @@
 // import Component from '@ember/component';
-import layout from '../templates/components/el-menu-item-route';
+import layout from './el-menu-item-route';
 import {computed, get, set} from "@ember/object";
 import LinkComponent from '@ember/routing/link-component';
 

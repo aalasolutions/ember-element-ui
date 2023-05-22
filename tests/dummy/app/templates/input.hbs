@@ -6,9 +6,9 @@
   {{#card.body}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-        {{#el-input placeholder="Please input" type="" value=value customClass="input-width"}}{{/el-input}}
-        {{#if value.length}}
-          <br><br>&nbsp;&nbsp;{{value}}
+        {{#el-input placeholder="Please input" type="" value=this.value customClass="input-width"}}{{/el-input}}
+        {{#if this.value.length}}
+          <br><br>&nbsp;&nbsp;{{this.value}}
         {{/if}}
       {{/card.body}}
     {{/el-card}}
@@ -65,7 +65,7 @@
 <h2>Attributes</h2>
 {{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
 {{#card.body}}
-    {{#el-table data=tableAttributes  as |t|}}
+    {{#el-table data=this.tableAttributes  as |t|}}
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=100}}

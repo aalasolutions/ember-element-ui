@@ -1,0 +1,21 @@
+<span
+  class="el-radio__input {{if this.isChecked " is-checked "}} {{if this.disabled " is-disabled "}}"
+>
+  <span class="el-radio__inner">
+  </span>
+  {{el-radio-input
+    value=this.label
+    model=this.model
+    name=this.name
+    item=this.item
+    disabled=this.disabled
+    changed=(action "changed")
+    class="el-radio__original"
+  }}
+</span>
+{{!--<span class="el-radio__label" @keydown.stop>--}}
+<span class="el-radio__label">
+  {{yield}}
+  {{!--<template v-if="!$slots.default">{{label}}</template>--}}
+</span>
+

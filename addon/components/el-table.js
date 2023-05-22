@@ -1,6 +1,8 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-table';
+import layout from './el-table';
 import {computed, get, set} from "@ember/object";
+import { or } from '@ember/object/computed';
+
 // import tableStore from "../utils/table-store";
 export default Component.extend({
   layout,
@@ -50,8 +52,8 @@ export default Component.extend({
   ],
 
 
-  // isGroup: computed.or('border', 'isGroup'),
-  isBorder: computed.or('border', 'isGroup'),
+  // isGroup: or('border', 'isGroup'),
+  isBorder: or('border', 'isGroup'),
 
   layoutBodyWidth: computed('layout.bodyWidth', function(){
     return 'width: '+ get(this,'layout.bodyWidth') ? get(this,'layout.bodyWidth') + 'px' : '';

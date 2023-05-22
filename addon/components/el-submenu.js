@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-submenu';
+import layout from './el-submenu';
 
 export default Component.extend({
   layout,

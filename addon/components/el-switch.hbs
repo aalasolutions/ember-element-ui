@@ -1,0 +1,34 @@
+{{! template-lint-disable }}
+<span class="el-switch {{if this.isChecked "is-checked"}} {{if this.disabled "is-disabled"}}" role="switch">
+  {{input
+    type="checkbox"
+    checked=this.model
+    class="el-switch__input"
+    disabled=this.disabled
+  }}
+
+  {{#if this.isInactive}}
+    <span class="el-switch__label el-switch__label--left {{if this.notChecked "is-active"}}">
+      {{#if this.inactiveIconClass }}
+        <i class={{this.inactiveIconClass}}></i>
+      {{/if}}
+      {{#if this.isInactiveText }}
+        <span aria-hidden={{this.isChecked}}>{{ this.inactiveText }}</span>
+      {{/if}}
+    </span>
+  {{/if}}
+  <span class="el-switch__core" ref="core" style={{this.spanStyle}} {{! template-lint-disable }}></span>
+
+  {{#if this.isActive}}
+    <span class="el-switch__label el-switch__label--right  {{if this.isChecked "is-active"}}">
+      {{#if this.activeIconClass }}
+        <i class={{this.activeIconClass}}></i>
+      {{/if}}
+      {{#if this.isActiveText }}
+        <span aria-hidden={{this.notChecked}}>{{ this.activeText }}</span>
+      {{/if}}
+    </span>
+  {{/if}}
+</span>
+
+

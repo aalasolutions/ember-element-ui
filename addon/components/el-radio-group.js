@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-radio-group';
+import layout from './el-radio-group';
 
 export default Component.extend({
   layout,

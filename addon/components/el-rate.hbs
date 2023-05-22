@@ -1,0 +1,24 @@
+{{! template-lint-disable  no-inline-styles block-indentation no-invalid-interactive}}
+<div class="el-rate" role="slider" onkeyup={{action "handleKey" }} aria-valuetext={{this.text}} aria-valuemin="0" aria-valuemax={{this.max}} tabindex="0"
+     aria-valuenow={{this.currentValue}}>
+  {{#each this.maxNumberOfTimes as |item key|}}<span class="el-rate__item" onmouseMove={{action "setCurrentValue" item}}
+                                                onmouseLeave={{action "resetCurrentValue" }}
+                                                onClick={{ action "selectValue" item }}
+                                                key={{key}}
+                                                style={{this.spanCursor}}
+  >
+      <i class="el-rate__icon {{ rating-class-helper item this.classes false this.rateDisabled this._defaultColor this.value this.currentValue
+                                                     key}}"
+
+         style={{rating-class-helper item this.classes true  this.rateDisabled this._defaultColor this.lowThreshold this.highThreshold this.max this.colors
+                                     this.currentValue this.value this.disabledVoidColor}} >
+        {{#if (rating-class-decimal-icon item this.allowHalf this.pointerAtLeftHalf this.currentValue this.rateDisabled)}}
+          <i style={{this.decimalStyle}} class="el-rate__decimal {{this.decimalIconClass}}"> </i>
+        {{/if}}
+      </i>
+    </span>{{/each}}
+  {{#if this.showTextScore}}
+    <span class="el-rate__text" style={{this.textSpanStyle}}>{{ this.text }}</span>
+  {{/if}}
+
+</div>

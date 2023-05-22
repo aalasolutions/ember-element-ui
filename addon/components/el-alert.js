@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-alert';
+import layout from './el-alert';
 import {computed, get, set} from "@ember/object";
 import transition from "../utils/transition";
 
@@ -59,6 +59,7 @@ export default Component.extend({
 
   actions: {
     close() {
+      debugger;
       let e = this.element;
 
       let transitionEvent = transition('animation');

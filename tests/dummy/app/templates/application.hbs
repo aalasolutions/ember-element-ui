@@ -41,20 +41,20 @@
 {{/el-header}}
 
 {{#el-container}}
-  {{#el-aside collapse=collapseStatus}}
+  {{#el-aside collapse=this.collapseStatus}}
     <div style="height: 92vh; overflow: auto;">
     <ul class="side-nav">
       <li class="nav-item"><a class="not-done">Development</a>
         <ul class="pure-menu-list sub-nav" style="height: auto;">
           <li class="nav-item">
-            {{#link-to 'index'}}
+            <LinkTo @route="index">
               Introduction
-            {{/link-to}}
+            </LinkTo>
           </li>
           <li class="nav-item">
-            {{#link-to 'installation'}}
+            <LinkTo @route='installation'>
               Installation
-            {{/link-to}}
+            </LinkTo>
           </li>
         </ul>
       </li>
@@ -63,10 +63,10 @@
           <div class="nav-group__title">Basic</div>
           <ul class="pure-menu-list" style="height: auto;">
             <li class="nav-item">
-              {{#link-to "layouts"}}Layout{{/link-to}}
+              <LinkTo @route="layouts">Layout</LinkTo>
             </li>
             <li class="nav-item">
-              {{#link-to "layout-container"}}Layout Container{{/link-to}}
+              <LinkTo @route="layout-container">Layout Container</LinkTo>
             </li>
             <li class="nav-item">
               <a class="not-done">Color</a>
@@ -78,10 +78,10 @@
               <a class="not-done">Border</a>
             </li>
             <li class="nav-item">
-              {{#link-to "icons"}}Icon{{/link-to}}
+              <LinkTo @route="icons">Icon</LinkTo>
             </li>
             <li class="nav-item">
-              {{#link-to "buttons"}}Button{{/link-to}}
+              <LinkTo @route="buttons">Button</LinkTo>
             </li>
             <li class="nav-item">
               <a class="not-done">Link</a>
@@ -92,13 +92,13 @@
           <div class="nav-group__title">Form</div>
           <ul class="pure-menu-list" style="height: auto;">
             <li class="nav-item">
-              {{#link-to "radio"}}Radio{{/link-to}}
+              <LinkTo @route="radio">Radio</LinkTo>
             </li>
             <li class="nav-item">
-              {{#link-to "checkbox"}}Checkbox{{/link-to}}
+              <LinkTo @route="checkbox">Checkbox</LinkTo>
             </li>
             <li class="nav-item">
-              {{#link-to "input"}}Input{{/link-to}}
+              <LinkTo @route="input">Input</LinkTo>
             </li>
             <li class="nav-item">
               <a class="not-done">InputNumber</a>
@@ -110,7 +110,7 @@
               <a class="not-done">Cascader</a>
             </li>
             <li class="nav-item">
-              {{#link-to "switch"}}Switch{{/link-to}}
+              <LinkTo @route="switch">Switch</LinkTo>
             </li>
             <li class="nav-item">
               <a class="not-done">Slider</a>
@@ -128,7 +128,7 @@
               <a class="not-done">Upload</a>
             </li>
             <li class="nav-item">
-              {{#link-to "rate"}}Rate{{/link-to}}
+              <LinkTo @route="rate">Rate</LinkTo>
             </li>
             <li class="nav-item">
               <a class="not-done">ColorPicker</a>
@@ -148,10 +148,10 @@
               <a class="not-done">Table</a>
             </li>
             <li class="nav-item">
-              {{#link-to "tags"}}Tag{{/link-to}}
+              <LinkTo @route="tags">Tag</LinkTo>
             </li>
             <li class="nav-item">
-              {{#link-to "progress"}}Progress{{/link-to}}
+              <LinkTo @route="progress">Progress</LinkTo>
             </li>
             <li class="nav-item">
               <a class="not-done">Tree</a>
@@ -160,7 +160,7 @@
               <a class="not-done">Pagination</a>
             </li>
             <li class="nav-item">
-              {{#link-to "badge"}}Badge{{/link-to}}
+              <LinkTo @route="badge">Badge</LinkTo>
             </li>
           </ul>
         </div>
@@ -168,16 +168,16 @@
           <div class="nav-group__title">Notice</div>
           <ul class="pure-menu-list" style="height: auto;">
             <li class="nav-item">
-              {{#link-to "alert"}}Alert{{/link-to}}
+              <LinkTo @route="alert">Alert</LinkTo>
             </li>
             <li class="nav-item">
               <a class="not-done">Loading</a>
             </li>
             <li class="nav-item">
-              {{#link-to "message"}}Message{{/link-to}}
+              <LinkTo @route="message">Message</LinkTo>
             </li>
             <li class="nav-item">
-              {{#link-to "message-box"}}MessageBox{{/link-to}}
+              <LinkTo @route="message-box">MessageBox</LinkTo>
             </li>
             <li class="nav-item">
               <a class="not-done">Notification</a>
@@ -220,7 +220,7 @@
               <a class="not-done">Popover</a>
             </li>
             <li class="nav-item">
-              {{#link-to "card"}}Card{{/link-to}}</li>
+              <LinkTo @route="card">Card</LinkTo></li>
             <li class="nav-item">
               <a class="not-done">Carousel</a>
             </li>
@@ -231,7 +231,7 @@
               <a class="not-done">Timeline</a>
             </li>
             <li class="nav-item">
-              {{#link-to "divider"}}Divider{{/link-to}}</li>
+              <LinkTo @route="divider">Divider</LinkTo></li>
             <li class="nav-item">
               <a class="not-done">Calendar</a>
             </li>

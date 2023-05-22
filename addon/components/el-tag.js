@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-tag';
+import layout from './el-tag';
 import {computed, get, set} from "@ember/object";
 import transition from "../utils/transition";
 

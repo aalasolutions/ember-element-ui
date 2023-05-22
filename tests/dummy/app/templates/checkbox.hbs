@@ -8,10 +8,10 @@
     The default value is a Boolean for single checkbox, and it becomes true when selected.
     Content inside the el-checkbox tag will become the description following the button of the checkbox."}}{{/card.header}}
   {{#card.body}}
-    <p>Current value of checkbox: {{checked}}</p>
+    <p>Current value of checkbox: {{this.checked}}</p>
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-        {{#el-checkbox model=checked}}Option{{/el-checkbox}}
+        {{#el-checkbox model=this.checked}}Option{{/el-checkbox}}
       {{/card.body}}
     {{/el-card}}
     <pre><code class="language-handlebars">\{{#el-checkbox model=checked}}Option\{{/el-checkbox}}</code></pre>
@@ -42,10 +42,10 @@
   {{#card.header title="Suitable for choosing from some mutually exclusive options."}}{{/card.header}}
   {{#card.body}}
 
-    {{checkList}}
+    {{this.checkList}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-        {{#el-checkbox-group model=checkList as |grp|}}
+        {{#el-checkbox-group model=this.checkList as |grp|}}
           {{grp.checkbox label="Option A" }}
           {{grp.checkbox label="Option B" }}
           {{grp.checkbox label="Option C" }}
@@ -54,7 +54,7 @@
         {{/el-checkbox-group}}
       {{/card.body}}
     {{/el-card}}
-    <pre><code class="language-handlebars">\{{#el-checkbox-group model=checkList as |grp|}}
+    <pre><code class="language-handlebars">\{{#el-checkbox-group model=this.checkList as |grp|}}
   \{{grp.checkbox label="Option A" }}
   \{{grp.checkbox label="Option B" }}
   \{{grp.checkbox label="Option C" }}
@@ -73,10 +73,10 @@
   {{#card.body}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-        {{#el-checkbox indeterminate=isIndeterminate checked=checkAll action=(action "handleCheckAllChange")}}Check all{{/el-checkbox}}
+        {{#el-checkbox indeterminate=this.isIndeterminate checked=this.checkAll action=(action "handleCheckAllChange")}}Check all{{/el-checkbox}}
         <div><br></div>
-        {{#el-checkbox-group model=checkedCitiesInt as |grp|}}
-          {{#each cityOptionsInt as |city|}}
+        {{#el-checkbox-group model=this.checkedCitiesInt as |grp|}}
+          {{#each this.cityOptionsInt as |city|}}
             {{grp.checkbox label=city }}
           {{/each}}
         {{/el-checkbox-group}}
@@ -117,18 +117,18 @@ actions: {
 
   {{#card.body}}
 
-    {{checkedCities}}
+    {{this.checkedCities}}
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
-        {{#el-checkbox-group model=checkedCities min=1 max=2 as |grp|}}
-          {{#each cityOptions as |city|}}
+        {{#el-checkbox-group model=this.checkedCities min=1 max=2 as |grp|}}
+          {{#each this.cityOptions as |city|}}
             {{grp.checkbox label=city }}
           {{/each}}
         {{/el-checkbox-group}}
       {{/card.body}}
     {{/el-card}}
-    <pre><code class="language-handlebars">\{{#el-checkbox-group model=checkedCities min=1 max=2 as |grp|}}
-  \{{#each cityOptions as |city|}}
+    <pre><code class="language-handlebars">\{{#el-checkbox-group model=this.checkedCities min=1 max=2 as |grp|}}
+  \{{#each this.cityOptions as |city|}}
     \{{grp.checkbox label=city }}
   \{{/each}}
 \{{/el-checkbox-group}}</code></pre>
@@ -145,29 +145,29 @@ checkedCities: ['Shanghai', 'Beijing'],</code></pre>
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
         <div>
-          {{#el-checkbox-group  model=checkedCitiesButton1 as |grp|}}
-            {{#each cityOptionsInt as |city|}}
+          {{#el-checkbox-group  model=this.checkedCitiesButton1 as |grp|}}
+            {{#each this.cityOptionsInt as |city|}}
               {{grp.button label=city }}
             {{/each}}
           {{/el-checkbox-group}}
         </div>
         <div style="margin-top: 20px">
-          {{#el-checkbox-group  model=checkedCitiesButton2 size="medium" as |grp|}}
-            {{#each cityOptionsInt as |city|}}
+          {{#el-checkbox-group  model=this.checkedCitiesButton2 size="medium" as |grp|}}
+            {{#each this.cityOptionsInt as |city|}}
               {{grp.button label=city }}
             {{/each}}
           {{/el-checkbox-group}}
         </div>
         <div style="margin-top: 20px">
-          {{#el-checkbox-group  model=checkedCitiesButton3 size="small" as |grp|}}
-            {{#each cityOptionsInt as |city|}}
+          {{#el-checkbox-group  model=this.checkedCitiesButton3 size="small" as |grp|}}
+            {{#each this.cityOptionsInt as |city|}}
               {{grp.button label=city disabled=(eq city 'Beijing') }}
             {{/each}}
           {{/el-checkbox-group}}
         </div>
         <div style="margin-top: 20px">
-          {{#el-checkbox-group  model=checkedCitiesButton4 size="mini" disabled=true as |grp|}}
-            {{#each cityOptionsInt as |city|}}
+          {{#el-checkbox-group  model=this.checkedCitiesButton4 size="mini" disabled=true as |grp|}}
+            {{#each this.cityOptionsInt as |city|}}
               {{grp.button label=city }}
             {{/each}}
           {{/el-checkbox-group}}
@@ -219,21 +219,21 @@ checkedCitiesButton4: [],</code></pre>
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
         <div>
-          {{el-checkbox model=checked1 label="Option1" border=true }}
-          {{el-checkbox model=checked2 label="Option2" border=true }}
+          {{el-checkbox model=this.checked1 label="Option1" border=true }}
+          {{el-checkbox model=this.checked2 label="Option2" border=true }}
         </div>
         <div style="margin-top: 20px">
-          {{el-checkbox model=checked3 label="Option1" border=true  size="medium"}}
-          {{el-checkbox model=checked4 label="Option2" border=true  size="medium"}}
+          {{el-checkbox model=this.checked3 label="Option1" border=true  size="medium"}}
+          {{el-checkbox model=this.checked4 label="Option2" border=true  size="medium"}}
         </div>
         <div style="margin-top: 20px">
-          {{#el-checkbox-group model=checkboxGroup1 size="small" as |grp|}}
+          {{#el-checkbox-group model=this.checkboxGroup1 size="small" as |grp|}}
             {{grp.checkbox label="Option1" border=true}}
             {{grp.checkbox label="Option2" border=true}}
           {{/el-checkbox-group}}
         </div>
         <div style="margin-top: 20px">
-          {{#el-checkbox-group model=checkboxGroup2 size="mini" disabled=true as |grp|}}
+          {{#el-checkbox-group model=this.checkboxGroup2 size="mini" disabled=true as |grp|}}
             {{grp.checkbox label="Option1" border=true}}
             {{grp.checkbox label="Option2" border=true}}
           {{/el-checkbox-group}}
@@ -277,7 +277,7 @@ checkboxGroup2: [],</code></pre>
 <h2>Checkbox Attributes</h2>
 {{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
   {{#card.body}}
-    {{#el-table data=cbAttributes  as |t|}}
+    {{#el-table data=this.cbAttributes  as |t|}}
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=250}}
@@ -291,7 +291,7 @@ checkboxGroup2: [],</code></pre>
 <h2>Checkbox Events</h2>
 {{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
   {{#card.body}}
-    {{#el-table data=cbEvents  as |t|}}
+    {{#el-table data=this.cbEvents  as |t|}}
       {{t.column prop="attribute" label="Event Name" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Parameters" width=250}}
@@ -303,7 +303,7 @@ checkboxGroup2: [],</code></pre>
 <h2>Checkbox-group Attributes</h2>
 {{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
   {{#card.body}}
-    {{#el-table data=cbgAttributes  as |t|}}
+    {{#el-table data=this.cbgAttributes  as |t|}}
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=250}}
@@ -318,7 +318,7 @@ checkboxGroup2: [],</code></pre>
 <h2>Checkbox-group Events</h2>
 {{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
   {{#card.body}}
-    {{#el-table data=cbgEvents  as |t|}}
+    {{#el-table data=this.cbgEvents  as |t|}}
       {{t.column prop="attribute" label="Event Name" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Parameters" width=250}}
@@ -329,7 +329,7 @@ checkboxGroup2: [],</code></pre>
 <h2>Checkbox-button Attributes</h2>
 {{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
   {{#card.body}}
-    {{#el-table data=cbbAttributes  as |t|}}
+    {{#el-table data=this.cbbAttributes  as |t|}}
       {{t.column prop="attribute" label="Attribute" width=150}}
       {{t.column prop="desc" label="Description"}}
       {{t.column prop="type" label="Type" width=250}}

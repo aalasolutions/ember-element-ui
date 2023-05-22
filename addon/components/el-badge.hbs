@@ -1,0 +1,9 @@
+{{yield}}
+{{#if this.isShow}}
+  <sup
+    class=" el-badge__content el-badge--content--{{this.type}} {{if this.isDot "is-dot"}} {{if (has-block) "is-fixed"}}"
+  >
+    {{this.content}}
+  </sup>
+{{/if}}
+

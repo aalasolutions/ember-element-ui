@@ -1,0 +1,208 @@
+{{! template-lint-disable }}
+<div class="hidden-columns" ref="hiddenColumns">
+</div>
+
+{{!--
+<table class="el-table__header" cellspacing="0" cellpadding="0" border="0">
+  <thead class={ [{
+  'is-group': isGroup, 'has-gutter': this.hasGutter }] }>
+  {
+  this._l(columnRows, (columns, rowIndex) =>
+    {
+    this._l(columns, (column, cellIndex) =>
+    <th
+      colspan={ column.colSpan }
+      rowspan={ column.rowSpan }
+      on-mousemove={ ($event)=> this.handleMouseMove($event, column) }
+      on-mouseout={ this.handleMouseOut }
+      on-mousedown={ ($event) => this.handleMouseDown($event, column) }
+      on-click={ ($event) => this.handleHeaderClick($event, column) }
+      on-contextmenu={ ($event) => this.handleHeaderContextMenu($event, column) }
+      style={ this.getHeaderCellStyle(rowIndex, cellIndex, columns, column) }
+      class={ this.getHeaderCellClass(rowIndex, cellIndex, columns, column) }
+      key={ column.id }>
+      <div class={ [
+      'cell', column.filteredValue && column.filteredValue.length > 0 ? 'highlight' : '', column.labelClassName] }>
+      {
+      column.renderHeader
+      ? column.renderHeader.call(this._renderProxy, h, { column, $index: cellIndex, store: this.store, _self:
+      this.$parent.$vnode.context })
+      : column.label
+      }
+      {
+      column.sortable
+      ? <span class="caret-wrapper" on-click={ ($event)=> this.handleSortClick($event, column) }>
+                              <i class="sort-caret ascending" on-click={ ($event)=> this.handleSortClick($event, column, 'ascending') }>
+                              </i>
+                              <i class="sort-caret descending" on-click={ ($event)=> this.handleSortClick($event, column, 'descending') }>
+                              </i>
+                            </span>
+      : ''
+      }
+      {
+      column.filterable
+      ? <span class="el-table__column-filter-trigger" on-click={ ($event)=> this.handleFilterClick($event, column) }><i
+        class={ ['el-icon-arrow-down', column.filterOpened ? 'el-icon-arrow-up' : ''] }></i></span>
+      : ''
+      }
+      </div>
+    </th>
+    )
+    }
+    {
+    this.hasGutter ?
+    <th class="gutter"></th>
+    : ''
+    }
+  )
+  }
+  </thead>
+</table>--}}
+
+{{#if this.showHeader}}
+  <table class="el-table__header" cellspacing="0" cellpadding="0" border="0">
+    <colgroup>
+      {{yield
+        (hash
+          column=(component "el-table-colgroup"
+            width=this.width
+          )
+        )
+      }}
+    </colgroup>
+
+    {{!--{ this._l(this.columns, column => <col name={ column.id } />) }--}}
+    {{!--{ this.hasGutter ? <col name="gutter" /> : '' }--}}
+
+    <thead>
+      {{!--'is-group': isGroup, 'has-gutter': this.hasGutter }] }>--}}
+      <tr>
+        {{!--<tr
+          style={ this.getHeaderRowStyle(rowIndex) }
+          class={ this.getHeaderRowClass(rowIndex) }
+        >--}}
+        {{yield
+          (hash
+            column=(component "el-table-header"
+              object=this.object
+              prop=this.prop
+              parent=this.parent
+              label=this.label
+              style=this.layoutBodyWidth
+            )
+          )
+        }}
+      </tr>
+    </thead>
+  </table>
+{{/if}}
+
+{{!--
+
+
+<table class="el-table__body" cellspacing="0" cellpadding="0" border="0">
+  <colgroup>
+    {
+    this._l(this.columns, column => <col name={ column.id } />)
+    }
+  </colgroup>
+  <tbody>
+  {
+  this._l(this.data, (row, $index) =>
+  [<tr
+    style={ this.rowStyle ? this.getRowStyle(row, $index) : null }
+    key={ this.table.rowKey ? this.getKeyOfRow(row, $index) : $index }
+    on-dblclick={ ($event) => this.handleDoubleClick($event, row) }
+    on-click={ ($event) => this.handleClick($event, row) }
+    on-contextmenu={ ($event) => this.handleContextMenu($event, row) }
+    on-mouseenter={ _ => this.handleMouseEnter($index) }
+    on-mouseleave={ _ => this.handleMouseLeave() }
+    class={ [this.getRowClass(row, $index)] }>
+    {
+    this._l(this.columns, (column, cellIndex) => {
+    const { rowspan, colspan } = this.getSpan(row, column, $index, cellIndex);
+    if (!rowspan || !colspan) {
+    return '';
+    } else {
+    return (
+    <td
+      style={ this.getCellStyle($index, cellIndex, row, column) }
+      class={ this.getCellClass($index, cellIndex, row, column) }
+      rowspan={ rowspan }
+      colspan={ colspan }
+      on-mouseenter={ ($event) => this.handleCellMouseEnter($event, row) }
+      on-mouseleave={ this.handleCellMouseLeave }>
+      {
+      column.renderCell.call(
+      this._renderProxy,
+      h,
+      {
+      row,
+      column,
+      $index,
+      store: this.store,
+      _self: this.context || this.table.$vnode.context
+      },
+      columnsHidden[cellIndex]
+      )
+      }
+    </td>
+    );
+    }
+    })
+    }
+  </tr>,
+  this.store.isRowExpanded(row)
+  ? (<tr>
+    <td colspan={ this.columns.length } class="el-table__expanded-cell">
+      { this.table.renderExpanded ? this.table.renderExpanded(h, { row, $index, store: this.store }) : ''}
+    </td>
+  </tr>)
+  : ''
+  ]
+  ).concat(
+  <el-tooltip effect={ this.table.tooltipEffect } placement="top" ref="tooltip" content={ this.tooltipContent }></el-tooltip>
+  )
+  }
+  </tbody>
+</table>
+--}}
+
+
+<table class="el-table__body" cellspacing="0" cellpadding="0" border="0">
+  {{!--<colgroup>
+    {
+    this._l(this.columns, column => <col name={ column.id } />)
+    }
+  </colgroup>--}}
+
+
+  <colgroup>
+    {{yield
+      (hash
+        column=(component "el-table-colgroup"
+          width=this.width
+        )
+      )
+    }}
+  </colgroup>
+  <tbody>
+    {{#each this.data as |row|}}
+      <tr>
+        {{yield
+          (hash
+            column=(component "el-table-column"
+              object=this.object
+              row=this.row
+              store=this.store
+              parent=this.parent
+              prop=this.prop
+              label=this.label
+              width=this.width
+            )
+          )
+        }}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

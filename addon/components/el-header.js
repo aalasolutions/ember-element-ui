@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-header';
+import layout from './el-header';
 import {computed, get} from "@ember/object";
 import {htmlSafe} from '@ember/template';
 

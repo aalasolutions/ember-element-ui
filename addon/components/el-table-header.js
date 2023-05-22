@@ -1,6 +1,7 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-table-header';
+import layout from './el-table-header';
 import {computed, get, set} from "@ember/object";
+import {bool, alias} from "@ember/object/computed";
 
 /*
 
@@ -78,15 +79,15 @@ export default Component.extend({
     return get(this, 'parent');
   }),
 
-  isAllSelected: computed.bool('store.states.isAllSelected'),
-  columnsCount: computed.alias('store.states.columns.length'),
+  isAllSelected: bool('store.states.isAllSelected'),
+  columnsCount: alias('store.states.columns.length'),
 
 
-  leftFixedCount: computed.alias('store.states.fixedColumns.length'),
-  rightFixedCount: computed.alias('store.states.rightFixedColumns.length'),
-  leftFixedLeafCount: computed.alias('store.states.fixedLeafColumnsLength'),
-  rightFixedLeafCount: computed.alias('store.states.rightFixedLeafColumnsLength'),
-  columns: computed.alias('store.states.columns'),
+  leftFixedCount: alias('store.states.fixedColumns.length'),
+  rightFixedCount: alias('store.states.rightFixedColumns.length'),
+  leftFixedLeafCount: alias('store.states.fixedLeafColumnsLength'),
+  rightFixedLeafCount: alias('store.states.rightFixedLeafColumnsLength'),
+  columns: alias('store.states.columns'),
   hasGutter: computed('fixed', 'tableLayout.gutterWidth', function () {
     return !get(this, 'fixed') && get(this, 'tableLayout.gutterWidth');
   }),

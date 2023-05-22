@@ -1,0 +1,32 @@
+<span
+  class="el-checkbox__input
+    {{if this.isChecked " is-checked "}}
+    {{if this.isDisabled " is-disabled "}}
+    {{if this.indeterminate " is-indeterminate "}}
+    {{if this.focus " is-focus "}}
+"
+  tabindex={{this.compTabIndex}}
+  role={{this.compRole}}
+  aria-checked={{this.compAriaChecked}}
+>
+  <span class="el-checkbox__inner"></span>
+  {{input
+    type="checkbox"
+    checked=this.value
+    name=this.name
+    disabled=this.isDisabled
+    tabindex=this.tabindex
+    autofocus=this.autofocus
+    form=this.form
+    class="el-checkbox__original"
+    change=(action "handleChange")
+  }}
+</span>
+<span class="el-checkbox__label">
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    {{label}}
+  {{/if}}
+</span>
+

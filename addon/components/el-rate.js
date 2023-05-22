@@ -1,8 +1,9 @@
 import Component from '@ember/component';
-import layout from '../templates/components/el-rate';
+import layout from './el-rate';
 import {computed, get, set} from "@ember/object";
 import {htmlSafe} from '@ember/template';
 import {typeOf} from '@ember/utils';
+import { or } from '@ember/object/computed';
 
 export default Component.extend({
   layout,
@@ -164,7 +165,7 @@ export default Component.extend({
     }
   ),
 
-  showTextScore: computed.or("showText", "showScore"),
+  showTextScore: or("showText", "showScore"),
 
   textSpanStyle: computed("textColor", "text", function () {
     let color = get(this, "textColor");

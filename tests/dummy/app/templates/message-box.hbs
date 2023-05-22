@@ -213,7 +213,7 @@ actions:{
 <h2>Attributes</h2>
 {{#el-card class="box-card" shadow="hover" bodyStyle="padding:0px;" as |card|}}
 {{#card.body}}
-  {{#el-table data=tableAttributes  as |t|}}
+  {{#el-table data=this.tableAttributes  as |t|}}
     {{t.column prop="attribute" label="Attribute" width=150}}
     {{t.column prop="desc" label="Description" width=300}}
     {{t.column prop="type" label="Type" width=300}}
