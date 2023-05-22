@@ -18,8 +18,6 @@ Implementation of http://element.eleme.io in Ember
 [coveralls-badge-url]: https://coveralls.io/github/aalasolutions/ember-element-ui?branch=master
 [ember-observer-badge]: http://emberobserver.com/badges/ember-element-ui.svg
 [ember-observer-badge-url]: http://emberobserver.com/addons/ember-element-ui
-[dependencies-badge]: https://img.shields.io/david/aalasolutions/ember-element-ui.svg
-[dependencies-badge-url]: https://david-dm.org/aalasolutions/ember-element-ui
 
 
 Installation

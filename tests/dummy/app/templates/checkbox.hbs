@@ -145,7 +145,7 @@ checkedCities: ['Shanghai', 'Beijing'],</code></pre>
     {{#el-card class="box-card" shadow="naver" as |card|}}
       {{#card.body}}
         <div>
-          {{#el-checkbox-group  model=this.checkedCitiesButton1 as |grp|}}
+          {{#el-checkbox-group model=this.checkedCitiesButton1 as |grp|}}
             {{#each this.cityOptionsInt as |city|}}
               {{grp.button label=city }}
             {{/each}}

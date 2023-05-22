@@ -1,15 +1,15 @@
 
-  {{input
-    type="checkbox"
-    checked=this.value
-    name=this.name
-    disabled=this.isDisabled
-    tabindex=this.tabindex
-    autofocus=this.autofocus
-    form=this.form
+  <Input
+    @type="checkbox"
+    @checked={{this.value}}
+    @name={{this.name}}
+    disabled={{this.isDisabled}}
+    @tabindex={{this.tabindex}}
+    @autofocus={{this.autofocus}}
+    @form={{this.form}}
     class="el-checkbox-button__original"
-    change=(action "handleChange")
-  }}
+    {{on 'click' (action "handleChange") value="target.checked"}}
+  />
   {{! template-lint-disable no-inline-styles }}
 <span class="el-checkbox-button__inner" style={{this.style}}>
   {{#if (has-block)}}

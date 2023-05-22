@@ -10,23 +10,24 @@
   aria-checked={{this.compAriaChecked}}
 >
   <span class="el-checkbox__inner"></span>
-  {{input
-    type="checkbox"
-    checked=this.value
-    name=this.name
-    disabled=this.isDisabled
-    tabindex=this.tabindex
-    autofocus=this.autofocus
-    form=this.form
+  <Input
+    @type="checkbox"
+    @checked={{this.value}}
+    @name={{this.name}}
+    disabled={{this.isDisabled}}
+    @tabindex={{this.tabindex}}
+    @autofocus={{this.autofocus}}
+    @form={{this.form}}
     class="el-checkbox__original"
-    change=(action "handleChange")
-  }}
+    {{on 'click' (action "handleChange") value="target.checked"}}
+  />
 </span>
+
 <span class="el-checkbox__label">
   {{#if (has-block)}}
     {{yield}}
   {{else}}
-    {{label}}
+    {{this.label}}
   {{/if}}
 </span>
 
