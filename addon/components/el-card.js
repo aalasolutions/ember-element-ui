@@ -1,24 +1,20 @@
-import Component from '@ember/component';
-import layout from './el-card';
-import { computed, get } from '@ember/object';
+import Component from '@glimmer/component';
 
-export default Component.extend({
-  layout,
-  classNames: ['el-card'],
+export default class ElCardComponent extends Component {
+  defaultShadow = 'always'; // always false hover
 
-  classNameBindings: ['getClassName', 'box:box-card'],
-
-  shadow: 'always', // always false hover
-  box: false,
-  bodyStyle: null,
-
-  getClassName: computed('shadow', function () {
+  get classes() {
     let classNames = '';
-
-    if (this.shadow) {
-      classNames += ` is-${this.shadow}-shadow`;
+    let shadow = this.args.shadow;
+    if (['always', 'false', 'hover'].indexOf(shadow) === -1) {
+      shadow += ` is-${this.defaultShadow}-shadow`;
     }
 
+    classNames += ` is-${shadow}-shadow`;
+
+    if (this.args.box) {
+      classNames += ' box-card';
+    }
     return classNames;
-  }),
-});
+  }
+}

@@ -1,7 +1,8 @@
-{{yield}}
-{{#if this.loading}}
-  <i class="el-icon-loading"></i>
-{{/if}}
-{{#if this.showIcon}}
-  <i class={{this.icon}}></i>
-{{/if}}
+<button class="el-button {{this.classes}}" ...attributes
+        {{on "click" this.onClick}}
+>
+  {{#if this.showIcon}}
+    <i class={{this.icon}}></i>
+  {{/if}}
+  {{yield}}
+</button>

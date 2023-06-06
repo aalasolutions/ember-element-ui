@@ -41,8 +41,8 @@
     "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
+    "@element-plus/theme-chalk": "^2.2.16",
     "animate.css": "^4.1.1",
-    "element-theme-chalk": "^2.15.13",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.2.0",
     "ember-cli-sass": "^11.0.1",

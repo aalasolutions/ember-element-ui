@@ -6,13 +6,13 @@
 
 <ElCard @class="box-card" as |card|>
   <card.header @title="Card Name">
-    <ElButton @color="text" @style="float: right; padding: 3px 0">Operation button</ElButton>
+    <ElButton @color="text" style="float: right; padding: 3px 0">Operation button</ElButton>
   </card.header>
   <card.body>
-    <div  class="text item">List item 1</div>
-    <div  class="text item">List item 2</div>
-    <div  class="text item">List item 3</div>
-    <div  class="text item">List item 4</div>
+    <div class="text item">List item 1</div>
+    <div class="text item">List item 2</div>
+    <div class="text item">List item 3</div>
+    <div class="text item">List item 4</div>
   </card.body>
 </ElCard>
 
@@ -21,20 +21,21 @@
 
 <ElCard @class="box-card" @shadow="hover" as |card|>
   <card.body>
-<pre><code class="language-handlebars">\{{#el-card class="box-card" as |card|}}
-  \{{#card.header title="Card Name"}}
-    \{{#el-button  color="text"}}Operation button\{{/el-button}}
-  \{{/card.header}}
-  \{{#card.body}}
-    Some content for the card
-  \{{/card.body}}
-\{{/el-card}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElCard @class="box-card" as |card|&gt;
+  &lt;card.header @title="Card Name"&gt;
+    &lt;ElButton @color="text" style="float: right; padding: 3px 0"&gt;Operation button&lt;/ElButton&gt;
+  &lt;/card.header&gt;
+  &lt;card.body&gt;
+    &lt;div  class="text item"&gt;List item 1&lt;/div&gt;
+    &lt;div  class="text item"&gt;List item 2&lt;/div&gt;
+    &lt;div  class="text item"&gt;List item 3&lt;/div&gt;
+    &lt;div  class="text item"&gt;List item 4&lt;/div&gt;
+  &lt;/card.body&gt;
+&lt;/ElCard&gt;</code></pre>
   </card.body>
 </ElCard>
 
 <br><br>
-
-
 
 <ElRow>
   <ElCol @span="8">
@@ -50,8 +51,6 @@
     </ElCard>
   </ElCol>
 </ElRow>
-
-
 
 <br><br>
 

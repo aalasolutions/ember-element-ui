@@ -15,19 +15,13 @@ export default class ElAlertComponent extends Component {
 
   get classes() {
     let classes = [];
-    // if ( this.get('typeClass') ) {
-    //   classes.push(this.get('typeClass'));
-    // }
     if (this.args.effect && ['light', 'dark'].includes(this.args.effect)) {
       classes.push(`is-${this.args.effect}`);
     } else {
       classes.push('is-light');
     }
 
-    if (
-      this.args.type &&
-      ['info', 'success', 'warning', 'error'].includes(this.args.type)
-    ) {
+    if (this.args.type && ['info', 'success', 'warning', 'error'].includes(this.args.type)) {
       classes.push(`el-alert--${this.args.type}`);
     } else {
       classes.push(`el-alert--info`);
@@ -61,7 +55,6 @@ export default class ElAlertComponent extends Component {
 
   @action close(event) {
     let e = event.target.parentElement.parentElement;
-    // console.log(e.parentElement.parentElement);
     let transitionEvent = transition('animation');
     e.addEventListener(transitionEvent, () => {
       this.isClosed = true;

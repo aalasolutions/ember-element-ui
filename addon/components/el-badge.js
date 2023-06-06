@@ -1,44 +1,32 @@
-import Component from '@ember/component';
-import layout from './el-badge';
-import { computed, get } from '@ember/object';
+import Component from '@glimmer/component';
 
-export default Component.extend({
-  layout,
+export default class ElBadgeComponent extends Component {
+  defaultType = 'primary';
 
-  classNames: ['el-badge'],
-  value: null,
-  max: null,
-  isDot: false,
-  hidden: false,
-  type: 'primary',
+  get isShow() {
+    return !this.args.hidden && (this.content || this.content === 0 || this.args.isDot);
+  }
 
-  isShow: computed('hidden', 'content', 'isDot', function () {
-    return !this.hidden && (this.content || this.content === 0 || this.isDot);
-  }),
+  get type() {
+    let type = this.args.type;
+    if (!type)
+      type = this.defaultType;
 
-  init() {
-    this._super();
-
-    let type = this.type;
-
-    if (
-      ['primary', 'success', 'warning', 'info', 'danger'].indexOf(type) === -1
-    ) {
-      // console.error('Provided type for el-badge is not valid. Please select one from [\'primary\', \'success\', \'warning\', \'info\', \'danger\']');
+    if (['primary', 'success', 'warning', 'info', 'danger'].indexOf(type) === -1) {
+      return this.defaultType;
     }
+    return this.args.type;
+  }
 
-    // set(this, 'value')
-  },
-
-  content: computed('isDot', 'value', 'max', function () {
-    if (this.isDot) return;
-    const value = this.value;
-    const max = this.max;
+  get content() {
+    if (this.args.isDot) return;
+    const value = this.args.value;
+    const max = this.args.max;
 
     if (typeof value === 'number' && typeof max === 'number') {
       return max < value ? `${max}+` : value;
     }
 
     return value;
-  }),
-});
+  }
+}

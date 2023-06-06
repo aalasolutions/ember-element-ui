@@ -12,32 +12,32 @@
   <card.body>
 <ElCard @class="box-card" @shadow="naver" as |card|>
   <card.body>
-    <ElBadge @value={{12}} @class="item">
+    <ElBadge @value={{12}} class="item">
       <ElButton @size="small">comments</ElButton>
     </ElBadge>
-    <ElBadge @value={{3}} @class="item">
+    <ElBadge @value={{3}} class="item">
       <ElButton @size="small">replies</ElButton>
     </ElBadge>
-    <ElBadge @value={{1}} @class="item" @type="primary">
+    <ElBadge @value={{1}} class="item" @type="primary">
       <ElButton @size="small">comments</ElButton>
     </ElBadge>
-    <ElBadge @value={{2}} @class="item" @type="warning">
+    <ElBadge @value={{2}} class="item" @type="warning">
       <ElButton @size="small">replies</ElButton>
     </ElBadge>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-badge value=12 class="item"}}
-      \{{#el-button size="small"}}comments\{{/el-button}}
-    \{{/el-badge}}
-    \{{#el-badge value=3 class="item"}}
-      \{{#el-button size="small"}}replies\{{/el-button}}
-    \{{/el-badge}}
-    \{{#el-badge value=1 class="item" type="primary"}}
-      \{{#el-button size="small"}}comments\{{/el-button}}
-    \{{/el-badge}}
-    \{{#el-badge value=2 class="item" type="warning"}}
-      \{{#el-button size="small"}}replies\{{/el-button}}
-    \{{/el-badge}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElBadge @value=12 &gt;
+  &lt;ElBadge @size="small"&gt;comments&lt;/ElButton&gt;
+&lt;ElBadge&gt;
+&lt;ElBadge @value=3 class="item"&gt;
+  &lt;ElButton @size="small"&gt;replies&lt;/ElButton&gt;
+&lt;ElBadge&gt;
+&lt;ElBadge @value=1 class="item" type="primary"&gt;
+  &lt;ElButton @size="small"&gt;comments&lt;/ElButton&gt;
+&lt;ElBadge&gt;
+&lt;ElBadge @value=2 class="item" type="warning"&gt;
+  &lt;ElButton @size="small"&gt;replies&lt;/ElButton&gt;
+&lt;ElBadge&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -51,20 +51,20 @@
   <card.body>
 <ElCard @class="box-card" @shadow="naver" as |card|>
   <card.body>
-    <ElBadge @value={{200}} @max={{99}} @class="item">
+    <ElBadge @value={{200}} @max={{99}} class="item">
       <ElButton @size="small">comments</ElButton>
     </ElBadge>
-    <ElBadge @value={{100}} @max={{10}} @class="item">
+    <ElBadge @value={{100}} @max={{10}} class="item">
       <ElButton @size="small">replies</ElButton>
     </ElBadge>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-badge value=200 max=99 class="item"}}
-    \{{#el-button size="small"}}comments\{{/el-button}}
-  \{{/el-badge}}
-  \{{#el-badge value=100 max=10 class="item"}}
-    \{{#el-button size="small"}}replies\{{/el-button}}
-  \{{/el-badge}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElBadge @value=200 max=99 class="item"&gt;
+  &lt;ElButton @size="small"&gt;comments&lt;/ElButton&gt;
+&lt;ElBadge&gt;
+&lt;ElBadge @value=100 max=10 class="item"&gt;
+  &lt;ElButton @size="small"&gt;replies&lt;/ElButton&gt;
+&lt;ElBadge&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -77,20 +77,20 @@
   <card.body>
 <ElCard @class="box-card" @shadow="naver" as |card|>
   <card.body>
-    <ElBadge @value="new" @class="item">
+    <ElBadge @value="new" class="item">
       <ElButton @size="small">comments</ElButton>
     </ElBadge>
-    <ElBadge @value="hot" @class="item">
+    <ElBadge @value="hot" class="item">
       <ElButton @size="small">replies</ElButton>
     </ElBadge>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-badge value="new" class="item"}}
-  \{{#el-button size="small"}}comments\{{/el-button}}
-\{{/el-badge}}
-\{{#el-badge value="hot" class="item"}}
-  \{{#el-button size="small"}}replies\{{/el-button}}
-\{{/el-badge}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElBadge @value="new" class="item"&gt;
+  &lt;ElButton @size="small"&gt;comments&lt;/ElButton&gt;
+&lt;ElBadge&gt;
+&lt;ElBadge @value="hot" class="item"&gt;
+  &lt;ElButton @size="small"&gt;replies&lt;/ElButton&gt;
+&lt;ElBadge&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -103,16 +103,16 @@
   <card.body>
 <ElCard @class="box-card" @shadow="naver" as |card|>
   <card.body>
-  <ElBadge @isDot={{true}} @class="item">query</ElBadge>
-  <ElBadge @isDot={{true}} @class="item">
+  <ElBadge @isDot={{true}} class="item">query</ElBadge>
+  <ElBadge @isDot={{true}} class="item">
     <ElButton @class="share-button" @icon="el-icon-share" @type="primary"></ElButton>
   </ElBadge>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-badge isDot=true class="item"}}query\{{/el-badge}}
-\{{#el-badge isDot=true class="item"}}
-  \{{#el-button class="share-button" icon="el-icon-share" type="primary"}}\{{/el-button}}
-\{{/el-badge}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElBadge @isDot=true class="item"&gt;query&lt;ElBadge&gt;
+&lt;ElBadge @isDot=true class="item"&gt;
+  &lt;ElButton @class="share-button" icon="el-icon-share" type="primary"&gt;&lt;/ElButton&gt;
+&lt;ElBadge&gt;</code></pre>
   </card.body>
 </ElCard>
 

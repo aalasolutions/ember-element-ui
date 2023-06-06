@@ -1,22 +1,18 @@
-import Component from '@ember/component';
-import layout from './el-aside';
-import { computed, get } from '@ember/object';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { htmlSafe } from '@ember/template';
 
-export default Component.extend({
-  layout,
-  tagName: 'aside',
-  classNames: ['el-aside', 'el-animate'],
-  width: '300px',
-  collapse: false,
+export default class ElAsideComponent extends Component {
+  @tracked defaultWidth = '300px';
 
-  attributeBindings: ['style'],
-
-  style: computed('width', 'collapse', function () {
-    let width = this.width;
-    if (this.collapse === true) {
+  get style() {
+    let width = this.args.width ?? this.defaultWidth;
+    if (!width.endsWith('px')) {
+      width += 'px';
+    }
+    if (this.args.collapse === true) {
       width = '65px';
     }
     return htmlSafe('width: ' + width);
-  }),
-});
+  }
+}

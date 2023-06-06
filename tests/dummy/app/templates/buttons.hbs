@@ -1,6 +1,7 @@
 <h2>Buttons</h2>
 
 <h3>Standard Buttons</h3>
+Press <kbd>CTRL</kbd>
 <ElCard @class="box-card" @shadow="hover" as |card|>
   <card.header @title="The basic standard buttons styles">
   </card.header>
@@ -19,16 +20,16 @@
 </ElRow>
 </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row gutter="20" as |row|}}
-  \{{#row.col}}
-    \{{#el-button}}Default\{{/el-button}}
-    \{{#el-button color="primary"}}Primary\{{/el-button}}
-    \{{#el-button color="success"}}Success\{{/el-button}}
-    \{{#el-button color="info"}}Info\{{/el-button}}
-    \{{#el-button color="warning"}}Warning\{{/el-button}}
-    \{{#el-button color="danger"}}Danger\{{/el-button}}
-  \{{/row.col}}
-\{{/el-row}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElRow gutter="20" as |row|&gt;
+  &lt;ElCol&gt;
+    &lt;ElButton&gt;Default&lt;/ElButton&gt;
+    &lt;ElButton @color="primary"&gt;Primary&lt;/ElButton&gt;
+    &lt;ElButton @color="success"&gt;Success&lt;/ElButton&gt;
+    &lt;ElButton @color="info"&gt;Info&lt;/ElButton&gt;
+    &lt;ElButton @color="warning"&gt;Warning&lt;/ElButton&gt;
+    &lt;ElButton @color="danger"&gt;Danger&lt;/ElButton&gt;
+  &lt;/ElCol&gt;
+&lt;ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -51,14 +52,14 @@
     </ElRow>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row}}
-  \{{#el-button plain=true}}Plain\{{/el-button}}
-  \{{#el-button color="primary" plain=true}}Primary\{{/el-button}}
-  \{{#el-button color="success" plain=true}}Success\{{/el-button}}
-  \{{#el-button color="info" plain=true}}Info\{{/el-button}}
-  \{{#el-button color="warning" plain=true}}Warning\{{/el-button}}
-  \{{#el-button color="danger" plain=true}}Danger\{{/el-button}}
-\{{/el-row}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElRow&gt;
+  &lt;ElButton @plain=\{{true}}&gt;Plain&lt;/ElButton&gt;
+  &lt;ElButton @color="primary" @plain=\{{true}}&gt;Primary&lt;/ElButton&gt;
+  &lt;ElButton @color="success" @plain=\{{true}}&gt;Success&lt;/ElButton&gt;
+  &lt;ElButton @color="info" @plain=\{{true}}&gt;Info&lt;/ElButton&gt;
+  &lt;ElButton @color="warning" @plain=\{{true}}&gt;Warning&lt;/ElButton&gt;
+  &lt;ElButton @color="danger" @plain=\{{true}}&gt;Danger&lt;/ElButton&gt;
+&lt;/ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -77,14 +78,14 @@
     </ElRow>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row}}
-  \{{#el-button round=true}}Round\{{/el-button}}
-  \{{#el-button color="primary" round=true}}Primary\{{/el-button}}
-  \{{#el-button color="success" round=true}}Success\{{/el-button}}
-  \{{#el-button color="info" round=true}}Info\{{/el-button}}
-  \{{#el-button color="warning" round=true}}Warning\{{/el-button}}
-  \{{#el-button color="danger" round=true}}Danger\{{/el-button}}
-\{{/el-row}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElRow>
+  &lt;ElButton @round=\{{true}}&gt;Round&lt;/ElButton&gt;
+  &lt;ElButton @color="primary" @round=\{{true}}&gt;Primary&lt;/ElButton&gt;
+  &lt;ElButton @color="success" @round=\{{true}}&gt;Success&lt;/ElButton&gt;
+  &lt;ElButton @color="info" @round=\{{true}}&gt;Info&lt;/ElButton&gt;
+  &lt;ElButton @color="warning" @round=\{{true}}&gt;Warning&lt;/ElButton&gt;
+  &lt;ElButton @color="danger" @round=\{{true}}&gt;Danger&lt;/ElButton&gt;
+&lt;/ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -103,14 +104,14 @@
     </ElRow>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row}}
-  \{{#el-button icon="el-icon-search" circle=true}}\{{/el-button}}
-  \{{#el-button color="primary" icon="el-icon-edit" circle=true}}\{{/el-button}}
-  \{{#el-button color="success" icon="el-icon-check" circle=true}}\{{/el-button}}
-  \{{#el-button color="info" icon="el-icon-message" circle=true}}\{{/el-button}}
-  \{{#el-button color="warning" icon="el-icon-star-off" circle=true}}\{{/el-button}}
-  \{{#el-button color="danger" icon="el-icon-delete" circle=true}}\{{/el-button}}
-\{{/el-row}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElRow&gt;
+  &lt;ElButton @icon="el-icon-search" @circle=\{{true}}&gt;&lt;/ElButton&gt;
+  &lt;ElButton @color="primary" @icon="el-icon-edit" @circle=\{{true}}&gt;&lt;/ElButton&gt;
+  &lt;ElButton @color="success" @icon="el-icon-check" @circle=\{{true}}&gt;&lt;/ElButton&gt;
+  &lt;ElButton @color="info" @icon="el-icon-message" @circle=\{{true}}&gt;&lt;/ElButton&gt;
+  &lt;ElButton @color="warning" @icon="el-icon-star-off" @circle=\{{true}}&gt;&lt;/ElButton&gt;
+  &lt;ElButton @color="danger" @icon="el-icon-delete" @circle=\{{true}}&gt;&lt;/ElButton&gt;
+&lt;/ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -131,14 +132,14 @@
     </ElRow>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row}}
-  \{{#el-button disabled=true}}Default\{{/el-button}}
-  \{{#el-button color="primary" disabled=true}}Primary\{{/el-button}}
-  \{{#el-button color="success" disabled=true}}Success\{{/el-button}}
-  \{{#el-button color="info" disabled=true}}Info\{{/el-button}}
-  \{{#el-button color="warning" disabled=true}}Warning\{{/el-button}}
-  \{{#el-button color="danger" disabled=true}}Danger\{{/el-button}}
-\{{/el-row}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElRow&gt;
+  &lt;ElButton @disabled={{true}}&gt;Default&lt;/ElButton&gt;
+  &lt;ElButton @disabled={{true}} @color="primary"&gt;Primary&lt;/ElButton&gt;
+  &lt;ElButton @disabled={{true}} @color="success"&gt;Success&lt;/ElButton&gt;
+  &lt;ElButton @disabled={{true}} @color="info"&gt;Info&lt;/ElButton&gt;
+  &lt;ElButton @disabled={{true}} @color="warning"&gt;Warning&lt;/ElButton&gt;
+  &lt;ElButton @disabled={{true}} @color="danger"&gt;Danger&lt;/ElButton&gt;
+&lt;/ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -157,14 +158,14 @@
     </ElRow>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row}}
-  \{{#el-button plain=true disabled=true}}Plain\{{/el-button}}
-  \{{#el-button color="primary" plain=true disabled=true}}Primary\{{/el-button}}
-  \{{#el-button color="success" plain=true disabled=true}}Success\{{/el-button}}
-  \{{#el-button color="info" plain=true disabled=true}}Info\{{/el-button}}
-  \{{#el-button color="warning" plain=true disabled=true}}Warning\{{/el-button}}
-  \{{#el-button color="danger" plain=true disabled=true}}Danger\{{/el-button}}
-\{{/el-row}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElRow&gt;
+  &lt;ElButton @plain={{true}} @disabled={{true}}>Plain&lt;/ElButton&gt;
+  &lt;ElButton @color="primary" @plain={{true}} @disabled={{true}}>Primary&lt;/ElButton&gt;
+  &lt;ElButton @color="success" @plain={{true}} @disabled={{true}}>Success&lt;/ElButton&gt;
+  &lt;ElButton @color="info" @plain={{true}} @disabled={{true}}>Info&lt;/ElButton&gt;
+  &lt;ElButton @color="warning" @plain={{true}} @disabled={{true}}>Warning&lt;/ElButton&gt;
+  &lt;ElButton @color="danger" @plain={{true}} @disabled={{true}}>Danger&lt;/ElButton&gt;
+&lt;/ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -180,10 +181,10 @@
     </ElRow>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row}}
-  \{{#el-button color="text"}}Text Button\{{/el-button}}
-  \{{#el-button color="text" disabled=true}}Text Button\{{/el-button}}
-\{{/el-row}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElRow&gt;
+  &lt;ElButton @color="text">Text Button&lt;/ElButton&gt;
+  &lt;ElButton @color="text" @disabled={{true}}>Text Button&lt;/ElButton&gt;
+&lt;/ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -202,13 +203,13 @@
     </ElRow>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row}}
-  \{{#el-button color="primary" icon="el-icon-edit"}}\{{/el-button}}
-  \{{#el-button color="primary" icon="el-icon-share"}}\{{/el-button}}
-  \{{#el-button color="primary" icon="el-icon-delete"}}\{{/el-button}}
-  \{{#el-button color="primary" icon="el-icon-search"}}Search\{{/el-button}}
-  \{{#el-button color="primary"}}Upload &lt;i class="el-icon-upload el-icon-right"&gt;&lt;/i&gt;\{{/el-button}}
-\{{/el-row}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElRow&gt;
+  &lt;ElButton @color="primary" @icon="el-icon-edit"&gt;&lt;/ElButton&gt;
+  &lt;ElButton @color="primary" @icon="el-icon-share"&gt;&lt;/ElButton&gt;
+  &lt;ElButton @color="primary" @icon="el-icon-delete"&gt;&lt;/ElButton&gt;
+  &lt;ElButton @color="primary" @icon="el-icon-search"&gt;Search&lt;/ElButton&gt;
+  &lt;ElButton @color="primary"&gt;Upload &lt;i class="el-icon-upload el-icon-right"&gt;&lt;/i&gt;&lt;/ElButton&gt;
+&lt;/ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -234,19 +235,19 @@
     </ElRow>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row}}
-  \{{#el-button-group}}
-    \{{#el-button color="primary" icon="el-icon-arrow-left"}}Previous Page\{{/el-button}}
-    \{{#el-button color="primary"}}Next Page<i class="el-icon-arrow-right el-icon-right"></i>\{{/el-button}}
-  \{{/el-button-group}}
+<pre><code class="language-handlebars">&lt;ElRow&gt;
+  &lt;ElButtonGroup&gt;
+    &lt;ElButton @color="primary" @icon="el-icon-arrow-left"&gt;Previous Page&lt;/ElButton&gt;
+    &lt;ElButton @color="primary"&gt;Next Page&lt;i class="el-icon-arrow-right el-icon-right"&gt;&lt;/i&gt;&lt;/ElButton&gt;
+  &lt;/ElButtonGroup&gt;
 
 
-  \{{#el-button-group}}
-    \{{#el-button color="primary" icon="el-icon-edit"}}\{{/el-button}}
-    \{{#el-button color="primary" icon="el-icon-share"}}\{{/el-button}}
-    \{{#el-button color="primary" icon="el-icon-delete"}}\{{/el-button}}
-  \{{/el-button-group}}
-\{{/el-row}}</code></pre>
+  &lt;ElButtonGroup&gt;
+    &lt;ElButton @color="primary" @icon="el-icon-edit"&gt;&lt;/ElButton&gt;
+    &lt;ElButton @color="primary" @icon="el-icon-share"&gt;&lt;/ElButton&gt;
+    &lt;ElButton @color="primary" @icon="el-icon-delete"&gt;&lt;/ElButton&gt;
+  &lt;/ElButtonGroup&gt;
+&lt;/ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -261,9 +262,9 @@
     </ElRow>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row}}
-  \{{#el-button color="primary" loading=true}}Loading\{{/el-button}}
-\{{/el-row}}</code></pre>
+<pre><code class="language-handlebars">&lt;ElRow&gt;
+  &lt;ElButton @color="primary" @loading={{true}}>Loading&lt;/ElButton&gt;
+&lt;/ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 
@@ -288,19 +289,19 @@
     </ElRow>
   </card.body>
 </ElCard>
-<pre><code class="language-handlebars">\{{#el-row}}
-  \{{#el-button}}Default\{{/el-button}}
-  \{{#el-button size="medium"}}Medium\{{/el-button}}
-  \{{#el-button size="small"}}Small\{{/el-button}}
-  \{{#el-button size="mini"}}Mini\{{/el-button}}
-\{{/el-row}}
+<pre><code class="language-handlebars">&lt;ElRow&gt;
+  &lt;ElButton&gt;Default&lt;/ElButton&gt;
+  &lt;ElButton @size="medium"&gt;Medium&lt;/ElButton&gt;
+  &lt;ElButton @size="small"&gt;Small&lt;/ElButton&gt;
+  &lt;ElButton @size="mini"&gt;Mini&lt;/ElButton&gt;
+&lt;/ElRow&gt;
 
-\{{#el-row}}
-  \{{#el-button round=true}}Default\{{/el-button}}
-  \{{#el-button size="medium" round=true}}Medium\{{/el-button}}
-  \{{#el-button size="small" round=true}}Small\{{/el-button}}
-  \{{#el-button size="mini" round=true}}Mini\{{/el-button}}
-\{{/el-row}}</code></pre>
+&lt;ElRow&gt;
+  &lt;ElButton @round={{true}}&gt;Default&lt;/ElButton&gt;
+  &lt;ElButton @size="medium" @round={{true}}&gt;Medium&lt;/ElButton&gt;
+  &lt;ElButton @size="small" @round={{true}}&gt;Small&lt;/ElButton&gt;
+  &lt;ElButton @size="mini" @round={{true}}&gt;Mini&lt;/ElButton&gt;
+&lt;/ElRow&gt;</code></pre>
   </card.body>
 </ElCard>
 

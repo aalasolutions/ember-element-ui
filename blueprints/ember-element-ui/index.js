@@ -43,7 +43,7 @@ module.exports = {
     });
 
     return this.addPackagesToProject([
-      { name: 'element-theme-chalk', target: '^2.4.9' },
+      { name: '@element-plus/theme-chalk', target: '^2.2.16' },
       { name: 'popper.js' },
       { name: 'normalize.css' },
     ]);
@@ -78,22 +78,8 @@ module.exports = {
     );
 
     host.import(
-      path.join('node_modules', 'element-theme-chalk', 'lib', 'display.css')
+      path.join('node_modules', '@element-plus', 'theme-chalk', 'dist', 'display.css')
     );
-  },
-
-  treeForPublic: function () {
-    let absoluteFontsPath = path.join(
-      'node_modules',
-      'element-theme-chalk',
-      'src',
-      'fonts'
-    );
-    let fontsFolderPath = '/assets/fonts';
-
-    return new Funnel(absoluteFontsPath, {
-      destDir: fontsFolderPath,
-    });
   },
 
   treeForStyles: function () {
@@ -101,7 +87,7 @@ module.exports = {
 
     if (host.project.findAddonByName('ember-cli-sass')) {
       return new Funnel(
-        path.join('node_modules', 'element-theme-chalk', 'src'),
+        path.join('node_modules', '@element-plus', 'theme-chalk', 'src'),
         {
           destDir: 'ember-element-ui',
         }
@@ -109,36 +95,6 @@ module.exports = {
     }
   },
 
-  treeForVendor: function (tree) {
-    // Get configured fontFormats
-    var fontsTree = [];
-
-    let fontFormats = ['ttf', 'woff'];
-    let fontFormatsString = fontFormats.join(',');
-    // Define fontFormatPattern
-    let fontFormatPattern;
-    if (fontFormats.length > 1) {
-      fontFormatPattern = `*.{${fontFormatsString}}`;
-    } else {
-      fontFormatPattern = `*.${fontFormatsString}`;
-    }
-    // Funnel required font types
-    let fonts = new Funnel(
-      path.join('node_modules', 'element-theme-chalk', 'src'),
-      {
-        destDir: 'element-font',
-        include: [`fonts/${fontFormatPattern}`],
-      }
-    );
-
-    fontsTree.push(fonts);
-
-    if (tree) {
-      fontsTree.push(tree);
-    }
-
-    return mergeTrees(fontsTree, { overwrite: true });
-  },
 
   _ensureFindHost() {
     if (!this._findHost) {
